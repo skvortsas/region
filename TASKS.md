@@ -110,35 +110,35 @@
 
 > **One agent, sequential. Depends on Phase 1. Sections (Phase 3) are blocked until this phase is complete.**
 
-- [ ] **2.1 — `components/ui/Button.tsx`**
+- [x] **2.1 — `components/ui/Button.tsx`**
   - Two variants: `primary` (red glow, `bg-accent`, `rounded-[20px]`, padding `36px`) and `secondary` (dark surface, same radius).
   - Accepts: `variant`, `size` (default / sm), `icon` slot (left), `href` (renders `<a>` if provided, `<button>` otherwise), `className`.
   - Glow effect: `box-shadow` using `--color-accent` at ~40% opacity, implemented as a Tailwind arbitrary value or CSS custom property — no inline styles.
   - Button label: Montserrat 700, `uppercase`, `text-[28px]` desktop / `text-[18px]` mobile.
 
-- [ ] **2.2 — `components/ui/SocialIcon.tsx`**
+- [x] **2.2 — `components/ui/SocialIcon.tsx`**
   - Accepts: `platform: 'discord' | 'vk' | 'telegram' | 'youtube'`, `href`, `className`.
   - 42 × 42 container with white fill icon SVGs (export from Figma nodes `40:288`–`40:301`). Use inline SVG or `next/image` for each.
   - `href="#"` for all platforms (URLs TBD).
 
-- [ ] **2.3 — `components/ui/OnlineCounter.tsx`**
+- [x] **2.3 — `components/ui/OnlineCounter.tsx`**
   - Accepts: `count: number`.
   - Renders: green dot + `count` (Montserrat 700, `gradient-brand` text) + "ИГРОКОВ ОНЛАЙН" (14px/600, `text-muted`).
   - Default `count` prop: `142` (mock). Component is purely presentational — data fetching is done by the parent (`Header`).
 
-- [ ] **2.4 — `components/ui/PromoCode.tsx`**
+- [x] **2.4 — `components/ui/PromoCode.tsx`**
   - Client component (`'use client'`).
   - Accepts: `code: string`, `targetDate: string` (ISO 8601 from `NEXT_PUBLIC_LAUNCH_DATE`).
   - Renders: promo code display (gradient `gradient-promo`, `cornerRadius=20`) + countdown timer (DD:HH:MM:SS).
   - If `targetDate` is empty or past, show `00:00:00:00`.
   - Uses `useEffect` + `setInterval(1000)` for the countdown. Clean up the interval on unmount.
 
-- [ ] **2.5 — `hooks/useScrollSpy.ts`**
+- [x] **2.5 — `hooks/useScrollSpy.ts`**
   - Accepts: `sectionIds: string[]`, `rootMargin?: string`.
   - Uses `IntersectionObserver` to return the `id` of the section currently most visible in the viewport.
   - Default `rootMargin: '-40% 0px -55% 0px'` (triggers when section crosses 40% from top).
 
-- [ ] **2.6 — `lib/api/server-status.ts`**
+- [x] **2.6 — `lib/api/server-status.ts`**
   - Exports `async function getServerStatus(): Promise<{ count: number }>`.
   - Reads `NEXT_PUBLIC_RAGEMP_URL` from env. If empty, returns `{ count: 142 }` (mock).
   - If URL is set, fetches `${NEXT_PUBLIC_RAGEMP_URL}/players.json`, returns `{ count: data.length }`.
