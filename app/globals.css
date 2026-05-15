@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
+@theme {
+  /* Colors */
+  --color-bg: #020309;
+  --color-surface: #0e0e0f;
+  --color-surface-elevated: #111117;
+  --color-purple: #504c6c;
+  --color-accent: #ff2830;
+  --color-accent-light: #ff686e;
+  --color-accent-promo: #ff7c81;
+  --color-text: #ffffff;
+  --color-text-secondary: rgba(255,255,255,0.80);
+  --color-text-muted: rgba(255,255,255,0.60);
+
+  /* Font */
+  --font-sans: 'Montserrat', sans-serif;
+
+  /* Type scale */
+  --text-display: 6.25rem;
+  --text-display--line-height: 1;
+  --text-display-mobile: 3.375rem;
+  --text-step-num: 2.9375rem;
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.02;
+  --text-h3: 1.75rem;
+  --text-h3--line-height: 1.2;
+  --text-body: 1.25rem;
+  --text-body--line-height: 1.4;
+  --text-nav: 1.125rem;
+  --text-nav--line-height: 1.22;
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.22;
+
+  /* Border radius */
+  --radius-card: 20px;
+  --radius-btn: 20px;
+
+  /* Spacing */
+  --spacing-btn: 36px;
+  --spacing-btn-gap: 8px;
+  --spacing-promo-gap: 16px;
+}
+
+/* Gradient utilities */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --gradient-brand: linear-gradient(to bottom, #ff2830, #ff686e);
+  --gradient-surface: linear-gradient(to bottom, #0e0e0f, #111117);
+  --gradient-footer: radial-gradient(ellipse, #504c6c, #020309);
+  --gradient-promo: radial-gradient(ellipse, #ff7c81, #ff2830);
+  --gradient-card-glow:
+    radial-gradient(circle at 50% 100%, rgba(80,76,108,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(255,40,48,0.4) 0%, transparent 40%);
+  --gradient-button-glow: radial-gradient(circle at 60% 50%, rgba(255,40,48,0.6) 0%, transparent 60%);
 }

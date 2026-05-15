@@ -10,9 +10,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Stack
 
-- Next.js 15, App Router, TypeScript, Tailwind CSS
+- Next.js **16.2.6**, App Router, TypeScript, Tailwind CSS
+- Font: **Montserrat** (cyrillic subset, via `next/font/google`)
 - Deployed on Vercel
 - Source of truth for design: Figma (MCP connected)
+- Caching model: Cache Components (`'use cache'` directive). Do not use `export const revalidate` or old fetch cache patterns.
 
 ## Goals
 
@@ -39,4 +41,41 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## File structure
 
-(paste your intended structure here once scaffolded)
+```
+/app
+  layout.tsx
+  page.tsx
+  globals.css
+  favicon.ico
+  opengraph-image.tsx
+  sitemap.ts
+  robots.ts
+  /terms/page.tsx
+  /privacy/page.tsx
+  /disclaimer/page.tsx
+  /cookies/page.tsx
+  /personal-data/page.tsx
+/components
+  /ui
+    Button.tsx
+    SocialIcon.tsx
+    OnlineCounter.tsx
+    PromoCode.tsx
+  /sections
+    Header.tsx
+    Hero.tsx
+    Map.tsx
+    Roles.tsx
+    Cars.tsx
+    RPEconomy.tsx
+    Tagline.tsx
+    HowToPlay.tsx
+    Footer.tsx
+/hooks
+  useScrollSpy.ts
+/lib
+  /api
+    server-status.ts
+/public
+  /images   ← all exported Figma assets land here
+```

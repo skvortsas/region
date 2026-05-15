@@ -16,7 +16,7 @@
 
 > **One agent, sequential order. Everything else is blocked until this phase is complete.**
 
-- [ ] **1.1 — Update `AGENTS.md`**
+- [x] **1.1 — Update `AGENTS.md`**
   - Change "Next.js 15" → "Next.js **16.2.6**" in the Stack section.
   - Change font from "Inter" → "**Montserrat**" (cyrillic subset, via `next/font/google`).
   - Add a note: "Caching model: Cache Components (`'use cache'` directive). Do not use `export const revalidate` or old fetch cache patterns."
@@ -60,12 +60,12 @@
       /images   ← all exported Figma assets land here
     ```
 
-- [ ] **1.2 — Rewrite `app/globals.css`**
+- [x] **1.2 — Rewrite `app/globals.css`**
   - Replace everything below `@import "tailwindcss"` with the `@theme` block from `docs/DESIGN.md §1.2`.
   - Add gradient utilities as CSS custom properties (from `docs/DESIGN.md §1.1`, Gradients table).
   - Remove all default Geist/Next boilerplate CSS.
 
-- [ ] **1.3 — Rewrite `app/layout.tsx`**
+- [x] **1.3 — Rewrite `app/layout.tsx`**
   - Load Montserrat via `next/font/google`: subsets `['latin', 'cyrillic']`, `display: 'swap'`, `variable: '--font-montserrat'`, weights 400/500/600/700/800.
   - Set `<html lang="ru">`.
   - Export `metadata` using the title template and description from `docs/SEO.md §1` (title template `'%s | Region RP'`, default `'Region RP — Новый сервер GTA 5 RP'`).
@@ -74,7 +74,7 @@
   - Remove Geist font imports.
   - Keep `<body>` minimal — sections will be composed in `page.tsx`.
 
-- [ ] **1.4 — Create `.env.example` and `.env.local`**
+- [x] **1.4 — Create `.env.example` and `.env.local`**
   - `.env.example` (commit this):
     ```env
     NEXT_PUBLIC_SITE_URL=http://localhost:3000
@@ -86,20 +86,20 @@
     ```
   - `.env.local` (do not commit — already in `.gitignore`): same keys, fill `NEXT_PUBLIC_SITE_URL=http://localhost:3000`, leave rest empty.
 
-- [ ] **1.5 — Update `next.config.ts`**
+- [x] **1.5 — Update `next.config.ts`**
   - Enable `cacheComponents: true`.
   - Add placeholder `images.remotePatterns: []` with commented stubs for Discord CDN and CFX (see `docs/DEPLOYMENT.md §4`).
   - Add `www → apex` redirect (use `yourdomain.com` placeholder; swap when domain is decided).
 
-- [ ] **1.6 — Create `app/sitemap.ts`**
+- [x] **1.6 — Create `app/sitemap.ts`**
   - Use the ready-made code from `docs/SEO.md §5`.
   - Nav items КАРТА, ОБ ИГРЕ, ИНФО are **anchor scrolls** on `/`, not separate routes. Remove `/map`, `/about`, `/info` entries.
   - Keep only: `/` (1.0), `/terms` (0.3), `/privacy` (0.3), `/disclaimer` (0.3), `/cookies` (0.2), `/personal-data` (0.2).
 
-- [ ] **1.7 — Create `app/robots.ts`**
+- [x] **1.7 — Create `app/robots.ts`**
   - Use the ready-made code from `docs/SEO.md §5`.
 
-- [ ] **1.8 — Create `app/opengraph-image.tsx`**
+- [x] **1.8 — Create `app/opengraph-image.tsx`**
   - Use the scaffold from `docs/SEO.md §3`.
   - Dark background `#020309`, Region RP logo text (Montserrat 800 white), headline "Новый сервер GTA 5 RP" (gradient `#ff2830` → `#ff686e`), subheadline "успей раскрутиться раньше всех".
   - Export `runtime = 'edge'`, `size = { width: 1200, height: 630 }`.
