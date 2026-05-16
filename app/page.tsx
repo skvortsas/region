@@ -5,6 +5,8 @@ import { Roles } from '@/components/sections/Roles'
 import { Cars } from '@/components/sections/Cars'
 import { RPEconomy } from '@/components/sections/RPEconomy'
 import { Tagline } from '@/components/sections/Tagline'
+import { HowToPlay } from '@/components/sections/HowToPlay'
+import { Footer } from '@/components/sections/Footer'
 
 export default function Home() {
   return (
@@ -17,7 +19,9 @@ export default function Home() {
         <Cars />
         <RPEconomy />
         <Tagline />
+        <HowToPlay />
       </main>
+      <Footer />
     </>
   )
 }

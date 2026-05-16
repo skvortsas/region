@@ -231,7 +231,7 @@
 
 ---
 
-- [ ] **3.H — `components/sections/HowToPlay.tsx`**
+- [x] **3.H — `components/sections/HowToPlay.tsx`**
   - Figma node: `170:550`.
   - H2: "Как начать играть?" — 100px/800 desktop.
   - 3 step cards (526 × 643 each, node ids in `docs/DESIGN.md §2.8`).
@@ -246,7 +246,7 @@
 
 ---
 
-- [ ] **3.I — `components/sections/Footer.tsx`**
+- [x] **3.I — `components/sections/Footer.tsx`**
   - Figma node: `175:438`. Background `gradient-footer`.
   - Logo SVG (`175:448`, 205 × 43): `/public/images/logo-footer.svg`. `next/image`, `priority={false}`.
   - Legal entity line: "ООО «1 Геймс» ИНН 5260480189 ОГРН 1215200037535".

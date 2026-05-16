@@ -42,7 +42,7 @@ Single font family: **Montserrat** (Google Fonts / self-host via `next/font`).
 | Token           | Desktop px | Desktop rem | Mobile px          | Weight | Line-height | Text-case   |
 | --------------- | ---------- | ----------- | ------------------ | ------ | ----------- | ----------- |
 | `text-display`  | 100px      | 6.25rem     | 54px / 3.375rem    | 800    | 100%        | normal      |
-| `text-step-num` | 47px       | 2.9375rem   | TBD: not in mobile | 700    | 100%        | normal      |
+| `text-step-num` | 47px       | 2.9375rem   | ~32px (inferred, badge scales 69→52px) | 700 | 100% | normal |
 | `text-h2`       | 32px       | 2rem        | 32px               | 700    | 102%        | normal      |
 | `text-h3`       | 28px       | 1.75rem     | TBD: not observed  | 700    | 120%        | normal      |
 | `text-body`     | 20px       | 1.25rem     | 20px               | 500    | 140%        | normal      |
@@ -321,23 +321,351 @@ Export via Figma → right-click node → Export → PNG 2× (or use REST API wi
 
 #### 2.8 How to Play (`170:550`)
 
-- Heading: "Как начать играть?" — 100px/800
-- Sub-copy frame `id=172:242`
-- 3 step cards (526 × 643 each): `175:248` / `175:344` / `175:358`
-  - Step 01: "Купить и установить игру GTA V"
-  - Step 02: "Загрузить и установить клиент RAGE MP" — button "СКАЧАТЬ"
-  - Step 03: "Подключиться к серверу Region" — button "СКОПИРОВАТЬ" (copy IP)
-- Step badge: circle `cornerRadius=20` with `gradient-button-glow`, number 47px/700
+**Verified from Figma 2026-05-16.**
+
+##### Section container
+
+| Property             | Value                                                                              |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| Figma node           | `170:550`                                                                          |
+| Desktop size         | 1920 × 1141px                                                                      |
+| Background           | `SOLID #020309` (`--color-bg`)                                                     |
+| Canvas position      | x=−887, y=6714                                                                     |
+| Decorative ellipses  | Two `ELLIPSE` nodes (`175:435`, `175:437`) with `GRADIENT_RADIAL` fill #ff686e → #ff2830, positioned far outside the visible section bounds (x≈−2051 and x≈801) — these are ambient glow blobs, render with `overflow: visible` or clip at section edge |
+
+##### Heading (`172:218`)
+
+| Property          | Value                                      |
+| ----------------- | ------------------------------------------ |
+| Figma node        | `172:218`                                  |
+| Verbatim text     | `Как начать играть?`                       |
+| Font              | Montserrat ExtraBold 800                   |
+| Font size         | 100px (`text-display`)                     |
+| Line-height       | 100px (1.0)                                |
+| Color             | `#ffffff`                                  |
+| Alignment         | `LEFT`                                     |
+| Bbox              | 1062 × 70px                                |
+| Position in section (abs canvas) | x=−737, y=6814 → local x=150, y=100 from section TL |
+
+##### Sub-copy frame (`172:242`)
+
+| Property          | Value                                                                      |
+| ----------------- | -------------------------------------------------------------------------- |
+| Figma node        | `172:242`                                                                  |
+| Frame size        | 538 × 142px                                                                |
+| Corner radius     | 20px                                                                       |
+| Background fill   | `GRADIENT_RADIAL` #ff283099 → #ff283000 (red glow, bottom-up) + PATTERN overlay (hexagonal, 60% opacity, OVERLAY blend — decorative texture) |
+| Stroke            | `LINEAR_DODGE` gradient #ff2830 (20%/100%/20%) — stroke is `visible: false` |
+| Position (canvas) | x=345, y=6778 → local x=1232, y=64 from section TL                        |
+| Text node         | `172:243`                                                                  |
+| Verbatim text     | `Выполните три простых шага  и наслаждайтесь игрой на сервере Region в мире GTA 5 RP` (note: double space after "шага") |
+| Text font         | Montserrat Medium 500, 20px                                                |
+| Text line-height  | 28px (1.4×)                                                                |
+| Text color        | `#ffffff`                                                                  |
+| Text alignment    | `LEFT`                                                                     |
+| Text bbox         | 377 × 70px (30px padding from frame edges on all sides implied)            |
+
+##### Step cards — shared styles
+
+All three cards share identical styling:
+
+| Property           | Value                                                                                   |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| Size               | 526 × 643px                                                                             |
+| Corner radius      | 20px                                                                                    |
+| Background fill 1  | `GRADIENT_RADIAL` #504c6c99 → #504c6c00 (purple glow, bottom-to-top sweep)             |
+| Background fill 2  | `GRADIENT_RADIAL` #ff283066 → #ff283000 (red glow, top-right corner emphasis)          |
+| Stroke             | `LINEAR_DODGE` gradient: #504c6c33 at 0% / #504c6cff at 49.5% / #504c6c33 at 100%     |
+| Illustration       | Full-width `FRAME` (Иллюстрация), 526 × 261px, `IMAGE/FILL` fill — sits at top of card |
+| Internal layout    | No auto-layout; children are absolutely positioned within the card frame               |
+| Step badge         | 91 × 69px frame, `cornerRadius=20`, `GRADIENT_RADIAL` fill #ff283099 → #ff283000; stroke `LINEAR_DODGE` same as card stroke; positioned at local x=30, y=301 |
+| Badge text         | 47px / Bold 700 / `#ffffff` / Montserrat; local offset x≈15–20, y=18 within badge      |
+| Step title         | 28px / Bold 700 / `#ffffff` / Montserrat, line-height 33.6px (1.2×); bbox 363 × 54px  |
+| Step body          | 20px / Medium 500 / `#ffffff` / Montserrat, line-height 28px (1.4×)                    |
+
+Desktop card positions (absolute canvas → offset from section TL x=−887):
+
+| Card     | Node    | Canvas x | Canvas y | Local x in section | Local y in section |
+| -------- | ------- | -------- | -------- | ------------------ | ------------------ |
+| Step 01  | 175:248 | −737     | 7000     | 150                | 286                |
+| Step 02  | 175:344 | −190     | 7112     | 697                | 398                |
+| Step 03  | 175:358 | 357      | 7000     | 1244               | 286                |
+
+> Note: Cards 01 and 03 are at the same y (7000), Card 02 is 112px lower (7112) — staggered / offset layout, not a uniform row.
+
+##### Step 01 — "Купить и установить игру GTA V" (`175:248`)
+
+| Property       | Value                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------- |
+| Figma node     | `175:248`                                                                                      |
+| Step title     | `Купить и установить игру GTA V`                                                               |
+| Title node     | `175:373` — canvas x=−604, y=7309; local x=103 in card, y=309                                 |
+| Body text      | `Чтобы начать игру, необходимо иметь лицензионную версию GTA V. Если она уже приобретена — переходите к следующему шагу` |
+| Body node      | `175:257` — 460 × 98px; 20px/500/white                                                         |
+| Badge node     | `175:374` — 91 × 69px; text "01" (`175:375`)                                                  |
+| Illustration   | `175:336` — 526 × 261px, IMAGE/FILL (FILL scaleMode), source image 960 × 717px. **Visual: hands holding Russian ruble banknotes in a dark alley, GTA-art style.** Export → `/public/images/howtoplay/step-01.png` |
+| Icon row       | 3 icon frames (`175:312`, `175:326`, `175:332`), each 72 × 72px, `cornerRadius=20`, `GRADIENT_RADIAL` #ff283099 fill + LINEAR_DODGE stroke. Frame `175:312` contains a `Union` BOOLEAN_OPERATION (`175:325`, 46 × 44px, `gradient-brand` fill). Frames `175:326` and `175:332` have no children (empty/decorative icon placeholders). Position: canvas y=7541, local y=541 in card |
+| Button         | None for step 01                                                                               |
+
+##### Step 02 — "Загрузить и установить клиент RAGE MP" (`175:344`)
+
+| Property       | Value                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------- |
+| Figma node     | `175:344`                                                                                      |
+| Step title     | `Загрузить и установить клиент RAGE MP`                                                        |
+| Title node     | `175:353` — 363 × 54px; local x=30 in card, y=309                                             |
+| Body text      | `Чтобы подключиться к нашему серверу, потребуется клиент RAGE:MP. Установите его на компьютер и затем запустите` |
+| Body node      | `175:356` — 460 × 70px; 20px/500/white                                                         |
+| Badge node     | `175:354` — 91 × 69px; text "02" (`175:355`)                                                  |
+| Illustration   | `175:357` — 526 × 261px, two IMAGE/FILL layers (same source hash as step 01). **Visual: hands using a wrench on a car engine in dark alley, GTA-art style.** Export → `/public/images/howtoplay/step-02.png` |
+| Button         | `175:396` — "Скачать" INSTANCE, 466 × 88px, `cornerRadius=20`. Fill: `SOLID #111117` + `GRADIENT_RADIAL` #ff283099 → #ff283000. Stroke: LINEAR_DODGE gradient. Label: `СКАЧАТЬ` (`I175:396;175:381`) — 28px/700/white 80% opacity. Icon frame (`I175:396;175:379`): 24 × 24px. Canvas position: x=−160, y=7637 |
+
+##### Step 03 — "Подключиться к серверу Region" (`175:358`)
+
+| Property       | Value                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------- |
+| Figma node     | `175:358`                                                                                      |
+| Step title     | `Подключиться к серверу Region`                                                                |
+| Title node     | `175:405` — 363 × 54px; canvas x=490, y=7309; local x=133 in card, y=309                      |
+| Body text      | `Финальный шаг: введите в поиске лаунчера REGION или скопируйте IP, дождитесь загрузки всех файлов. Готово — вы в игре!` |
+| Body node      | `175:370` — 452 × 98px; 20px/500/white                                                         |
+| Badge node     | `175:406` — 91 × 69px; text "03" (`175:407`)                                                  |
+| Illustration   | `175:371` — 526 × 261px, IMAGE/STRETCH (STRETCH scaleMode, transform applied), source 1200 × 896px. **Visual: thumbs-up hand in GTA-art style against dark alley background with neon signs.** Export → `/public/images/howtoplay/step-03.png` |
+| Button         | `175:425` — "Скопировать" INSTANCE, 466 × 88px, `cornerRadius=20`. Same fill/stroke as Step 02 button. Label: `СКОПИРОВАТЬ` (`I175:425;175:416`) — 28px/700/white 80% opacity. Icon frame (`I175:425;175:414`): 24 × 24px. Canvas position: x=387, y=7525 |
+
+##### Step badge — detailed spec
+
+| Property       | Value                                                                                     |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| Size           | 91 × 69px (not square — wider than tall)                                                  |
+| Corner radius  | 20px                                                                                      |
+| Fill           | `GRADIENT_RADIAL` #ff283099 (60% opacity) at center → #ff283000 transparent at edge      |
+| Stroke         | `LINEAR_DODGE` blend — #ff2830 at 20%/100%/20% (same as `gradient-button-glow` token)    |
+| Number text    | 47px / Bold 700 / `#ffffff` / Montserrat; content: `"01"` / `"02"` / `"03"`              |
+| Text line-height | 56.4px (1.2× — matches `text-h3` line-height token)                                   |
+| Text padding   | x≈15–20px, y=18px within badge frame                                                      |
+
+> Discrepancy with existing DESIGN.md: badge is **91 × 69px** (not square, not 88 × 88). Corner radius is 20px (matches `--radius-card`). The number size is 47px/700, confirmed.
+
+##### "СКАЧАТЬ" / "СКОПИРОВАТЬ" button — detailed spec
+
+Both buttons are INSTANCE nodes (`Кнопка_3` component family), identical styling:
+
+| Property       | Value                                                                    |
+| -------------- | ------------------------------------------------------------------------ |
+| Size           | 466 × 88px                                                               |
+| Corner radius  | 20px                                                                     |
+| Fill layer 1   | `SOLID #111117` (`--color-surface-elevated`)                             |
+| Fill layer 2   | `GRADIENT_RADIAL` #ff283099 → #ff283000 (red glow, bottom-up)           |
+| Stroke         | `LINEAR_DODGE` gradient same pattern as card stroke                      |
+| Icon           | 24 × 24px frame (left of label)                                          |
+| Label text     | `СКАЧАТЬ` / `СКОПИРОВАТЬ` — 28px/700/white at 80% opacity (`text-secondary`) |
+| Label position | icon at local x=142/136, label at x=182/136 within button               |
+
+##### Mobile equivalent (`288:667`, "Как начать играть?")
+
+| Property           | Value                                                                          |
+| ------------------ | ------------------------------------------------------------------------------ |
+| Figma node         | `288:667`                                                                      |
+| Mobile frame size  | 400 × 1681px (within mobile frame `236:307` at 440 × 8774)                    |
+| Position in mobile | local x=20, y=6373 (canvas y=7045)                                             |
+| Background         | Inherits mobile frame bg `#020309`                                             |
+
+**Mobile heading (`288:491`):**
+- Verbatim text: `Как начать играть?`
+- Font: Montserrat ExtraBold 800 / **32px** (not 100px) / line-height 32px
+- Color: `#ffffff`, alignment: `CENTER`
+- Bbox: 400 × 22px
+
+**Mobile sub-copy (`288:492`):**
+- Frame: 400 × 95px, `cornerRadius=20`, same GRADIENT_RADIAL red glow + hexagonal PATTERN fill as desktop
+- Text (`288:493`): `Модели зданий Банков, отелей, больниц и другой колоритной тематической недвижимости` — 16px/500/white, line-height 22.4px, alignment `CENTER`
+
+> Note: Mobile sub-copy text is **different** from desktop. Desktop says "Выполните три простых шага…" but mobile says "Модели зданий Банков, отелей…". The mobile text appears to be a design error / leftover from another section. Use the desktop copy for implementation — confirm with client.
+
+**Mobile step cards — all three are 400 × 488px:**
+
+| Card     | Node    | Desktop size  | Mobile size  | Mobile cornerRadius |
+| -------- | ------- | ------------- | ------------ | ------------------- |
+| Step 01  | 288:494 | 526 × 643px   | 400 × 488px  | 20px                |
+| Step 02  | 288:509 | 526 × 643px   | 400 × 488px  | 20px                |
+| Step 03  | 288:521 | 526 × 643px   | 400 × 488px  | 20px                |
+
+Mobile cards stacked vertically with no horizontal offset. Same gradient background as desktop.
+
+**Mobile card typography:**
+- Title: 20px / Bold 700 / `#ffffff` / line-height 24px (reduced from 28px desktop)
+- Body: 16px / Medium 500 / `#ffffff` / line-height 22.4px (reduced from 20px/28px desktop)
+- Step badge: 69 × 52px, `cornerRadius=15` (reduced from 91 × 69px / cornerRadius=20), number font still visible (size not confirmed — likely ~32px)
+
+**Mobile buttons (Скачать `288:510`, Скопировать `288:527`):**
+- Size: 354 × 66px (reduced from 466 × 88px)
+- `cornerRadius=15` (reduced from 20px)
+- Same fill / stroke / color style as desktop
+
+**Mobile illustrations (Иллюстрация):** 400 × 198px (reduced from 526 × 261px).
+
+**Mobile card copy — verbatim (same as desktop):**
+- Step 01 title: `Купить и установить игру GTA V`
+- Step 01 body: `Чтобы начать игру, необходимо иметь лицензионную версию GTA V. Если она уже приобретена — переходите к следующему шагу`
+- Step 02 title: `Загрузить и установить клиент RAGE MP`
+- Step 02 body: `Чтобы подключиться к нашему серверу, потребуется клиент RAGE:MP. Установите его на компьютер и затем запустите`
+- Step 03 title: `Подключиться к серверу Region`
+- Step 03 body: `Финальный шаг: введите в поиске лаунчера REGION или скопируйте IP, дождитесь загрузки всех файлов. Готово — вы в игре!`
+
+##### Asset export instructions
+
+| File                                          | Source node | Dimensions (1×) | Visual content                                                   |
+| --------------------------------------------- | ----------- | ---------------- | ---------------------------------------------------------------- |
+| `/public/images/howtoplay/step-01.png`        | `175:336`   | 526 × 261px      | Hands holding rubles in dark alley, GTA-art style                |
+| `/public/images/howtoplay/step-02.png`        | `175:357`   | 526 × 261px      | Hands fixing car engine with wrench, dark alley, GTA-art style   |
+| `/public/images/howtoplay/step-03.png`        | `175:371`   | 526 × 261px      | Thumbs-up hand, dark alley with neon signs, GTA-art style        |
+
+Export from Figma at 2× PNG. All three illustrations are the same aspect ratio (526 × 261 → 2:1). The `/public/images/howtoplay/` directory has been created.
 
 #### 2.9 Footer (`175:438`)
 
-- Logo: `id=175:448` — 205 × 43
-- Legal: "ООО «1 Геймс» ИНН 5260480189 ОГРН 1215200037535"
-- Nav links (`id=175:511`): Пользовательское соглашение, Политика конфиденциальности, Дисклеймер, Политика обработки файлов cookie, Согласие на обработку персональных данных
-- Contact (`id=179:515`): `hello@1games.ru`
-- Payment logos (`id=179:524`): Visa, Mastercard, SBP, Mir
-- Copyright: "Все права защищены © 2026 Копирование дизайна запрещено"
-- BG: `gradient-footer` (radial `#504c6c` → `#020309`)
+**Verified from Figma 2026-05-16.**
+
+##### Section container
+
+| Property         | Value                                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| Figma node       | `175:438`                                                                                                   |
+| Desktop size     | 1920 × 532px                                                                                                |
+| Canvas position  | x=−887, y=7855                                                                                              |
+| Background       | `GRADIENT_RADIAL` — center: `#504c6c99` (60% opacity), edge: `#020309`; handle positions: ellipse centered horizontally, top of ellipse at y≈−0.28 of frame height, bottom at y≈0.98 → gradient radiates from near-bottom-center outward |
+| Stroke           | `LINEAR_DODGE` gradient — left edge `#504c6c33` (20%), midpoint `#504c6cff` (100%), right edge `#504c6c33` (20%) — horizontal, creates a subtle glow border |
+| Layout           | No auto-layout. Children are absolutely positioned within the frame.                                        |
+| Auto-layout      | None — use absolute/flexbox positioning                                                                     |
+| Child order (render) | logo → legal entity text → "Инфа" nav group → "Контакты" group → payment cards group → copyright text |
+
+> Background maps to `gradient-footer` token: `radial-gradient(ellipse at 50% 98%, #504c6c99, #020309)`.
+
+##### Layout — child positions (local coords relative to footer frame TL at x=−887, y=7855)
+
+| Child node | Name | Local x | Local y | Size |
+| ---------- | ---- | ------- | ------- | ---- |
+| `175:448` | logo | 150 | 100 | 205 × 43 |
+| `175:463` | Legal entity text | 150 | 362 | 211 × 70 |
+| `175:512` | "Инфа" (nav links group) | 560 | 100 | 391 × 332 |
+| `179:513` | "Контакты" (contact group) | 1050 | 100 | 174 × 88 |
+| `179:524` | Payment cards group | 1405 | 93 | 365 × 30 |
+| `179:553` | Copyright text | 1405 | 390 | 365 × 42 |
+
+> Column layout (left to right): Logo/Legal at x=150, Nav links at x=560, Contacts at x=1050, Payment/Copyright at x=1405. All content columns top-aligned at y=100 (except payment at y=93, copyright at y=390). Footer has 100px top padding, implied side margins of 150px.
+
+##### Logo (`175:448`)
+
+| Property     | Value                                              |
+| ------------ | -------------------------------------------------- |
+| Figma node   | `175:448`                                          |
+| Size         | 205 × 43px                                         |
+| Asset file   | `/public/images/logo-footer.svg`                   |
+| Fill         | Mostly `#ffffff`; "R" lettermark top-left has `linear-gradient(#E63F3F → #AB2929)` accent on one path |
+| Notes        | Same wordmark as header logo (`logo.svg`) but larger. Use the footer-specific SVG as dimensions differ. |
+
+##### Legal entity text (`175:463`)
+
+| Property      | Value                                                     |
+| ------------- | --------------------------------------------------------- |
+| Figma node    | `175:463`                                                 |
+| Verbatim copy | `ООО «1 Геймс» ИНН 5260480189 ОГРН 1215200037535`        |
+| Font          | Montserrat Medium 500 / 20px / line-height 28px           |
+| Color         | `#ffffff`                                                 |
+| Alignment     | LEFT                                                      |
+| Bbox          | 211 × 70px (wraps to 2–3 lines)                           |
+| Position      | local x=150, y=362 (below logo, ~219px gap from logo top) |
+
+##### "Информация" nav group (`175:512`)
+
+Container frame: 391 × 332px at local x=560, y=100.
+
+Section heading (`175:465`):
+- Verbatim: `Информация`
+- Font: Montserrat Bold 700 / 20px / line-height 28px / `#ffffff`
+- Position: local y=0 within "Инфа" frame
+
+Nav links list frame (`175:511`): 391 × 258px at local y=74 within "Инфа" frame (74px from heading top = 28px line-height + 46px gap).
+
+Five links in order (all: Montserrat Medium 500 / 20px / line-height 28px / `#ffffff` / LEFT-aligned):
+
+| # | Node | Verbatim text | Local y within links frame | Canvas y |
+| - | ---- | ------------- | -------------------------- | -------- |
+| 1 | `175:466` | `Пользовательское соглашение` | 0 | 8029 |
+| 2 | `175:471` | `Политика конфиденциальности` | 54 | 8083 |
+| 3 | `175:475` | `Дисклеймер` | 108 | 8137 |
+| 4 | `175:498` | `Политика обработки файлов cookie` | 162 | 8191 |
+| 5 | `175:505` | `Согласие на обработку персональных данных` | 216 | 8245 |
+
+Gap between each link: **54px** (each text node is 14px tall, so the vertical gap/spacing between items = 54 − 14 = 40px). Link 5 wraps to 2 lines (42px bbox height).
+
+Each link should route to the corresponding legal page (`/terms`, `/privacy`, `/disclaimer`, `/cookies`, `/personal-data`).
+
+##### "Контакты" group (`179:513`)
+
+Container frame: 174 × 88px at local x=1050, y=100.
+
+Section heading (`179:514`):
+- Verbatim: `Контакты`
+- Font: Montserrat Bold 700 / 20px / line-height 28px / `#ffffff`
+- Position: local y=0
+
+Email link frame (`179:515`): 174 × 14px at local y=74 within "Контакты".
+
+Email text (`179:516`):
+- Verbatim: `hello@1games.ru`
+- Font: Montserrat Medium 500 / 20px / line-height 28px / `#ffffff`
+- Render as `<a href="mailto:hello@1games.ru">` element.
+
+##### Payment icons group (`179:524`)
+
+| Property | Value |
+| -------- | ----- |
+| Figma node | `179:524` |
+| Container size | 365 × 30px |
+| Position | local x=1405, y=93 in footer |
+| Layout direction | Horizontal row, left-to-right |
+| Alignment | Vertically centered within 30px container |
+
+Individual icons (left → right):
+
+| Icon | Node | Size (px) | Asset file | Gap to next |
+| ---- | ---- | --------- | ---------- | ----------- |
+| Visa | `179:525` | 68 × 22 | `/public/images/payment/visa.svg` | 33px |
+| Mastercard | `179:529` | 40 × 24 | `/public/images/payment/mastercard.svg` | 33px |
+| SBP | `179:534` | 57 × 28 | `/public/images/payment/sbp.svg` | 33px |
+| Mir | `179:548` | 81 × 24 | `/public/images/payment/mir.svg` | — |
+
+Gap calculation: Visa ends at x=518+68=586; Mastercard starts at x=619 → gap=33px. Mastercard ends at 659; SBP starts at 692 → gap=33px. SBP ends at 749; Mir starts at 782 → gap=33px. All icons rendered with `mix-blend-mode: luminosity` and reduced opacity (0.3–0.5) as exported — they appear desaturated/muted against the dark footer background.
+
+##### Copyright / disclaimer text (`179:553`)
+
+| Property      | Value                                                                          |
+| ------------- | ------------------------------------------------------------------------------ |
+| Figma node    | `179:553`                                                                      |
+| Verbatim copy | `Все права защищены © 2026 Копирование дизайна запрещено`                      |
+| Font          | Montserrat Medium 500 / 20px / line-height 28px                                |
+| Color         | `#ffffff`                                                                      |
+| Alignment     | LEFT                                                                           |
+| Bbox          | 365 × 42px (wraps to 2 lines)                                                  |
+| Position      | local x=1405, y=390 in footer                                                  |
+
+> Note: The "Region RP fan-проект…" disclaimer mentioned in SEO docs is **not present** in the Figma footer. The Figma footer only contains the copyright string above. Do not add the fan-project disclaimer to the rendered footer.
+
+##### Social icons
+
+There is **no social icons row in the desktop footer** (`175:438`). The full depth=3 scan confirms only 6 direct children: logo, legal text, "Инфа" nav group, "Контакты" group, payment group, and copyright text. Social icons (Discord, VK, Telegram, YouTube) appear only in the **Header** (`40:306`). Do not include a social row in the Footer component.
+
+##### Asset files (all exported)
+
+| File | Source node | Dimensions |
+| ---- | ----------- | ---------- |
+| `/public/images/logo-footer.svg` | `175:448` | 205 × 43px |
+| `/public/images/payment/visa.svg` | `179:525` | 68 × 22px |
+| `/public/images/payment/mastercard.svg` | `179:529` | 40 × 24px |
+| `/public/images/payment/sbp.svg` | `179:534` | 57 × 28px |
+| `/public/images/payment/mir.svg` | `179:548` | 81 × 24px |
 
 ---
 
@@ -356,6 +684,7 @@ Export via Figma → right-click node → Export → PNG 2× (or use REST API wi
 | In-game photo 1                                       | 1     | WebP                        | ~1138 × 636           | `169:469`                                                  |
 | In-game photo 2                                       | 1     | WebP                        | ~898 × 505            | `202:226`                                                  |
 | Decorative props (Звезда, Деньги, Граната, Балаклава) | 4     | PNG (transparent)           | 94–577px              | `170:530`, `170:526`, `170:522`, `170:546`                 |
+| How-to-Play illustrations (step-01, step-02, step-03) | 3     | PNG                         | 526 × 261px (1×)      | `175:336`, `175:357`, `175:371` — export to `/public/images/howtoplay/` |
 | Social icons (Discord, VK, Telegram, +1)              | 4     | SVG                         | 42 × 42               | `40:288…40:301`                                            |
 | Payment icons (Visa, Mastercard, SBP, Mir)            | 4     | SVG                         | 40–81px wide          | `179:524` group children                                   |
 
@@ -400,8 +729,10 @@ Copyright line: "Все права защищены © 2026 Копировани
 | ----- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | TBD-1 | Tablet breakpoint (768px) — no Figma frame     | Can't write responsive CSS between 440–1920 without it                                         |
 | TBD-2 | Mobile button font size (CTA at 440px)         | Button text observed at 28px desktop; mobile node not fetched                                  |
-| TBD-3 | Step number `text-step-num` on mobile          | No mobile equivalent frame for the How-to-Play section step badge                              |
+| TBD-3 | ~~Step number `text-step-num` on mobile~~      | **Resolved:** Mobile badge is 69 × 52px, `cornerRadius=15`. Badge number font size not exposed in tree — infer ~32px (proportionally scaled from 47px × 52/69 ratio). |
 | TBD-4 | Actual exported asset files                    | All images are embedded in Figma; need export pass before `<Image>` components can be wired up |
 | TBD-5 | Screenshot carousel content (Скриншоты_1…\_14) | 14 component sets exist; actual images/dimensions need export                                  |
 | TBD-6 | 4th social icon identity                       | `40:301` renders as a vector "YouTube"-shape icon — confirm it's YouTube                       |
 | TBD-7 | Nav active state on scroll (scroll-spy)        | Design shows "ГЛАВНАЯ" active; behaviour on scroll not specified                               |
+| TBD-8 | Mobile How-to-Play sub-copy text mismatch      | Desktop `172:243` = "Выполните три простых шага…"; mobile `288:493` = "Модели зданий Банков…" — mobile text is clearly a copy-paste error from another section. Confirm with client which copy to use on mobile. |
+| TBD-9 | Step 01 icon row — icon content of `175:326`, `175:332` | These two 72×72 icon frames in Step 01 are empty (no child elements). Only `175:312` has a Union icon. Unclear if these are meant to be platform logos (Epic/Steam/Rockstar) or are empty decorative frames. |

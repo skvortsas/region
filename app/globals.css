@@ -49,6 +49,12 @@
   .bg-gradient-surface {
     background-image: var(--gradient-surface);
   }
+  .bg-gradient-footer {
+    background-image: var(--gradient-footer);
+  }
+  .bg-gradient-footer-border {
+    background-image: var(--gradient-footer-border);
+  }
 }
 
 /* Gradient utilities */
@@ -56,6 +62,7 @@
   --gradient-brand: linear-gradient(to bottom, #ff2830, #ff686e);
   --gradient-surface: linear-gradient(to bottom, #0e0e0f, #111117);
   --gradient-footer: radial-gradient(ellipse, #504c6c, #020309);
+  --gradient-footer-border: linear-gradient(to right, #504c6c33, #504c6cff, #504c6c33);
   --gradient-promo: radial-gradient(ellipse, #ff7c81, #ff2830);
   --gradient-card-glow:
     radial-gradient(circle at 50% 100%, rgba(80,76,108,0.6) 0%, transparent 60%),
