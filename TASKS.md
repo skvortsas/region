@@ -203,7 +203,7 @@
 
 ---
 
-- [ ] **3.E — `components/sections/Cars.tsx`**
+- [x] **3.E — `components/sections/Cars.tsx`**
   - Figma node: `165:425`.
   - Heading: "Собери свой автопарк мечты". Sub-copy "Больше 200 реальных авто…".
   - 2 car cards (800 × 552 each): Ferrari 488 GTB (`157:349`), Audi RS7 (`158:353`).
@@ -213,7 +213,7 @@
 
 ---
 
-- [ ] **3.F — `components/sections/RPEconomy.tsx`**
+- [x] **3.F — `components/sections/RPEconomy.tsx`**
   - Figma node: `170:551`. Section id: `info`.
   - Heading: "Продуманная система RP и экономика". Extract copy from Figma.
   - 2 `FeatureItem` components: 58 × 58 icon (export from Figma) + body text. Extract copy from Figma nodes.
