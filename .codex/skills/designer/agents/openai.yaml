@@ -1,0 +1,3 @@
+interface:
+  display_name: "Designer (Figma)"
+  short_description: "Read Figma via ClaudeTalkToFigma MCP and update docs/DESIGN.md"

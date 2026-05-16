@@ -1,0 +1,3 @@
+interface:
+  display_name: "Take Task"
+  short_description: "Implement one TASKS.md task end-to-end"
