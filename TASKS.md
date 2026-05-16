@@ -153,7 +153,7 @@
 
 ---
 
-- [ ] **3.A — `components/sections/Header.tsx`**
+- [x] **3.A — `components/sections/Header.tsx`**
   - Figma node: `10:32` (1920 × 60). Mobile: hamburger menu `249:444`.
   - Sticky (`position: sticky; top: 0; z-index: 50`). Background `surface-elevated` with slight blur.
   - Logo SVG (`10:8`, 109 × 22): export from Figma, save to `/public/images/logo.svg`, render via `next/image`.
