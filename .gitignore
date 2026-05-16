@@ -42,3 +42,7 @@ next-env.d.ts
 
 # Claude agent files (contain secrets)
 .claude/agents/
+
+# figma
+/docs/figma-tree.json
+claude-talk-to-figma-mcp

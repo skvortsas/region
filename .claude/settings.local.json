@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ClaudeTalkToFigma__get_node_info",
+      "mcp__ClaudeTalkToFigma__get_document_info",
+      "mcp__ClaudeTalkToFigma__get_nodes_info",
+      "mcp__ClaudeTalkToFigma__get_svg",
+      "mcp__ClaudeTalkToFigma__export_node_as_image",
+      "mcp__ClaudeTalkToFigma__scan_text_nodes",
+      "mcp__ClaudeTalkToFigma__get_pages",
+      "mcp__ClaudeTalkToFigma__get_image_from_node"
+    ]
+  }
+}
