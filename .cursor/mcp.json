@@ -1,11 +1,3 @@
 {
-  "mcpServers": {
-    "ClaudeTalkToFigma": {
-      "command": "bun",
-      "args": [
-        "run",
-        "/Users/stasyan/region/claude-talk-to-figma-mcp/dist/talk_to_figma_mcp/server.js"
-      ]
-    }
-  }
+  "mcpServers": {}
 }

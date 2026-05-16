@@ -222,7 +222,7 @@
 
 ---
 
-- [ ] **3.G — `components/sections/Tagline.tsx`**
+- [x] **3.G — `components/sections/Tagline.tsx`**
   - Figma node: `170:552`.
   - Large centred body text: "Это мир, где ты не просто играешь…". Extract full copy from Figma.
   - 4 decorative floating prop images: Звезда (`170:530`), Деньги (`170:526`), Граната (`170:522`), Балаклава (`170:546`). Export as PNG with transparency to `/public/images/props/`. Use `next/image`, lazy, `aria-hidden`.

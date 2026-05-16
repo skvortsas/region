@@ -249,8 +249,75 @@ No sidebar. A single full-width `Карта` instance (`265:1347`, 400 × 493) s
 
 #### 2.7 Extra / Tagline block (`170:552`)
 
-- Large body text: "Это мир, где ты не просто играешь…"
-- 4 floating decorative asset instances: Звезда (`170:530`), Деньги (`170:526`), Граната (`170:522`), Балаклава (`170:546`)
+**Verified from Figma 2026-05-16.**
+
+##### Section container
+
+| Property       | Value                                                                      |
+| -------------- | -------------------------------------------------------------------------- |
+| Figma node     | `170:552`                                                                  |
+| Desktop size   | 1920 × 570px                                                               |
+| Background     | **No explicit fill** — inherits page bg `#020309` (`--color-bg`)          |
+| Overflow       | `visible` (props intentionally overflow section bounds)                   |
+| Mobile height  | ~360px (no dedicated frame; elements float in `236:307`)                  |
+
+##### Body text (`167:450`)
+
+| Property          | Desktop                                                              | Mobile (`288:472`)              |
+| ----------------- | -------------------------------------------------------------------- | ------------------------------- |
+| Verbatim copy     | `Это мир, где ты не просто играешь, а выстраиваешь свою стратегию и зарабатываешь` | same string |
+| Font              | Montserrat ExtraBold 800                                             | Montserrat ExtraBold 800        |
+| Font size         | 100px (`text-display`)                                               | 32px (`text-h2`)                |
+| Line-height       | 100px (1.0 — tight, 100%)                                            | 32px (1.0 — tight, 100%)        |
+| Letter-spacing    | 0                                                                    | 0                               |
+| Color             | `#ffffff`                                                            | `#ffffff`                       |
+| Alignment         | `CENTER`                                                             | `CENTER`                        |
+| Text bbox         | 1620 × 370px                                                         | 400 × 150px                     |
+| Position in section (x, y from TL) | x=150, y=100                                      | x=20, y=60 (rel to mobile section TL) |
+| Max-width         | 1620px (84.375% of 1920) — use `max-w-[1620px] mx-auto`             | 400px (full mobile width)       |
+
+> **Note:** The text wraps across multiple lines at 100px. The 1620px bbox is 150px from each edge of the 1920px section. On desktop the section heading (`text-display` 100px/800) doubles as body text here — no h2 heading, just a large paragraph.
+
+##### Decorative props — desktop positions (relative to section TL)
+
+Section TL canvas coords: x=−887, y=6014
+
+| Prop name   | Figma node | Asset file                           | Size (px)   | x (from section TL) | y (from section TL) | Notes                        |
+| ----------- | ---------- | ------------------------------------ | ----------- | ------------------- | ------------------- | ---------------------------- |
+| Звезда      | `170:530`  | `/public/images/props/prop-star.png` | 240 × 240   | 91                  | 0                   | Top-left corner, flush top   |
+| Деньги      | `170:526`  | `/public/images/props/prop-money.png`| 577 × 577   | 11                  | 116                 | Overflows left edge; large   |
+| Граната     | `170:522`  | `/public/images/props/prop-grenade.png` | 270 × 245| 1585                | 48                  | Right side, near top         |
+| Балаклава   | `170:546`  | `/public/images/props/prop-balaclava.png` | 553 × 553| 1268              | 170                 | Right side, centre-bottom    |
+
+All props are `INSTANCE` nodes wrapping a single `RECTANGLE` child with an `IMAGE/FILL` paint — export as PNG with transparency. No rotation is applied to any prop (rotation = 0°).
+
+**Recommended CSS approach:** `position: absolute` with percentage-based offsets from the section container (`overflow: visible` or `overflow: hidden` if bleed is unwanted). Props are purely decorative — `aria-hidden="true"`.
+
+##### Decorative props — mobile positions (relative to mobile section TL ≈ y=6685 canvas)
+
+Mobile frame `236:307` canvas TL: x=1333, y=672. Mobile tagline elements float directly in the mobile frame with no wrapping section frame.
+
+| Prop name   | Figma node | Size (px)   | x rel. to mobile frame | y rel. to mobile frame |
+| ----------- | ---------- | ----------- | ---------------------- | ---------------------- |
+| Звезда      | `288:473`  | 94 × 94     | 6                      | 6013                   |
+| Деньги      | `288:483`  | 179 × 179   | −14 (bleed left)       | 6159                   |
+| Граната     | `288:479`  | 75 × 68     | 345                    | 6027                   |
+| Балаклава   | `288:487`  | 159 × 159   | 302                    | 6170                   |
+
+Mobile props are ~39% the size of their desktop equivalents (e.g. Звезда 94/240 = 39%). Use CSS `scale` or explicit size classes.
+
+##### Asset export instructions
+
+The MCP returns these as raster IMAGE fills inside instances. Export each node at 2× from Figma:
+
+| File                                    | Source node | Export dims (1×) |
+| --------------------------------------- | ----------- | ---------------- |
+| `/public/images/props/prop-star.png`    | `170:530`   | 240 × 240        |
+| `/public/images/props/prop-money.png`   | `170:526`   | 577 × 577        |
+| `/public/images/props/prop-grenade.png` | `170:522`   | 270 × 245        |
+| `/public/images/props/prop-balaclava.png` | `170:546` | 553 × 553        |
+
+Export via Figma → right-click node → Export → PNG 2× (or use REST API with `?format=png&scale=2`). The `/public/images/props/` directory has been created.
 
 #### 2.8 How to Play (`170:550`)
 

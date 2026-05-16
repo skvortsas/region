@@ -4,6 +4,7 @@ import { Map } from '@/components/sections/Map'
 import { Roles } from '@/components/sections/Roles'
 import { Cars } from '@/components/sections/Cars'
 import { RPEconomy } from '@/components/sections/RPEconomy'
+import { Tagline } from '@/components/sections/Tagline'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Roles />
         <Cars />
         <RPEconomy />
+        <Tagline />
       </main>
     </>
   )
