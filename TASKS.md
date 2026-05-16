@@ -276,17 +276,17 @@
 
 > **One agent, sequential. Depends on Phase 3 (all sections and legal pages complete).**
 
-- [ ] **4.1 — Rewrite `app/page.tsx`**
+- [x] **4.1 — Rewrite `app/page.tsx`**
   - Import all 9 section components in render order.
   - Wrap each section in a `<section id="...">` with the correct anchor id (hero, map, about, info, etc.).
   - Apply `'use cache'` + `cacheLife('max')` at the top of the component (Next 16 Cache Components model — see `docs/DEPLOYMENT.md §6`).
   - Add JSON-LD: 3 schemas (Organization, WebSite, VideoGame) as `<script type="application/ld+json">`. Use the exact JSON from `docs/SEO.md §2`. Fill TBD fields with env vars where possible; leave domain as `process.env.NEXT_PUBLIC_SITE_URL`.
 
-- [ ] **4.2 — GitHub Actions CI**
+- [x] **4.2 — GitHub Actions CI**
   - Create `.github/workflows/ci.yml` using the exact snippet from `docs/DEPLOYMENT.md §5`.
   - Confirm the workflow triggers on PRs to `main` and runs `npm run lint` + `npm run build`.
 
-- [ ] **4.3 — Verify build passes**
+- [x] **4.3 — Verify build passes**
   - Run `npm run build`. Fix any TypeScript errors, missing imports, or broken env var references.
   - Run `npm run lint`. Fix any ESLint errors (no warnings-as-errors — just fix actual errors).
   - Report: build output size per route, any warnings worth noting.

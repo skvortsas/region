@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party MCP tool — not part of the Next.js application
+    "claude-talk-to-figma-mcp/**",
   ]),
 ]);
 
