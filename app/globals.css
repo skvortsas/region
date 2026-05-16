@@ -42,6 +42,15 @@
   --spacing-promo-gap: 16px;
 }
 
+@layer utilities {
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
+  }
+  .bg-gradient-surface {
+    background-image: var(--gradient-surface);
+  }
+}
+
 /* Gradient utilities */
 :root {
   --gradient-brand: linear-gradient(to bottom, #ff2830, #ff686e);

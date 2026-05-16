@@ -2,7 +2,7 @@
 
 ## Figma file
 
-URL: https://www.figma.com/design/hu5WIju3XfamLoJCMByrpJ/Region-RP  
+URL: https://www.figma.com/design/peYLscuQXKKOJ5pu5zwZn4/Region-RP--Copy
 Extracted: 2026-05-15
 
 ---
@@ -11,44 +11,44 @@ Extracted: 2026-05-15
 
 ### 1.1 Color palette
 
-| Token name | Hex | Usage |
-|---|---|---|
-| `--color-bg` | `#020309` | Page background |
-| `--color-surface` | `#0e0e0f` | Card / panel surface |
-| `--color-surface-elevated` | `#111117` | Header bg, promo card |
-| `--color-purple` | `#504c6c` | Step card glow, footer radial bg |
-| `--color-accent` | `#ff2830` | Brand red (buttons, glow, active) |
-| `--color-accent-light` | `#ff686e` | Gradient end of brand red |
-| `--color-accent-promo` | `#ff7c81` | Promo code display gradient start |
-| `--color-text` | `#ffffff` | Primary text |
-| `--color-text-secondary` | `rgba(255,255,255,0.80)` | Button labels, secondary text |
-| `--color-text-muted` | `rgba(255,255,255,0.60)` | Nav inactive, "ИГРОКОВ ОНЛАЙН" |
+| Token name                 | Hex                      | Usage                             |
+| -------------------------- | ------------------------ | --------------------------------- |
+| `--color-bg`               | `#020309`                | Page background                   |
+| `--color-surface`          | `#0e0e0f`                | Card / panel surface              |
+| `--color-surface-elevated` | `#111117`                | Header bg, promo card             |
+| `--color-purple`           | `#504c6c`                | Step card glow, footer radial bg  |
+| `--color-accent`           | `#ff2830`                | Brand red (buttons, glow, active) |
+| `--color-accent-light`     | `#ff686e`                | Gradient end of brand red         |
+| `--color-accent-promo`     | `#ff7c81`                | Promo code display gradient start |
+| `--color-text`             | `#ffffff`                | Primary text                      |
+| `--color-text-secondary`   | `rgba(255,255,255,0.80)` | Button labels, secondary text     |
+| `--color-text-muted`       | `rgba(255,255,255,0.60)` | Nav inactive, "ИГРОКОВ ОНЛАЙН"    |
 
 **Gradients (define as CSS custom props or Tailwind utilities):**
 
-| Token | Definition |
-|---|---|
-| `gradient-brand` | `linear-gradient(to bottom, #ff2830, #ff686e)` |
-| `gradient-surface` | `linear-gradient(to bottom, #0e0e0f, #111117)` |
-| `gradient-footer` | `radial-gradient(ellipse, #504c6c, #020309)` |
-| `gradient-promo` | `radial-gradient(ellipse, #ff7c81, #ff2830)` |
-| `gradient-card-glow` | two-layer: `radial(#504c6c 60% → 0%) + radial(#ff2830 40% → 0%)` |
-| `gradient-button-glow` | `radial-gradient(#ff2830 at 60% opacity → transparent)` |
+| Token                  | Definition                                                       |
+| ---------------------- | ---------------------------------------------------------------- |
+| `gradient-brand`       | `linear-gradient(to bottom, #ff2830, #ff686e)`                   |
+| `gradient-surface`     | `linear-gradient(to bottom, #0e0e0f, #111117)`                   |
+| `gradient-footer`      | `radial-gradient(ellipse, #504c6c, #020309)`                     |
+| `gradient-promo`       | `radial-gradient(ellipse, #ff7c81, #ff2830)`                     |
+| `gradient-card-glow`   | two-layer: `radial(#504c6c 60% → 0%) + radial(#ff2830 40% → 0%)` |
+| `gradient-button-glow` | `radial-gradient(#ff2830 at 60% opacity → transparent)`          |
 
 ### 1.2 Typography
 
 Single font family: **Montserrat** (Google Fonts / self-host via `next/font`).
 
-| Token | Desktop px | Desktop rem | Mobile px | Weight | Line-height | Text-case |
-|---|---|---|---|---|---|---|
-| `text-display` | 100px | 6.25rem | 54px / 3.375rem | 800 | 100% | normal |
-| `text-step-num` | 47px | 2.9375rem | TBD: not in mobile | 700 | 100% | normal |
-| `text-h2` | 32px | 2rem | 32px | 700 | 102% | normal |
-| `text-h3` | 28px | 1.75rem | TBD: not observed | 700 | 120% | normal |
-| `text-body` | 20px | 1.25rem | 20px | 500 | 140% | normal |
-| `text-nav` | 18px | 1.125rem | 18px | 600 | 122% | normal |
-| `text-caption` | 14px | 0.875rem | 14px | 600 | 122% | normal |
-| Button label | 28px | 1.75rem | ~18px | 700 | 100% | `uppercase` |
+| Token           | Desktop px | Desktop rem | Mobile px          | Weight | Line-height | Text-case   |
+| --------------- | ---------- | ----------- | ------------------ | ------ | ----------- | ----------- |
+| `text-display`  | 100px      | 6.25rem     | 54px / 3.375rem    | 800    | 100%        | normal      |
+| `text-step-num` | 47px       | 2.9375rem   | TBD: not in mobile | 700    | 100%        | normal      |
+| `text-h2`       | 32px       | 2rem        | 32px               | 700    | 102%        | normal      |
+| `text-h3`       | 28px       | 1.75rem     | TBD: not observed  | 700    | 120%        | normal      |
+| `text-body`     | 20px       | 1.25rem     | 20px               | 500    | 140%        | normal      |
+| `text-nav`      | 18px       | 1.125rem    | 18px               | 600    | 122%        | normal      |
+| `text-caption`  | 14px       | 0.875rem    | 14px               | 600    | 122%        | normal      |
+| Button label    | 28px       | 1.75rem     | ~18px              | 700    | 100%        | `uppercase` |
 
 **`@theme` block for Tailwind v4 `globals.css`:**
 
@@ -63,26 +63,26 @@ Single font family: **Montserrat** (Google Fonts / self-host via `next/font`).
   --color-accent-light: #ff686e;
   --color-accent-promo: #ff7c81;
   --color-text: #ffffff;
-  --color-text-secondary: rgba(255,255,255,0.80);
-  --color-text-muted: rgba(255,255,255,0.60);
+  --color-text-secondary: rgba(255, 255, 255, 0.8);
+  --color-text-muted: rgba(255, 255, 255, 0.6);
 
   /* Font */
-  --font-sans: 'Montserrat', sans-serif;
+  --font-sans: "Montserrat", sans-serif;
 
   /* Type scale */
-  --text-display: 6.25rem;       /* 100px */
+  --text-display: 6.25rem; /* 100px */
   --text-display--line-height: 1;
   --text-display-mobile: 3.375rem; /* 54px */
-  --text-step-num: 2.9375rem;    /* 47px */
-  --text-h2: 2rem;               /* 32px */
+  --text-step-num: 2.9375rem; /* 47px */
+  --text-h2: 2rem; /* 32px */
   --text-h2--line-height: 1.02;
-  --text-h3: 1.75rem;            /* 28px */
+  --text-h3: 1.75rem; /* 28px */
   --text-h3--line-height: 1.2;
-  --text-body: 1.25rem;          /* 20px */
+  --text-body: 1.25rem; /* 20px */
   --text-body--line-height: 1.4;
-  --text-nav: 1.125rem;          /* 18px */
+  --text-nav: 1.125rem; /* 18px */
   --text-nav--line-height: 1.22;
-  --text-caption: 0.875rem;      /* 14px */
+  --text-caption: 0.875rem; /* 14px */
   --text-caption--line-height: 1.22;
 
   /* Border radius */
@@ -98,42 +98,43 @@ Single font family: **Montserrat** (Google Fonts / self-host via `next/font`).
 
 ### 1.3 Spacing & border radii
 
-| Token | Value | Where |
-|---|---|---|
-| `--radius-card` | `20px` | Role cards, step cards, promo box, buttons |
-| Button padding | `36px` all sides | `Кнопка_2`, `Кнопка_3`, step badge |
-| Button gap | `8px` | Icon ↔ label |
-| Promo gap | `16px` | Icon ↔ code text |
+| Token           | Value            | Where                                      |
+| --------------- | ---------------- | ------------------------------------------ |
+| `--radius-card` | `20px`           | Role cards, step cards, promo box, buttons |
+| Button padding  | `36px` all sides | `Кнопка_2`, `Кнопка_3`, step badge         |
+| Button gap      | `8px`            | Icon ↔ label                               |
+| Promo gap       | `16px`           | Icon ↔ code text                           |
 
 ### 1.4 Breakpoints (confirmed from Figma frames)
 
-| Name | Width | Frame |
-|---|---|---|
-| `mobile` | **440px** | `Mobile id=236:307` |
-| `desktop` | **1920px** | `Desctop id=2:385` |
-| `tablet` | TBD: no tablet frame in Figma | — |
+| Name      | Width                         | Frame               |
+| --------- | ----------------------------- | ------------------- |
+| `mobile`  | **440px**                     | `Mobile id=236:307` |
+| `desktop` | **1920px**                    | `Desctop id=2:385`  |
+| `tablet`  | TBD: no tablet frame in Figma | —                   |
 
-> **Note:** Mobile frame is 440px, not 375px. Adjust default mobile breakpoint accordingly.  
+> **Note:** Mobile frame is 440px, not 375px. Adjust default mobile breakpoint accordingly.
 > Tablet (768px) is not designed — treat as fluid stretch between 440→1280 or TBD with client.
 
 ---
 
 ## 2. Sections (render order, Desktop)
 
-| # | Section name (RU) | Figma node-id | Width × Height | Intent |
-|---|---|---|---|---|
-| 1 | **Хедер** (Header/Nav) | `10:32` | 1920 × 60 | Sticky nav: logo, 4 nav links, online counter, login button, social links |
-| 2 | **Герой** (Hero) | `88:86` (bg) | 1920 × 1080 | Full-viewport hero: video/static background, main headline, CTA, promo code block |
-| 3 | **Карта** (Map) | `99:434` | 1620 × 784 | Map of Leningrad Oblast; sidebar city list (8 locations); screenshot carousel |
-| 4 | **Роли** (Roles) | `112:557` | 1619 × 1071 | 5 role cards (Медик, Военный, Полицейский, Бандит, Бизнесмен) with popup on click |
-| 5 | **Авто** (Cars) | `165:425` | 1620 × 822 | Car showcase: 2 hero cars (Ferrari 488 GTB, Audi RS7) with stat badges |
-| 6 | **RP и экономика** (RP & Economy) | `170:551` | 1620 × 895 | 2 feature items + 2 in-game photos; details game mechanics |
-| 7 | **Доп. блок** (Extra / Tagline) | `170:552` | 1920 × 570 | Large centred quote + 4 decorative floating game-prop images |
-| 8 | **Как играть** (How to Play) | `170:550` | 1920 × 1141 | 3-step guide: buy GTA V → install RAGE:MP → connect |
-| 9 | **Подвал** (Footer) | `175:438` | 1920 × 532 | Logo, legal info (LLC "1 Геймс"), nav links, email, payment icons |
+| #   | Section name (RU)                 | Figma node-id | Width × Height | Intent                                                                            |
+| --- | --------------------------------- | ------------- | -------------- | --------------------------------------------------------------------------------- |
+| 1   | **Хедер** (Header/Nav)            | `10:32`       | 1920 × 60      | Sticky nav: logo, 4 nav links, online counter, login button, social links         |
+| 2   | **Герой** (Hero)                  | `88:86` (bg)  | 1920 × 1080    | Full-viewport hero: video/static background, main headline, CTA, promo code block |
+| 3   | **Карта** (Map)                   | `99:434`      | 1620 × 784     | Map of Leningrad Oblast; sidebar city list (8 locations); screenshot carousel     |
+| 4   | **Роли** (Roles)                  | `112:557`     | 1619 × 1071    | 5 role cards (Медик, Военный, Полицейский, Бандит, Бизнесмен) with popup on click |
+| 5   | **Авто** (Cars)                   | `165:425`     | 1620 × 822     | Car showcase: 2 hero cars (Ferrari 488 GTB, Audi RS7) with stat badges            |
+| 6   | **RP и экономика** (RP & Economy) | `170:551`     | 1620 × 895     | 2 feature items + 2 in-game photos; details game mechanics                        |
+| 7   | **Доп. блок** (Extra / Tagline)   | `170:552`     | 1920 × 570     | Large centred quote + 4 decorative floating game-prop images                      |
+| 8   | **Как играть** (How to Play)      | `170:550`     | 1920 × 1141    | 3-step guide: buy GTA V → install RAGE:MP → connect                               |
+| 9   | **Подвал** (Footer)               | `175:438`     | 1920 × 532     | Logo, legal info (LLC "1 Геймс"), nav links, email, payment icons                 |
 
-**Mobile frame `236:307` (440 × 8774) — same sections, same order.**  
+**Mobile frame `236:307` (440 × 8774) — same sections, same order.**
 Key layout differences on mobile:
+
 - Header: logo only + hamburger (`Меню id=249:444`)
 - Map: horizontal carousel with prev/next arrows instead of sidebar list
 - Roles: 2-column grid (195px cards)
@@ -142,6 +143,7 @@ Key layout differences on mobile:
 ### Section detail
 
 #### 2.1 Header (`10:32`)
+
 - Logo (SVG): `id=10:8` — 109 × 22
 - Nav menu (`id=99:1653`): **ГЛАВНАЯ** (active), **КАРТА**, **ОБ ИГРЕ**, **ИНФО** — 4 links
 - Online counter (`id=27:102`): green dot + number + "ИГРОКОВ ОНЛАЙН"
@@ -149,26 +151,83 @@ Key layout differences on mobile:
 - Social row (`id=40:306`): Discord, VK, Telegram, + 1 more — 42 × 42 each
 
 #### 2.2 Hero (`88:86` + overlaid groups)
-- Headline 1: `id=27:109` — "Новый сервер" — white, 100px/800
-- Headline 2: `id=27:110` — "GTA 5 RP" — `gradient-brand`, 100px/800
-- Subtitle vector bg: `id=27:157` — decorative rounded rectangle behind subtitle
-- Subtitle: `id=27:111` — "успей раскрутиться раньше всех" — 28px/700
-- Arrow indicator: `id=99:1701` — 3 stacked triangles
-- Info block 1 (`id=38:240`): icon + "Region RP — это GTA 5 RP проект..." — 20px/500
-- Info block 2 (`id=38:239`): icon + "Выбирай роль и займи место..." — 20px/500
-- Promo code area (`id=34:183`): "YAPROMO" code + countdown timer + label text
-- CTA button (`id=38:207`): "Начать играть" — 583 × 88
+
+Architecture note: `88:86` contains only the background rectangle (`24:396`, IMAGE fill with FILL scale + contrast/saturation filters) and a bottom gradient fade (`88:87`, `linear-gradient(to top, #020309 → transparent)` covering 146px at the bottom). All foreground elements are siblings in the desktop frame (`2:385`), positioned over the hero by absolute canvas coordinates.
+
+**Verified from Figma 2026-05-16:**
+
+- Background node `24:396`: RECTANGLE, `1920×1080`, IMAGE fill (FILL scaleMode), image filters: `contrast +0.06`, `saturation +0.13`. Second fill layer also IMAGE/FILL (duplicate pass). `/public/images/hero-bg.webp` does **not** exist yet — must be exported.
+- Bottom fade `88:87`: RECTANGLE, `1920×146`, `LINEAR_GRADIENT` from `#020309` (pos 0) → `#02030900` (pos 1), direction bottom-to-top. No full-frame dark overlay exists in Figma — the code's `style={{ background: 'linear-gradient(…)' }}` full-frame overlay is an invention and deviates from design.
+
+- Headline 1: `id=27:109` — **"Новый сервер"** — white `#ffffff`, 100px/800 (ExtraBold), `textAlignHorizontal: LEFT`, `lineHeightPx: 80` (0.8× — tight). Bbox: 595×150px.
+- Headline 2: `id=27:110` — **"GTA 5 RP"** — `gradient-brand` fill (#ff2830→#ff686e, top-to-bottom), 100px/800 (ExtraBold), `textAlignHorizontal: LEFT`, `lineHeightPx: 102` (1.02×). Bbox: 595×70px.
+- Subtitle: `id=27:111` — **"успей раскрутиться раньше всех"** — white `#ffffff`, 28px/700 (Bold), `textAlignHorizontal: LEFT`, `lineHeightPx: 33.6` (1.2×). Bbox: 212×88px.
+
+  > All three text nodes are **left-aligned in Figma**, not centered. The current Hero.tsx uses `text-center` — this is a discrepancy.
+
+- Arrow indicator `id=99:1701`: INSTANCE, bbox **67×33px**. Contains 3 `REGULAR_POLYGON` children (`cornerRadius=4`), each **33×33px**, laid out **side-by-side horizontally** (not vertically stacked). Each polygon is a rounded equilateral triangle pointing **right** (flat left edge, point right — rotated 90° clockwise). Fill: `radial-gradient(#ff283099 → #ff283000)`. Stroke: `LINEAR_DODGE gradient` (#ff2830 at 20% / 100% / 20%). Additionally each has a 50px backdrop blur. The current Hero.tsx `ScrollArrow` draws 3 downward-pointing chevrons stacked vertically — wrong shape, wrong orientation, wrong layout direction.
+
+- Info block 1 (`id=38:240`): GROUP, bbox **427×186px**. Contains:
+  - Card frame (`38:213`): `cornerRadius=20`, `397×186px`. Bg: `gradient-surface` (#0e0e0f→#111117, opacity 0.5) + red radial glow (opacity 0.6). Padding: inferred ~30px all sides (text bbox starts 47px from card left edge).
+  - Text (`38:214`) — **exact copy:** `"Region RP — это GTA 5 RP проект с детализированными картами Санкт-Петербурга и Тольятти, где ты строишь свою историю с нуля"` — 20px/500/white, `lineHeightPx: 28`. Bbox: 320×126px.
+  - Icon frame (`38:218`): **58×58px**, `cornerRadius=20`, red radial glow bg + LINEAR_DODGE gradient stroke.
+  - Icon SVG (`38:232`, `Union`): BOOLEAN_OPERATION, **36×36px**, filled `gradient-brand` (#ff2830→#ff686e, top-to-bottom). Shape: custom map/location-pin with cutout. Verified SVG path:
+    ```svg
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.9521 24.1562C21.3121 23.7963 21.8695 23.7963 22.2295 24.1562L31.4463 33.3545C31.8418 33.7505 31.7876 34.3981 31.3018 34.668C29.7178 35.5499 27.7919 36 25.542 36H10.458C9.93601 36 9.72009 35.3883 10.0801 35.0283L20.9521 24.1562ZM25.542 0C30.1859 0 33.5163 1.96178 35.0283 5.47168C35.1903 5.79565 35.1 6.19192 34.8301 6.46191L6.46191 34.8301C6.20991 35.082 5.81364 35.1723 5.47168 35.0283C1.96178 33.5163 0 30.1859 0 25.542V10.458C0 4.68001 4.68001 0 10.458 0H25.542ZM35.0098 10.0801C35.3878 9.72008 36 9.93603 36 10.458V25.542C36 27.7919 35.5499 29.7358 34.668 31.3018C34.3981 31.7876 33.7505 31.8239 33.3545 31.4463L24.1377 22.2305C23.7778 21.8705 23.7779 21.3122 24.1377 20.9521L35.0098 10.0801ZM12.8164 6.37207C10.5125 6.37207 7.88427 7.70397 7.2002 10.6738C6.4262 13.9498 8.44232 16.7036 10.2783 18.4316C10.9803 19.0976 11.8984 19.4404 12.8164 19.4404C13.7342 19.4403 14.6516 19.1155 15.3535 18.4316C17.1715 16.7037 19.1875 13.9503 18.4316 10.6924C17.7477 7.70456 15.1203 6.37223 12.8164 6.37207ZM12.8701 9.88184C13.8599 9.882 14.6697 10.6919 14.6699 11.6816C14.6699 12.6715 13.86 13.4823 12.8701 13.4824C11.8801 13.4824 11.0703 12.6716 11.0703 11.6816C11.0705 10.6918 11.8622 9.88184 12.8701 9.88184Z" fill="url(#paint0_linear_38_232)"/>
+    <defs><linearGradient id="paint0_linear_38_232" x1="18" y1="0" x2="18" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#FF2830"/><stop offset="1" stop-color="#FF686E"/></linearGradient></defs>
+    </svg>
+    ```
+
+- Info block 2 (`id=38:239`): GROUP, bbox **427×157px**. Contains:
+  - Card frame (`38:219`): `cornerRadius=20`, `397×157px`. Same style as `38:213`.
+  - Text (`38:220`) — **exact copy:** `"Выбирай роль и займи место в мире, где всё зависит от твоих решений и скорости развития"` — 20px/500/white, `lineHeightPx: 28`. Bbox: 320×97px.
+  - Icon frame (`38:221`): **58×58px**, same style as `38:218`.
+  - Icon SVG (`38:238`, `Union`): BOOLEAN_OPERATION, **35×34px**, filled `gradient-brand`. Shape: multi-person/group silhouette (3 overlapping people). Verified SVG path:
+    ```svg
+    <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.34961 20.6553C8.12662 17.4934 15.8615 17.4933 20.6045 20.6553C22.7463 22.0833 23.9195 24.0214 23.9365 26.1123C23.9364 28.2201 22.7461 30.1576 20.6045 31.6025C18.2245 33.2005 15.0958 34 11.9678 34C8.83993 33.9999 5.71191 33.2005 3.33203 31.6025C1.19042 30.1747 0.000181025 28.2372 0 26.1465C0 24.0555 1.19061 22.1003 3.34961 20.6553ZM20.4512 18.3428C24.208 17.2548 28.9338 17.9862 31.8408 20.332C33.4047 21.5899 34.2046 23.1709 34.0518 24.8027C33.9158 26.4516 32.8614 27.8796 31.0938 28.8486C29.3937 29.7836 27.251 30.2258 25.126 30.1748C26.3499 29.0699 27.0641 27.6933 27.2002 26.2314C27.3702 24.1235 26.3672 22.1003 24.3613 20.4854C23.2223 19.5844 21.8962 18.8698 20.4512 18.3428ZM11.9688 0C16.4225 0.000239001 20.043 3.62134 20.043 8.0752C20.0259 12.4441 16.6088 15.9798 12.2568 16.1328H12.1387C12.0368 16.1158 11.9005 16.1159 11.7646 16.1328C7.31072 15.9798 3.89366 12.4441 3.89355 8.0752C3.89355 3.6212 7.51475 0 11.9688 0ZM24.0557 3.51855C27.3875 3.22979 30.3624 5.71226 30.6514 9.07812C30.9233 12.3761 28.577 15.2662 25.3301 15.6572H25.2451C25.1432 15.6572 25.041 15.6574 24.9561 15.6914C23.3072 15.7763 21.7942 15.2491 20.6553 14.2803C22.4062 12.7163 23.409 10.3702 23.2051 7.82031C23.0861 6.44344 22.6104 5.18519 21.8965 4.11426C22.5425 3.79127 23.2907 3.58655 24.0557 3.51855Z" fill="url(#paint0_linear_38_238)"/>
+    <defs><linearGradient id="paint0_linear_38_238" x1="17.0351" y1="0" x2="17.0351" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#FF2830"/><stop offset="1" stop-color="#FF686E"/></linearGradient></defs>
+    </svg>
+    ```
+
+- Promo code area (`id=34:183`): `cornerRadius=20`, 583×267px, bg `gradient-surface` (0.5 opacity). Contains code display, timer, label texts.
+- CTA button (`id=38:207`): "Начать играть" — 583×88px, `cornerRadius=20`.
+- Dark overlay: Figma has `88:87` — `linear-gradient(to top, #020309 at pos=0 → transparent at pos=1)` only at the very bottom 146px of the 1080px frame. There is **no full-frame overlay** in Figma — the background image itself has contrast (+0.06) and saturation (+0.13) filters applied.
 
 #### 2.3 Map
+
 - Heading: "Карта Ленинградской области и регионов" — `id=91:89`
 - Sub-copy: "Десятки самых знаковых мест..." — `id=91:92`
 - Component: `id=99:434` — 1620 × 784
   - Screenshot carousel (14 sets): `Скриншоты_1…_14`
   - City location info pane: address + embedded map image
-  - City tabs row: 3 tabs
+  - City tabs row: 3 tabs (Санкт-Петербург active, Тольятти, Скоро)
   - Sidebar city list: 8 items (Лахта центр, Спальный район В.О., Стрелка В.О., Мраморный дворец МВД, Дворцовая площадь, Исаакиевская площадь, Медный всадник, Новая Голландия)
 
+**Component set structure (Figma node `93:259`):**
+The "Карта" COMPONENT_SET has 8 city variants (`Property 1=Default` through `Property 1=Variant8`). Each variant has its own `Информация` frame containing a unique address + description text node. The desktop instance `99:434` corresponds to `Property 1=Default` (city 1, Лахта центр).
+
+**Info pane copy per city** — typography shared across all cities: Montserrat Medium 16px, color `#6e6b78`, line-height 22.4px
+
+| #   | City name (sidebar)           | Address line                                          | Description                                                                                                                                                                                                                        | Source text node                                        |
+| --- | ----------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| 1   | Лахта центр                   | `ул.. Высотная, 1`                                    | `Многофункциональный комплекс, расположенный на берегу Финского залива в Приморском районе Санкт-Петербурга. Является центральным офисом компании Газпром`                                                                         | `93:168` (variant `93:210` / instance `I99:434;93:168`) |
+| 2   | Спальный район В.О.           | `жилые кварталы Василеостровского района`             | `Наша задача сделать город — разносторонним, именно поэтому мы добавляем сюда различные по наполнению и атмосфере локации, при этом что не противоречит главному городу прототипу`                                                 | `93:265` (variant `93:260`)                             |
+| 3   | Стрелка Васильевского острова | `район Биржевой площади (восточная оконечность В.О.)` | `Мыс на восточной оконечности Васильевского острова в Санкт-Петербурге, омываемый Большой Невой и Малой Невой; один из самых известных архитектурных ансамблей города; пример гармонии архитектуры города с пейзажем берегов Невы` | `93:367` (variant `93:362`)                             |
+| 4   | Мраморный дворец МВД          | `ул.. Миллионная, 5/1`                                | `Мы не просто перенесли дворец, а ещё и напитали место мистикой, пасхалки и интереснейшим фкнционалом, с отсылкой на реальную экранизацию, что позволит с интересом открывать нашу карту с новых ракурсов`                         | `93:416` (variant `93:411`)                             |
+| 5   | Дворцовая площадь             | `Дворцовая пл.`                                       | `Главная площадь Санкт-Петербурга, архитектурный ансамбль, возникший во второй половине XVIII — первой половине XIX века`                                                                                                          | `93:465` (variant `93:460`)                             |
+| 6   | Исаакиевская площадь          | `Исаакиевская пл.`                                    | `Площадь в Адмиралтейском муниципальном округе Адмиралтейского района Санкт-Петербурга. С севера ограничена Адмиралтейским проспектом, с юга — Мариинским дворцом`                                                                 | `93:514` (variant `93:509`)                             |
+| 7   | Медный всадник                | `Сенатская площадь`                                   | `Монументальный конный памятник первому российскому императору Петру Великому, созданный в 1768–1778 годах под руководством французского скульптора Этьена Мориса Фальконе`                                                        | `93:599` (variant `93:594`)                             |
+| 8   | Новая Голландия               | `наб. Адмиралтейского канала, 2`                      | `Остров в Адмиралтейском районе Санкт-Петербурга, ограниченный рекой Мойкой, Крюковым и Адмиралтейским каналами. Кроме того, Новая Голландия — один из старейших утилитарных ансамблей города`                                     | `93:648` (variant `93:643`)                             |
+
+> Note: Cities 2 and 3 use a descriptive area phrase as the address line (no "ул." / "наб." prefix). Cities 5 and 6 use abbreviated "пл." forms with no street number. City 7 uses the square name as the address line rather than the monument name. Reproduce all of these verbatim.
+
+**Mobile Map section (`288:663`, 400 × 702):**
+No sidebar. A single full-width `Карта` instance (`265:1347`, 400 × 493) sits inside a 420 × 510 wrapper frame, with the city list rendered inside the instance below the screenshot rather than in a side column. Prev/next arrow buttons (`Стрелка Л` `315:404` and `Стрелка П` `315:407`, both 36 × 36 circle frames with red gradient fill) are positioned at the left and right edges of the screenshot area. Section heading and sub-copy frame sit above the carousel wrapper and are not part of the instance.
+
 #### 2.4 Roles (`112:557`)
+
 - Heading: "Выбери свою роль и погрузись в мир RP" — `id=106:159`
 - Sub-copy: "Будь тем, кем ты хочешь быть" — `id=154:320`
 - 5 role card instances (311 × 798 each): Медик (`112:292`), Военный (`112:411`), Полицейский (`112:462`), Бандит (`112:499`), Бизнесмен (`112:546`)
@@ -176,21 +235,25 @@ Key layout differences on mobile:
 - Popup frames exist: `Попап с ролью_*` and `Попап_*` — modal detail per role
 
 #### 2.5 Cars (`165:425`)
+
 - Heading: "Собери свой автопарк мечты" — `id=157:322`
 - Sub-copy: "Больше 200 реальных авто…" — `id=157:324`
 - Car card 1: Ferrari 488 GTB (`id=157:349`) — 800 × 552; stats: Скорость, Разгон, Кастомизация, Название
 - Car card 2: Audi RS7 (`id=158:353`) — 800 × 552; same stat layout
 
 #### 2.6 RP & Economy (`170:551`)
+
 - Heading: "Продуманная система RP и экономика" — `id=165:426`
 - 2 feature items with icon + body text
 - 2 photos: in-game screenshots (`id=166:448`, `id=166:449`)
 
 #### 2.7 Extra / Tagline block (`170:552`)
+
 - Large body text: "Это мир, где ты не просто играешь…"
 - 4 floating decorative asset instances: Звезда (`170:530`), Деньги (`170:526`), Граната (`170:522`), Балаклава (`170:546`)
 
 #### 2.8 How to Play (`170:550`)
+
 - Heading: "Как начать играть?" — 100px/800
 - Sub-copy frame `id=172:242`
 - 3 step cards (526 × 643 each): `175:248` / `175:344` / `175:358`
@@ -200,6 +263,7 @@ Key layout differences on mobile:
 - Step badge: circle `cornerRadius=20` with `gradient-button-glow`, number 47px/700
 
 #### 2.9 Footer (`175:438`)
+
 - Logo: `id=175:448` — 205 × 43
 - Legal: "ООО «1 Геймс» ИНН 5260480189 ОГРН 1215200037535"
 - Nav links (`id=175:511`): Пользовательское соглашение, Политика конфиденциальности, Дисклеймер, Политика обработки файлов cookie, Согласие на обработку персональных данных
@@ -212,65 +276,65 @@ Key layout differences on mobile:
 
 ## 3. Assets inventory
 
-| Asset | Count | Export format | Approx. size | Source node |
-|---|---|---|---|---|
-| Logo (wordmark) | 1 | SVG | 109 × 22 | `10:8` |
-| Logo (footer) | 1 | SVG | 205 × 43 | `175:448` |
-| Hero background image/video | 1 | WebP (static) / MP4 (video) | 1920 × 1080 | `24:396` |
-| Character illustrations | 5 | PNG/WebP | ~511 × 658 | `Врач/Военный/Полицейский/Бандит/Бизнесмен` component sets |
-| Role icons (stickers) | 5 | PNG/WebP | 91–149px | nested rectangles in role components |
-| Car images | 2 | PNG/WebP | ~842 × 678 | `Машина_1`, `Машина_2` component sets |
-| Screenshots (carousel) | 14 | WebP | TBD: depends on scene | `Скриншоты_1` … `Скриншоты_14` |
-| Map image | 1 | PNG/WebP | 413 × 224+ | `Карта id=262:688` component set |
-| In-game photo 1 | 1 | WebP | ~1138 × 636 | `169:469` |
-| In-game photo 2 | 1 | WebP | ~898 × 505 | `202:226` |
-| Decorative props (Звезда, Деньги, Граната, Балаклава) | 4 | PNG (transparent) | 94–577px | `170:530`, `170:526`, `170:522`, `170:546` |
-| Social icons (Discord, VK, Telegram, +1) | 4 | SVG | 42 × 42 | `40:288…40:301` |
-| Payment icons (Visa, Mastercard, SBP, Mir) | 4 | SVG | 40–81px wide | `179:524` group children |
+| Asset                                                 | Count | Export format               | Approx. size          | Source node                                                |
+| ----------------------------------------------------- | ----- | --------------------------- | --------------------- | ---------------------------------------------------------- |
+| Logo (wordmark)                                       | 1     | SVG                         | 109 × 22              | `10:8`                                                     |
+| Logo (footer)                                         | 1     | SVG                         | 205 × 43              | `175:448`                                                  |
+| Hero background image/video                           | 1     | WebP (static) / MP4 (video) | 1920 × 1080           | `24:396`                                                   |
+| Character illustrations                               | 5     | PNG/WebP                    | ~511 × 658            | `Врач/Военный/Полицейский/Бандит/Бизнесмен` component sets |
+| Role icons (stickers)                                 | 5     | PNG/WebP                    | 91–149px              | nested rectangles in role components                       |
+| Car images                                            | 2     | PNG/WebP                    | ~842 × 678            | `Машина_1`, `Машина_2` component sets                      |
+| Screenshots (carousel)                                | 14    | WebP                        | TBD: depends on scene | `Скриншоты_1` … `Скриншоты_14`                             |
+| Map image                                             | 1     | PNG/WebP                    | 413 × 224+            | `Карта id=262:688` component set                           |
+| In-game photo 1                                       | 1     | WebP                        | ~1138 × 636           | `169:469`                                                  |
+| In-game photo 2                                       | 1     | WebP                        | ~898 × 505            | `202:226`                                                  |
+| Decorative props (Звезда, Деньги, Граната, Балаклава) | 4     | PNG (transparent)           | 94–577px              | `170:530`, `170:526`, `170:522`, `170:546`                 |
+| Social icons (Discord, VK, Telegram, +1)              | 4     | SVG                         | 42 × 42               | `40:288…40:301`                                            |
+| Payment icons (Visa, Mastercard, SBP, Mir)            | 4     | SVG                         | 40–81px wide          | `179:524` group children                                   |
 
 ---
 
 ## 4. Component candidates
 
-| Component | Variants / states | Key props | Repeat sections |
-|---|---|---|---|
-| `Button` | primary (red glow + icon), secondary (dark + glow) | size: 60–88h; `cornerRadius=20`; icon slot | Header, Hero, How-to-Play |
-| `NavItem` | active (white 100%), inactive (white 60%) | 170 × 60; font 18px/600 | Header |
-| `OnlineCounter` | — | dot + number (`gradient-brand`) + label (`text-muted`) | Header |
-| `SocialIcon` | discord / vk / telegram / youtube | 42 × 42; `bg=white` fill | Header |
-| `PromoCode` | code display, timer | code: `gradient-promo`; timer separate; `cornerRadius=20` | Hero |
-| `RoleCard` | 5 roles (Медик/Военный/Полицейский/Бандит/Бизнесмен) | 311 × 798; illustration + icon + name + description | Roles |
-| `RolePopup` | per-role modal | `Попап_*` frames | Roles (on click) |
-| `CarCard` | 2 cars | 800 × 552; screenshot + 4 stat badges | Cars |
-| `StatBadge` | — | label + value; `cornerRadius=20` | Cars |
-| `FeatureItem` | — | 58 × 58 icon + body text | RP & Economy |
-| `StepCard` | 3 steps | 526 × 643; number badge + illustration + heading + body + CTA | How to Play |
-| `Screenshot` | Скриншоты_1…_14 | carousel item | Map |
-| `MapCityItem` | — | icon + city name; 8 in sidebar | Map |
-| `PaymentLogo` | visa / mastercard / sbp / mir | SVG icon frames | Footer |
+| Component       | Variants / states                                    | Key props                                                     | Repeat sections           |
+| --------------- | ---------------------------------------------------- | ------------------------------------------------------------- | ------------------------- |
+| `Button`        | primary (red glow + icon), secondary (dark + glow)   | size: 60–88h; `cornerRadius=20`; icon slot                    | Header, Hero, How-to-Play |
+| `NavItem`       | active (white 100%), inactive (white 60%)            | 170 × 60; font 18px/600                                       | Header                    |
+| `OnlineCounter` | —                                                    | dot + number (`gradient-brand`) + label (`text-muted`)        | Header                    |
+| `SocialIcon`    | discord / vk / telegram / youtube                    | 42 × 42; `bg=white` fill                                      | Header                    |
+| `PromoCode`     | code display, timer                                  | code: `gradient-promo`; timer separate; `cornerRadius=20`     | Hero                      |
+| `RoleCard`      | 5 roles (Медик/Военный/Полицейский/Бандит/Бизнесмен) | 311 × 798; illustration + icon + name + description           | Roles                     |
+| `RolePopup`     | per-role modal                                       | `Попап_*` frames                                              | Roles (on click)          |
+| `CarCard`       | 2 cars                                               | 800 × 552; screenshot + 4 stat badges                         | Cars                      |
+| `StatBadge`     | —                                                    | label + value; `cornerRadius=20`                              | Cars                      |
+| `FeatureItem`   | —                                                    | 58 × 58 icon + body text                                      | RP & Economy              |
+| `StepCard`      | 3 steps                                              | 526 × 643; number badge + illustration + heading + body + CTA | How to Play               |
+| `Screenshot`    | Скриншоты_1…\_14                                     | carousel item                                                 | Map                       |
+| `MapCityItem`   | —                                                    | icon + city name; 8 in sidebar                                | Map                       |
+| `PaymentLogo`   | visa / mastercard / sbp / mir                        | SVG icon frames                                               | Footer                    |
 
 ---
 
 ## 5. Locale
 
-**Primary:** `ru-RU`  
-All copy, legal text, and labels are in Russian. No English fallback exists in the design.  
+**Primary:** `ru-RU`
+All copy, legal text, and labels are in Russian. No English fallback exists in the design.
 RTL: not applicable.
 
-Company: ООО «1 Геймс», INN 5260480189, OGRN 1215200037535  
-Contact: hello@1games.ru  
+Company: ООО «1 Геймс», INN 5260480189, OGRN 1215200037535
+Contact: hello@1games.ru
 Copyright line: "Все права защищены © 2026 Копирование дизайна запрещено"
 
 ---
 
 ## TBDs blocking downstream work
 
-| # | What's missing | Why it blocks |
-|---|---|---|
-| TBD-1 | Tablet breakpoint (768px) — no Figma frame | Can't write responsive CSS between 440–1920 without it |
-| TBD-2 | Mobile button font size (CTA at 440px) | Button text observed at 28px desktop; mobile node not fetched |
-| TBD-3 | Step number `text-step-num` on mobile | No mobile equivalent frame for the How-to-Play section step badge |
-| TBD-4 | Actual exported asset files | All images are embedded in Figma; need export pass before `<Image>` components can be wired up |
-| TBD-5 | Screenshot carousel content (Скриншоты_1…_14) | 14 component sets exist; actual images/dimensions need export |
-| TBD-6 | 4th social icon identity | `40:301` renders as a vector "YouTube"-shape icon — confirm it's YouTube |
-| TBD-7 | Nav active state on scroll (scroll-spy) | Design shows "ГЛАВНАЯ" active; behaviour on scroll not specified |
+| #     | What's missing                                 | Why it blocks                                                                                  |
+| ----- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| TBD-1 | Tablet breakpoint (768px) — no Figma frame     | Can't write responsive CSS between 440–1920 without it                                         |
+| TBD-2 | Mobile button font size (CTA at 440px)         | Button text observed at 28px desktop; mobile node not fetched                                  |
+| TBD-3 | Step number `text-step-num` on mobile          | No mobile equivalent frame for the How-to-Play section step badge                              |
+| TBD-4 | Actual exported asset files                    | All images are embedded in Figma; need export pass before `<Image>` components can be wired up |
+| TBD-5 | Screenshot carousel content (Скриншоты_1…\_14) | 14 component sets exist; actual images/dimensions need export                                  |
+| TBD-6 | 4th social icon identity                       | `40:301` renders as a vector "YouTube"-shape icon — confirm it's YouTube                       |
+| TBD-7 | Nav active state on scroll (scroll-spy)        | Design shows "ГЛАВНАЯ" active; behaviour on scroll not specified                               |

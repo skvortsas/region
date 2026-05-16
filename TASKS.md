@@ -5,7 +5,11 @@
 > - Phases are sequential — do not start a phase until all tasks in the previous phase are checked.
 > - Tasks separated by `---` inside a phase can be delegated to different agents running in parallel.
 > - Every agent must read `AGENTS.md`, `docs/DESIGN.md`, and the relevant section of `docs/SEO.md` before starting.
-> - Figma MCP is connected. Load `figma:figma-use` skill before every `use_figma` call. Use `figma:figma-implement-design` for code-from-Figma work.
+> - **Figma access** — the only Figma integration is the **ClaudeTalkToFigma MCP** (`mcp__ClaudeTalkToFigma__*` tools). There is no plugin Figma MCP, no REST API, no PAT. Do **not** invoke the `figma:figma-use` / `figma:figma-implement-design` / `figma:figma-generate-design` skills — they are unrelated and do not work for this project.
+> - **Channel must be joined first.** Before any `mcp__ClaudeTalkToFigma__*` call, the parent session must have run `mcp__ClaudeTalkToFigma__join_channel` with the channel code the user provides. If a Figma call returns "not joined" / no-channel, stop and ask the user for the channel code (shown in their Figma plugin UI).
+> - **Delegate Figma reads to the `designer` subagent** (`Agent` tool, `subagent_type: "designer"`). It is configured with the read-only ClaudeTalkToFigma tool list and knows the node-ID table for this file. Give it specific node IDs and ask for what you need (node dimensions, text content verbatim, exported SVG/PNG). The designer agent only edits `docs/DESIGN.md`; implementation agents own source code.
+> - Preferred Figma tools (used by `designer` and, when needed, directly): `get_node_info` / `get_nodes_info` (start at `depth=0`, batch when possible), `scan_text_nodes` for copy extraction, `get_svg` for vector exports, `export_node_as_image` only when raster is required. See `.claude/agents/designer.md` for the full reference.
+> - Figma URLs use `node-id=10-32`; the API uses `10:32` (dashes → colons). All node IDs in this file are already in the colon form.
 > - Source of truth for all token values: `docs/DESIGN.md §1`.
 > - Source of truth for all SEO/meta implementation: `docs/SEO.md`.
 > - Source of truth for caching, CI, and deployment: `docs/DEPLOYMENT.md`.
@@ -166,7 +170,7 @@
 
 ---
 
-- [ ] **3.B — `components/sections/Hero.tsx`**
+- [x] **3.B — `components/sections/Hero.tsx`**
   - Figma node: `88:86`. Full viewport height (`min-h-screen`).
   - Background: static image from Figma node `24:396`. Export as `/public/images/hero-bg.webp`. Use `next/image fill` with `priority` and `object-fit: cover`.
   - H1: "Новый сервер" (white) + "GTA 5 RP" (`gradient-brand` applied as `bg-clip-text`). Both 100px/800 desktop, 54px mobile.
@@ -178,7 +182,7 @@
 
 ---
 
-- [ ] **3.C — `components/sections/Map.tsx`**
+- [x] **3.C — `components/sections/Map.tsx`**
   - Figma node: `99:434`. Section id: `map`.
   - Heading: "Карта Ленинградской области и регионов". Sub-copy from node `91:92`.
   - Desktop: sidebar city list (8 cities) on left + screenshot panel on right. Clicking a city changes the displayed screenshot.
@@ -189,7 +193,7 @@
 
 ---
 
-- [ ] **3.D — `components/sections/Roles.tsx`**
+- [x] **3.D — `components/sections/Roles.tsx`**
   - Figma node: `112:557`. Section id: `about`.
   - Heading: "Выбери свою роль и погрузись в мир RP". Sub-copy "Будь тем, кем ты хочешь быть".
   - 5 role cards (311 × 798 each, desktop): Медик, Военный, Полицейский, Бандит, Бизнесмен. Node ids in `docs/DESIGN.md §2.4`.
