@@ -259,7 +259,7 @@
 
 ---
 
-- [ ] **3.J — Legal pages (one agent builds all five)**
+- [x] **3.J — Legal pages (one agent builds all five)**
   - Create the following 5 pages. Each must have `generateMetadata()` with `robots: { index: false }` and title matching the page name.
   - Generate realistic placeholder Russian legal copy for each (200–400 words). Mark each page with a top banner: `⚠️ Черновик — требует проверки юристом`.
   - Pages:
