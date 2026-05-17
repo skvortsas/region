@@ -81,7 +81,7 @@ export default async function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(videoGameSchema) }}
         />
-        <section id="hero" className="contents">
+        <section id="hero">
           <Hero />
         </section>
         <Map />
