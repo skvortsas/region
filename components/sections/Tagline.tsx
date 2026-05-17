@@ -75,7 +75,7 @@ export function Tagline() {
             mobileH,
             mobileWrapper,
           }) => (
-            <div key={src}>
+            <div className="relative z-1" key={src}>
               <div className={desktopWrapper}>
                 <Image
                   src={src}
