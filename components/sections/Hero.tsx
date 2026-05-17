@@ -210,34 +210,44 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1620px] flex-col items-start justify-center px-4 py-20 md:px-12 lg:min-h-[1080px]">
-        <div className="w-full lg:absolute lg:left-1/2 lg:top-[132px] lg:h-[286px] lg:w-[1620px] lg:-translate-x-1/2">
+        <div className="absolute left-5 top-[10px] h-[176px] w-[400px] lg:left-1/2 lg:top-[132px] lg:h-[286px] lg:w-[1620px] lg:-translate-x-1/2">
+          <div
+            aria-hidden="true"
+            className="hero-headline-backdrop-mobile pointer-events-none absolute inset-0 lg:hidden"
+          />
+
           <div
             aria-hidden="true"
             className="hero-headline-backdrop pointer-events-none hidden lg:absolute lg:-top-[30px] lg:left-0 lg:block lg:h-[319px] lg:w-[724.5px]"
           />
 
           {/* Headline — Figma node 27:158. */}
-          <h1 className="text-left font-extrabold tracking-tight lg:absolute lg:left-[30px] lg:top-0 lg:h-[254px] lg:w-[595px] lg:tracking-normal">
-            <span className="block text-[54px] leading-none text-white md:text-[100px] lg:absolute lg:left-0 lg:top-0 lg:w-[595px] lg:text-[100px] lg:leading-[80px]">
+          <h1 className="absolute left-[16.56px] top-[16.56px] h-[139.6px] w-[328.5px] text-left font-extrabold tracking-normal lg:left-[30px] lg:top-0 lg:h-[254px] lg:w-[595px]">
+            <span className="absolute left-0 top-0 block w-[328.5px] text-[54px] leading-[43.2px] text-white lg:w-[595px] lg:text-[100px] lg:leading-[80px]">
               Новый сервер
             </span>
-            <span className="block bg-gradient-brand bg-clip-text text-[54px] leading-none text-transparent md:text-[100px] lg:absolute lg:left-0 lg:top-[184px] lg:w-[595px] lg:text-[100px] lg:leading-[102px]">
+            <span className="absolute left-0 top-[101.59px] block w-[328.5px] bg-gradient-brand bg-clip-text text-[54px] leading-[55.08px] text-transparent lg:top-[184px] lg:w-[595px] lg:text-[100px] lg:leading-[102px]">
               GTA 5 RP
             </span>
           </h1>
 
           {/* Subtitle — Figma node 27:154 / text node 27:111. */}
-          <p className="mt-6 text-left text-[20px] font-bold text-white md:text-[28px] lg:absolute lg:left-[469.5px] lg:top-[33.5px] lg:mt-0 lg:w-[212px] lg:text-[28px] lg:leading-[33.6px]">
+          <p className="absolute left-[262px] top-[39px] w-[105px] text-left text-[14px] font-bold leading-[16.8px] text-white lg:left-[469.5px] lg:top-[33.5px] lg:w-[212px] lg:text-[28px] lg:leading-[33.6px]">
             успей раскрутиться раньше всех
           </p>
 
           <div
-            className="hidden lg:absolute lg:left-[588px] lg:top-[11px] lg:block"
+            className="absolute left-[324.64px] top-[22.64px] h-[18.22px] w-[36.99px] [&>svg]:h-full [&>svg]:w-full lg:left-[588px] lg:top-[11px] lg:h-auto lg:w-auto"
             aria-hidden="true"
           >
             <ScrollArrow />
           </div>
         </div>
+
+        <div
+          aria-hidden="true"
+          className="h-[216px] shrink-0 lg:hidden"
+        />
 
         <div
           aria-hidden="true"
@@ -273,7 +283,7 @@ export function Hero() {
         </div>
 
         {/* Decorative scroll arrow */}
-        <div className="mt-16 text-white/60 lg:hidden" aria-hidden="true">
+        <div className="hidden" aria-hidden="true">
           <ScrollArrow />
         </div>
       </div>

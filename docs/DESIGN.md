@@ -166,6 +166,13 @@ Architecture note: `88:86` contains only the background rectangle (`24:396`, IMA
 
   > All three text nodes are **left-aligned in Figma**, not centered. The current Hero.tsx uses `text-center` — this is a discrepancy.
 
+- Mobile headline group (`id=253:366`): GROUP, local **x=20/y=70**, size **400×176px**, clipped 20/32px-radius glass backdrop with bottom-right notch. Fill: `linear-gradient(180deg, #0e0e0f → #111117)` at 50% opacity with `backdrop-filter: blur(25px)`.
+  - Mobile headline 1 `253:368` — **"Новый сервер"** — white, 54px/800, `lineHeightPx: 43.2`, bbox ~328.5×81 at local x=16.56/y=16.56.
+  - Mobile headline 2 `253:369` — **"GTA 5 RP"** — `gradient-brand`, 54px/800, `lineHeightPx: 55.08`, bbox ~328.5×38 at local x=16.56/y=118.15.
+- Mobile subtitle group (`id=253:370`): local **x=267.9/y=92.64**, size ~135×74.5.
+  - Mobile subtitle `253:372` — **"успей раскрутиться раньше всех"** — white, 14px/700, `lineHeightPx: 16.8`, bbox 105×44 at local x=282/y=109 relative to mobile frame.
+  - Mobile arrow `253:373`: instance **36.99×18.22px**, same 3 right-pointing rounded polygons scaled from desktop.
+
 - Arrow indicator `id=99:1701`: INSTANCE, bbox **67×33px**. Contains 3 `REGULAR_POLYGON` children (`cornerRadius=4`), each **33×33px**, laid out **side-by-side horizontally** (not vertically stacked). Each polygon is a rounded equilateral triangle pointing **right** (flat left edge, point right — rotated 90° clockwise). Fill: `radial-gradient(#ff283099 → #ff283000)`. Stroke: `LINEAR_DODGE gradient` (#ff2830 at 20% / 100% / 20%). Additionally each has a 50px backdrop blur. The current Hero.tsx `ScrollArrow` draws 3 downward-pointing chevrons stacked vertically — wrong shape, wrong orientation, wrong layout direction.
 
 - Info block 1 (`id=38:240`): GROUP, bbox **427×186px**. Contains:
