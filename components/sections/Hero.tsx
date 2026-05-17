@@ -1,16 +1,15 @@
-import Image from 'next/image'
-import { Button } from '@/components/ui/Button'
-import { PromoCode } from '@/components/ui/PromoCode'
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { PromoCode } from "@/components/ui/PromoCode";
 
-// Copy verified from Figma nodes 38:214 and 38:220 (2026-05-16)
-const INFO_BLOCK_1 = 'Region RP — это GTA 5 RP проект с детализированными картами Санкт-Петербурга и Тольятти, где ты строишь свою историю с нуля'
-const INFO_BLOCK_2 = 'Выбирай роль и займи место в мире, где всё зависит от твоих решений и скорости развития'
+const INFO_BLOCK_1 =
+  "Region RP — это GTA 5 RP проект с детализированными картами Санкт-Петербурга и Тольятти, где ты строишь свою историю с нуля";
+const INFO_BLOCK_2 =
+  "Выбирай роль и займи место в мире, где всё зависит от твоих решений и скорости развития";
 
-// Icon frame: 58×58px, cornerRadius=20, red radial-glow bg, LINEAR_DODGE gradient stroke
-// Figma node 38:218 / 38:221 wrapper treatment applied via className on the wrapping span
 function InfoIconShield() {
   return (
-    <span className="flex-shrink-0 inline-flex items-center justify-center w-[58px] h-[58px] rounded-[20px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,40,48,0.35)_0%,transparent_70%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.3)]">
+    <span className="shrink-0 inline-flex items-center justify-center w-[58px] h-[58px] rounded-[20px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,40,48,0.35)_0%,transparent_70%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.3)]">
       <svg
         width="36"
         height="36"
@@ -24,19 +23,26 @@ function InfoIconShield() {
           fill="url(#shield-gradient)"
         />
         <defs>
-          <linearGradient id="shield-gradient" x1="18" y1="0" x2="18" y2="36" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="shield-gradient"
+            x1="18"
+            y1="0"
+            x2="18"
+            y2="36"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stopColor="#FF2830" />
             <stop offset="1" stopColor="#FF686E" />
           </linearGradient>
         </defs>
       </svg>
     </span>
-  )
+  );
 }
 
 function InfoIconUsers() {
   return (
-    <span className="flex-shrink-0 inline-flex items-center justify-center w-[58px] h-[58px] rounded-[20px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,40,48,0.35)_0%,transparent_70%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.3)]">
+    <span className="shrink-0 inline-flex items-center justify-center w-[58px] h-[58px] rounded-[20px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,40,48,0.35)_0%,transparent_70%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.3)]">
       <svg
         width="35"
         height="34"
@@ -52,14 +58,21 @@ function InfoIconUsers() {
           fill="url(#users-gradient)"
         />
         <defs>
-          <linearGradient id="users-gradient" x1="17.0351" y1="0" x2="17.0351" y2="34" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="users-gradient"
+            x1="17.0351"
+            y1="0"
+            x2="17.0351"
+            y2="34"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stopColor="#FF2830" />
             <stop offset="1" stopColor="#FF686E" />
           </linearGradient>
         </defs>
       </svg>
     </span>
-  )
+  );
 }
 
 // Figma node 99:1701 — 3 side-by-side right-pointing rounded equilateral triangles
@@ -99,58 +112,104 @@ function ScrollArrow() {
         className="mix-blend-plus-lighter"
       />
       <defs>
-        <radialGradient id="arrow-radial-0" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-7.21238e-07 16.5) scale(52.5091 22.4644)">
+        <radialGradient
+          id="arrow-radial-0"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(-7.21238e-07 16.5) scale(52.5091 22.4644)"
+        >
           <stop stopColor="#FF2830" stopOpacity="0.6" />
           <stop offset="1" stopColor="#FF2830" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="arrow-stroke-0" x1="2.08157e-05" y1="33" x2="2.22582e-05" y2="-1.44247e-06" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="arrow-stroke-0"
+          x1="2.08157e-05"
+          y1="33"
+          x2="2.22582e-05"
+          y2="-1.44247e-06"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" stopOpacity="0.2" />
           <stop offset="0.495192" stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF2830" stopOpacity="0.2" />
         </linearGradient>
-        <radialGradient id="arrow-radial-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17 16.5) scale(52.5091 22.4644)">
+        <radialGradient
+          id="arrow-radial-1"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(17 16.5) scale(52.5091 22.4644)"
+        >
           <stop stopColor="#FF2830" stopOpacity="0.6" />
           <stop offset="1" stopColor="#FF2830" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="arrow-stroke-1" x1="17" y1="33" x2="17" y2="-1.44247e-06" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="arrow-stroke-1"
+          x1="17"
+          y1="33"
+          x2="17"
+          y2="-1.44247e-06"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" stopOpacity="0.2" />
           <stop offset="0.495192" stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF2830" stopOpacity="0.2" />
         </linearGradient>
-        <radialGradient id="arrow-radial-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(34 16.5) scale(52.5091 22.4644)">
+        <radialGradient
+          id="arrow-radial-2"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(34 16.5) scale(52.5091 22.4644)"
+        >
           <stop stopColor="#FF2830" stopOpacity="0.6" />
           <stop offset="1" stopColor="#FF2830" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="arrow-stroke-2" x1="34" y1="33" x2="34" y2="-1.44247e-06" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="arrow-stroke-2"
+          x1="34"
+          y1="33"
+          x2="34"
+          y2="-1.44247e-06"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" stopOpacity="0.2" />
           <stop offset="0.495192" stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF2830" stopOpacity="0.2" />
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
 export function Hero() {
-  const launchDate = process.env.NEXT_PUBLIC_LAUNCH_DATE ?? ''
+  const launchDate = process.env.NEXT_PUBLIC_LAUNCH_DATE ?? "";
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-bg">
-      {/* Background image — Figma node 24:396, exported to /public/images/hero-bg.webp */}
-      <Image
-        src="/images/hero-bg.webp"
-        alt=""
-        role="presentation"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center -z-10"
+    <div className="relative min-h-screen w-full overflow-hidden bg-bg lg:min-h-[1080px]">
+      <div aria-hidden="true" className="absolute inset-0 z-0 hidden lg:block">
+        <Image
+          src="/images/hero-bg.webp"
+          alt=""
+          width={1920}
+          height={1080}
+          priority
+          sizes="100vw"
+          className="h-full w-full object-cover object-center"
+        />
+      </div>
+
+      {/* Bottom shadow/fade — Figma node 88:87: 146px bottom-to-top gradient only. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-1 hidden h-[146px] bg-linear-to-t from-bg to-transparent lg:block"
       />
 
-      {/* Bottom fade — Figma node 88:87: 146px bottom-to-top gradient only */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[146px] bg-gradient-to-t from-bg to-transparent -z-10" />
-
-      <div className="relative mx-auto flex min-h-screen max-w-[1620px] flex-col items-start justify-center px-4 py-20 md:px-12">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-[1620px] flex-col items-start justify-center px-4 py-20 md:px-12 lg:min-h-[1080px]">
         {/* Headline */}
         <h1 className="text-left font-extrabold tracking-tight">
           <span className="block text-[54px] leading-none md:text-[100px] text-white">
@@ -189,11 +248,7 @@ export function Hero() {
 
         {/* CTA */}
         <div className="mt-12 w-full max-w-[583px]">
-          <Button
-            variant="primary"
-            href="#"
-            className="w-full md:h-[88px]"
-          >
+          <Button variant="primary" href="#" className="w-full md:h-[88px]">
             Начать играть
           </Button>
         </div>
@@ -204,5 +259,5 @@ export function Hero() {
         </div>
       </div>
     </div>
-  )
+  );
 }
