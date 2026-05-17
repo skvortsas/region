@@ -1,48 +1,48 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 interface FeatureItem {
-  icon: string
-  text: string
+  icon: string;
+  text: string;
 }
 
 interface EconomyPhoto {
-  src: string
-  alt: string
-  width: number
-  height: number
-  sizes: string
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes: string;
 }
 
 const ACCENT_COPY =
-  'Модели зданий Банков, отелей, больниц и другой колоритной тематической недвижимости'
+  "Модели зданий Банков, отелей, больниц и другой колоритной тематической недвижимости";
 
 const FEATURES: FeatureItem[] = [
   {
-    icon: '/images/rp-economy-icon-wallet.svg',
-    text: 'Детализированная система RP и живая экономика, где всё взаимосвязано — от работы \u2028и заработка до транспорта, недвижимости и фракций',
+    icon: "/images/rp-economy-icon-wallet.svg",
+    text: "Детализированная система RP и живая экономика, где всё взаимосвязано — от работы \u2028и заработка до транспорта, недвижимости и фракций",
   },
   {
-    icon: '/images/rp-economy-icon-id.svg',
-    text: 'Продуманные механики \u2028и баланс внутри каждой профессии создают честную конкуренцию и позволяют развиваться в удобном темпе',
+    icon: "/images/rp-economy-icon-id.svg",
+    text: "Продуманные механики \u2028и баланс внутри каждой профессии создают честную конкуренцию и позволяют развиваться в удобном темпе",
   },
-]
+];
 
 const PHOTOS: EconomyPhoto[] = [
   {
-    src: '/images/rp-photo-1.webp',
-    alt: 'Игровой вид на здание в Region RP',
+    src: "/images/rp-photo-1.webp",
+    alt: "Игровой вид на здание в Region RP",
     width: 682,
     height: 625,
-    sizes: '(max-width: 1024px) 100vw, 682px',
+    sizes: "(max-width: 1024px) 100vw, 682px",
   },
   {
-    src: '/images/rp-photo-2.webp',
-    alt: 'Игровой вид на городскую улицу в Region RP',
+    src: "/images/rp-photo-2.webp",
+    alt: "Игровой вид на городскую улицу в Region RP",
     width: 898,
     height: 395,
-    sizes: '(max-width: 1024px) 100vw, 898px',
+    sizes: "(max-width: 1024px) 100vw, 898px",
   },
-]
+];
 
 function FeatureItem({ icon, text }: FeatureItem) {
   return (
@@ -57,12 +57,10 @@ function FeatureItem({ icon, text }: FeatureItem) {
       />
 
       <div className="lg:h-[186px] lg:w-[409px] lg:rounded-card lg:bg-[radial-gradient(circle_at_0%_50%,color-mix(in_srgb,var(--color-accent)_60%,transparent),transparent_58%),var(--gradient-surface)] lg:px-[35px] lg:py-[34px]">
-        <p className="text-body font-medium leading-[1.4] text-white">
-          {text}
-        </p>
+        <p className="text-body font-medium leading-[1.4] text-white">{text}</p>
       </div>
     </article>
-  )
+  );
 }
 
 function EconomyPhoto({ src, alt, width, height, sizes }: EconomyPhoto) {
@@ -78,7 +76,7 @@ function EconomyPhoto({ src, alt, width, height, sizes }: EconomyPhoto) {
         className="h-auto w-full object-cover"
       />
     </div>
-  )
+  );
 }
 
 export function RPEconomy() {
@@ -92,7 +90,7 @@ export function RPEconomy() {
         <header className="grid gap-6 lg:h-[170px] lg:grid-cols-[1fr_348px] lg:items-start">
           <h2
             id="rp-economy-heading"
-            className="max-w-[1252px] text-[3.375rem] font-extrabold leading-none text-white lg:text-display"
+            className="max-w-[1252px] text-display-mobile font-extrabold leading-none text-white lg:text-display"
           >
             Продуманная система RP и экономика
           </h2>
@@ -121,5 +119,5 @@ export function RPEconomy() {
         </div>
       </div>
     </section>
-  )
+  );
 }
