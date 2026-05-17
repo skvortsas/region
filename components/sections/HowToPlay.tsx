@@ -3,9 +3,9 @@
 // TODO: export step illustrations from Figma nodes 175:336, 175:357, 175:371
 // → /public/images/howtoplay/step-01.png, step-02.png, step-03.png
 
-import Image from 'next/image'
-import { Button } from '@/components/ui/Button'
-import { CopyIPButton } from '@/components/ui/CopyIPButton'
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { CopyIPButton } from "@/components/ui/CopyIPButton";
 
 // ---------------------------------------------------------------------------
 // Inline icon — download arrow (step 02 CTA)
@@ -30,7 +30,7 @@ function DownloadIcon() {
       {/* Tray / base line */}
       <path d="M4 20h16" />
     </svg>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -38,40 +38,40 @@ function DownloadIcon() {
 // ---------------------------------------------------------------------------
 
 interface StepCard {
-  number: string
-  illustrationSrc: string
-  illustrationAlt: string
-  title: string
-  body: string
-  cta?: 'download' | 'copy'
+  number: string;
+  illustrationSrc: string;
+  illustrationAlt: string;
+  title: string;
+  body: string;
+  cta?: "download" | "copy";
 }
 
 const STEPS: StepCard[] = [
   {
-    number: '01',
-    illustrationSrc: '/images/howtoplay/step-01.png',
-    illustrationAlt: 'Руки держат рублёвые купюры — купить игру GTA V',
-    title: 'Купить и установить игру GTA V',
-    body: 'Чтобы начать игру, необходимо иметь лицензионную версию GTA V. Если она уже приобретена — переходите к следующему шагу',
+    number: "01",
+    illustrationSrc: "/images/howtoplay/step-01.webp",
+    illustrationAlt: "Руки держат рублёвые купюры — купить игру GTA V",
+    title: "Купить и установить игру GTA V",
+    body: "Чтобы начать игру, необходимо иметь лицензионную версию GTA V. Если она уже приобретена — переходите к следующему шагу",
     cta: undefined,
   },
   {
-    number: '02',
-    illustrationSrc: '/images/howtoplay/step-02.png',
-    illustrationAlt: 'Руки чинят двигатель автомобиля — установить RAGE MP',
-    title: 'Загрузить и установить клиент RAGE MP',
-    body: 'Чтобы подключиться к нашему серверу, потребуется клиент RAGE:MP. Установите его на компьютер и затем запустите',
-    cta: 'download',
+    number: "02",
+    illustrationSrc: "/images/howtoplay/step-02.webp",
+    illustrationAlt: "Руки чинят двигатель автомобиля — установить RAGE MP",
+    title: "Загрузить и установить клиент RAGE MP",
+    body: "Чтобы подключиться к нашему серверу, потребуется клиент RAGE:MP. Установите его на компьютер и затем запустите",
+    cta: "download",
   },
   {
-    number: '03',
-    illustrationSrc: '/images/howtoplay/step-03.png',
-    illustrationAlt: 'Большой палец вверх — подключиться к серверу Region',
-    title: 'Подключиться к серверу Region',
-    body: 'Финальный шаг: введите в поиске лаунчера REGION или скопируйте IP, дождитесь загрузки всех файлов. Готово — вы в игре!',
-    cta: 'copy',
+    number: "03",
+    illustrationSrc: "/images/howtoplay/step-03.webp",
+    illustrationAlt: "Большой палец вверх — подключиться к серверу Region",
+    title: "Подключиться к серверу Region",
+    body: "Финальный шаг: введите в поиске лаунчера REGION или скопируйте IP, дождитесь загрузки всех файлов. Готово — вы в игре!",
+    cta: "copy",
   },
-]
+];
 
 // ---------------------------------------------------------------------------
 // StepCard component
@@ -83,17 +83,17 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
       aria-label={`Шаг ${step.number}: ${step.title}`}
       className={[
         // Base card — mobile: full-width / desktop: fixed 526px wide
-        'relative flex w-full flex-col overflow-hidden rounded-card',
-        'lg:w-[526px] lg:h-[643px]',
+        "relative flex w-full flex-col overflow-hidden rounded-card",
+        "lg:w-[526px] lg:h-[643px]",
         // Card background: purple radial + red radial gradient layers + surface base
-        'bg-[radial-gradient(circle_at_50%_100%,rgba(80,76,108,0.6)_0%,transparent_60%),radial-gradient(circle_at_80%_0%,rgba(255,40,48,0.4)_0%,transparent_50%),linear-gradient(to_bottom,#0e0e0f,#111117)]',
+        "bg-[radial-gradient(circle_at_50%_100%,rgba(80,76,108,0.6)_0%,transparent_60%),radial-gradient(circle_at_80%_0%,rgba(255,40,48,0.4)_0%,transparent_50%),linear-gradient(to_bottom,#0e0e0f,#111117)]",
         // Stroke (ring approximation)
-        'ring-1 ring-purple/40',
+        "ring-1 ring-purple/40",
         // Stagger offset for middle card (desktop only)
-        offset ? 'lg:mt-[112px]' : '',
+        offset ? "lg:mt-[112px]" : "",
       ]
         .filter(Boolean)
-        .join(' ')}
+        .join(" ")}
     >
       {/* Illustration — 526×261px desktop / 400×198px mobile */}
       <div className="relative h-[198px] w-full shrink-0 overflow-hidden lg:h-[261px] lg:w-[526px]">
@@ -114,15 +114,15 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
         <div
           aria-hidden="true"
           className={[
-            'flex shrink-0 items-center justify-center',
+            "flex shrink-0 items-center justify-center",
             // Mobile badge: 69×52px / cornerRadius 15px
-            'h-[52px] w-[69px] rounded-[15px]',
+            "h-[52px] w-[69px] rounded-[15px]",
             // Desktop badge: 91×69px / cornerRadius 20px
-            'lg:h-[69px] lg:w-[91px] lg:rounded-[20px]',
+            "lg:h-[69px] lg:w-[91px] lg:rounded-[20px]",
             // Background: gradient-button-glow token
-            'bg-[radial-gradient(circle_at_60%_50%,rgba(255,40,48,0.6)_0%,transparent_60%)]',
-            'ring-1 ring-accent/30',
-          ].join(' ')}
+            "bg-[radial-gradient(circle_at_60%_50%,rgba(255,40,48,0.6)_0%,transparent_60%)]",
+            "ring-1 ring-accent/30",
+          ].join(" ")}
         >
           <span className="text-[32px] font-bold leading-none text-white lg:text-step-num">
             {step.number}
@@ -140,7 +140,7 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
         </p>
 
         {/* CTA button */}
-        {step.cta === 'download' && (
+        {step.cta === "download" && (
           <div className="mt-auto pt-2">
             <Button
               variant="secondary"
@@ -153,14 +153,14 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
           </div>
         )}
 
-        {step.cta === 'copy' && (
+        {step.cta === "copy" && (
           <div className="mt-auto pt-2">
             <CopyIPButton />
           </div>
         )}
       </div>
     </article>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -176,7 +176,6 @@ export function HowToPlay() {
       className="relative w-full overflow-hidden bg-bg px-4 py-16 md:px-12 md:py-24 lg:py-0"
     >
       <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 lg:h-[1141px] lg:gap-0 lg:pt-[100px]">
-
         {/* ----------------------------------------------------------------
             Heading row — heading LEFT + sub-copy card RIGHT (desktop)
         ---------------------------------------------------------------- */}
@@ -192,15 +191,16 @@ export function HowToPlay() {
           {/* Sub-copy card — 538×142px, red radial glow + hex pattern overlay */}
           <div
             className={[
-              'rounded-card p-[30px]',
+              "rounded-card p-[30px]",
               // Red radial glow background (gradient-button-glow variant, bottom-centred)
-              'bg-[radial-gradient(circle_at_50%_100%,rgba(255,40,48,0.6)_0%,transparent_70%),linear-gradient(to_bottom,#0e0e0f,#111117)]',
-              'lg:min-h-[142px] lg:max-w-[538px]',
-            ].join(' ')}
+              "bg-[radial-gradient(circle_at_50%_100%,rgba(255,40,48,0.6)_0%,transparent_70%),linear-gradient(to_bottom,#0e0e0f,#111117)]",
+              "lg:min-h-[142px] lg:max-w-[538px]",
+            ].join(" ")}
           >
             <p className="text-[16px] font-medium leading-[1.4] text-white lg:text-body">
               {/* U+00A0 (non-breaking space) + regular space preserves the Figma double-space after "шага" */}
-              Выполните три простых шага&#160; и наслаждайтесь игрой на сервере Region в мире GTA 5 RP
+              Выполните три простых шага&#160; и наслаждайтесь игрой на сервере
+              Region в мире GTA 5 RP
             </p>
           </div>
         </header>
@@ -215,8 +215,7 @@ export function HowToPlay() {
           <StepCardItem step={STEPS[1]} offset />
           <StepCardItem step={STEPS[2]} />
         </div>
-
       </div>
     </section>
-  )
+  );
 }
