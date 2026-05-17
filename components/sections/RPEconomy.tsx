@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-interface FeatureItem {
+interface FeatureItemData {
   icon: string;
   text: string;
 }
@@ -11,12 +11,13 @@ interface EconomyPhoto {
   width: number;
   height: number;
   sizes: string;
+  className?: string;
 }
 
 const ACCENT_COPY =
   "Модели зданий Банков, отелей, больниц и другой колоритной тематической недвижимости";
 
-const FEATURES: FeatureItem[] = [
+const FEATURES: FeatureItemData[] = [
   {
     icon: "/images/rp-economy-icon-wallet.svg",
     text: "Детализированная система RP и живая экономика, где всё взаимосвязано — от работы \u2028и заработка до транспорта, недвижимости и фракций",
@@ -44,28 +45,48 @@ const PHOTOS: EconomyPhoto[] = [
   },
 ];
 
-function FeatureItem({ icon, text }: FeatureItem) {
+function FeatureItem({
+  icon,
+  text,
+  className,
+}: FeatureItemData & { className?: string }) {
   return (
-    <article className="relative min-h-[186px] rounded-card bg-[radial-gradient(circle_at_0%_50%,color-mix(in_srgb,var(--color-accent)_34%,transparent),transparent_58%),var(--gradient-surface)] p-[30px] pl-[108px] lg:w-[439px] lg:bg-transparent lg:p-0 lg:pl-[30px]">
-      <Image
-        src={icon}
-        alt=""
-        width={58}
-        height={58}
+    <article
+      className={`relative min-h-[186px] lg:h-[186px] lg:w-[439px] ${className ?? ""}`}
+    >
+      <div
         aria-hidden="true"
-        className="absolute left-[30px] top-[30px] h-[58px] w-[58px] lg:left-0 lg:top-16"
-      />
+        className="absolute left-0 top-16 z-10 h-[58px] w-[58px]"
+      >
+        <span className="absolute inset-0 -z-10 rounded-card bg-accent/60 blur-2xl" />
+        <Image
+          src={icon}
+          alt=""
+          width={58}
+          height={58}
+          className="h-[58px] w-[58px]"
+        />
+      </div>
 
-      <div className="lg:h-[186px] lg:w-[409px] lg:rounded-card lg:bg-[radial-gradient(circle_at_0%_50%,color-mix(in_srgb,var(--color-accent)_60%,transparent),transparent_58%),var(--gradient-surface)] lg:px-[35px] lg:py-[34px]">
+      <div className="relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_35%_75%_at_-3%_50%,rgba(255,40,48,0.36),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,rgba(14,14,15,0.5),rgba(17,17,23,0.5))] p-[30px] ml-[30px] lg:h-[186px] lg:w-[409px] px-[35px] py-[34px] pl-[35px]">
         <p className="text-body font-medium leading-[1.4] text-white">{text}</p>
       </div>
     </article>
   );
 }
 
-function EconomyPhoto({ src, alt, width, height, sizes }: EconomyPhoto) {
+function EconomyPhoto({
+  src,
+  alt,
+  width,
+  height,
+  sizes,
+  className,
+}: EconomyPhoto) {
   return (
-    <div className="overflow-hidden rounded-card bg-surface ring-1 ring-purple/70">
+    <div
+      className={`overflow-hidden rounded-card bg-surface ring-1 ring-purple/70 ${className ?? ""}`}
+    >
       <Image
         src={src}
         alt={alt}
@@ -73,7 +94,7 @@ function EconomyPhoto({ src, alt, width, height, sizes }: EconomyPhoto) {
         height={height}
         sizes={sizes}
         loading="lazy"
-        className="h-auto w-full object-cover"
+        className="h-full w-full object-cover"
       />
     </div>
   );
@@ -87,35 +108,38 @@ export function RPEconomy() {
       className="relative w-full bg-bg px-4 py-16 md:px-12 md:py-24 lg:py-0"
     >
       <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 lg:h-[895px] lg:gap-[100px]">
-        <header className="grid gap-6 lg:h-[170px] lg:grid-cols-[1fr_348px] lg:items-start">
+        <header className="contents lg:grid lg:h-[170px] lg:grid-cols-[1fr_348px] lg:items-start lg:gap-6">
           <h2
             id="rp-economy-heading"
-            className="max-w-[1252px] text-display-mobile font-extrabold leading-none text-white lg:text-display"
+            className="order-1 max-w-[1252px] text-display-mobile font-extrabold leading-none text-white lg:order-0 lg:text-display"
           >
             Продуманная система RP и экономика
           </h2>
 
-          <div className="rounded-card bg-[radial-gradient(circle_at_50%_100%,color-mix(in_srgb,var(--color-accent)_48%,transparent),transparent_70%)] p-[30px] lg:min-h-[166px]">
-            <p className="text-body font-medium leading-[1.4] text-white">
+          <div className="order-2 relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_68%_137%_at_50%_100%,rgba(255,40,48,0.6),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,#0e0e0f,#111117)] p-[30px] before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/diamond-pattern.svg')] before:bg-size-[16px_16px] before:bg-repeat before:opacity-60 before:mix-blend-overlay lg:order-0 lg:min-h-[166px]">
+            <p className="relative text-body font-medium leading-[1.4] text-white">
               {ACCENT_COPY}
             </p>
           </div>
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-[898px_682px] lg:gap-10">
-          <div className="grid gap-6 lg:gap-10">
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-[439px_439px] lg:gap-5">
-              {FEATURES.map((feature) => (
-                <FeatureItem key={feature.text} {...feature} />
-              ))}
+        <div className="contents lg:grid lg:grid-cols-[898px_682px] lg:gap-10">
+          <div className="contents lg:flex lg:flex-col lg:gap-10">
+            <div className="contents lg:grid lg:grid-cols-[439px_439px] lg:gap-5">
+              <FeatureItem {...FEATURES[0]} className="order-4 lg:order-0" />
+              <FeatureItem {...FEATURES[1]} className="order-6 lg:order-0" />
             </div>
 
-            <EconomyPhoto {...PHOTOS[1]} />
+            <EconomyPhoto
+              {...PHOTOS[1]}
+              className="order-5 aspect-400/429 w-full lg:order-0 lg:aspect-auto lg:h-[395px]"
+            />
           </div>
 
-          <div>
-            <EconomyPhoto {...PHOTOS[0]} />
-          </div>
+          <EconomyPhoto
+            {...PHOTOS[0]}
+            className="order-3 aspect-400/429 w-full lg:order-0 lg:aspect-auto lg:h-[625px]"
+          />
         </div>
       </div>
     </section>
