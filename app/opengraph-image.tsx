@@ -1,13 +1,23 @@
 import { ImageResponse } from 'next/og'
 
-export const runtime = 'edge'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default async function OGImage() {
-  const montserratBold = await fetch(
-    'https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459Wlhzg.woff2'
-  ).then((r) => r.arrayBuffer())
+  // Attempt to load Montserrat Bold from Google Fonts; fall back to system font if unavailable.
+  // Uses Node.js runtime (no `runtime = 'edge'`) so the response is reliably served.
+  let fonts: ConstructorParameters<typeof ImageResponse>[1]['fonts'] = []
+  try {
+    const res = await fetch(
+      'https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459Wlhzg.woff2'
+    )
+    if (res.ok) {
+      const data = await res.arrayBuffer()
+      fonts = [{ name: 'Montserrat', data, style: 'normal', weight: 700 }]
+    }
+  } catch {
+    // Network unavailable — render with default system font
+  }
 
   return new ImageResponse(
     (
@@ -20,7 +30,7 @@ export default async function OGImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: 'Montserrat',
+          fontFamily: 'Montserrat, sans-serif',
           padding: '60px',
         }}
       >
@@ -58,14 +68,7 @@ export default async function OGImage() {
     ),
     {
       ...size,
-      fonts: [
-        {
-          name: 'Montserrat',
-          data: montserratBold,
-          style: 'normal',
-          weight: 700,
-        },
-      ],
+      fonts,
     }
   )
 }

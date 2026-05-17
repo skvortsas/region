@@ -297,26 +297,26 @@
 
 > **One agent, sequential. Depends on Phase 4.**
 
-- [ ] **5.1 — Dev server visual check**
+- [x] **5.1 — Dev server visual check**
   - Start `npm run dev`. Load `http://localhost:3000`.
   - Walk through each section top to bottom. For each section note: renders without errors, Tailwind tokens applied (dark bg, Montserrat font, red accent), no obvious layout breaks.
   - Check mobile viewport (440px width) in browser dev tools. Note any sections that need layout fixes.
 
-- [ ] **5.2 — Functional checks**
+- [x] **5.2 — Functional checks**
   - Promo countdown timer counts down (or shows zeros if `NEXT_PUBLIC_LAUNCH_DATE` is unset).
   - Copy-IP button copies text and shows "СКОПИРОВАНО ✓" feedback.
   - Scroll-spy: nav active item changes as you scroll through sections.
   - All 5 footer legal links navigate to the correct pages.
   - Mobile hamburger menu opens/closes.
 
-- [ ] **5.3 — SEO checks**
+- [x] **5.3 — SEO checks**
   - `http://localhost:3000/sitemap.xml` — valid XML, no 404.
   - `http://localhost:3000/robots.txt` — present.
   - `http://localhost:3000/opengraph-image` — renders the OG image correctly.
   - Page `<title>` and `<meta name="description">` match `docs/SEO.md §1` values.
   - JSON-LD present in page source (`<script type="application/ld+json">`).
 
-- [ ] **5.4 — Report**
+- [x] **5.4 — Report**
   - List any visual deviations from Figma by section name.
   - List any functional issues.
   - List any missing assets (placeholder images still in use).
