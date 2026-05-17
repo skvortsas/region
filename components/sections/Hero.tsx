@@ -191,7 +191,7 @@ export function Hero() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-bg lg:min-h-[1080px]">
-      <div aria-hidden="true" className="absolute inset-0 z-0 hidden lg:block">
+      <div aria-hidden="true" className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg.webp"
           alt=""
@@ -210,20 +210,39 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1620px] flex-col items-start justify-center px-4 py-20 md:px-12 lg:min-h-[1080px]">
-        {/* Headline */}
-        <h1 className="text-left font-extrabold tracking-tight">
-          <span className="block text-[54px] leading-none md:text-[100px] text-white">
-            Новый сервер
-          </span>
-          <span className="block text-[54px] leading-none md:text-[100px] bg-gradient-brand bg-clip-text text-transparent">
-            GTA 5 RP
-          </span>
-        </h1>
+        <div className="w-full lg:absolute lg:left-1/2 lg:top-[132px] lg:h-[286px] lg:w-[1620px] lg:-translate-x-1/2">
+          <div
+            aria-hidden="true"
+            className="hero-headline-backdrop pointer-events-none hidden lg:absolute lg:-top-[30px] lg:left-0 lg:block lg:h-[319px] lg:w-[724.5px]"
+          />
 
-        {/* Subtitle */}
-        <p className="mt-6 text-left text-[20px] md:text-[28px] font-bold text-white">
-          успей раскрутиться раньше всех
-        </p>
+          {/* Headline — Figma node 27:158. */}
+          <h1 className="text-left font-extrabold tracking-tight lg:absolute lg:left-[30px] lg:top-0 lg:h-[254px] lg:w-[595px] lg:tracking-normal">
+            <span className="block text-[54px] leading-none text-white md:text-[100px] lg:absolute lg:left-0 lg:top-0 lg:w-[595px] lg:text-[100px] lg:leading-[80px]">
+              Новый сервер
+            </span>
+            <span className="block bg-gradient-brand bg-clip-text text-[54px] leading-none text-transparent md:text-[100px] lg:absolute lg:left-0 lg:top-[184px] lg:w-[595px] lg:text-[100px] lg:leading-[102px]">
+              GTA 5 RP
+            </span>
+          </h1>
+
+          {/* Subtitle — Figma node 27:154 / text node 27:111. */}
+          <p className="mt-6 text-left text-[20px] font-bold text-white md:text-[28px] lg:absolute lg:left-[469.5px] lg:top-[33.5px] lg:mt-0 lg:w-[212px] lg:text-[28px] lg:leading-[33.6px]">
+            успей раскрутиться раньше всех
+          </p>
+
+          <div
+            className="hidden lg:absolute lg:left-[588px] lg:top-[11px] lg:block"
+            aria-hidden="true"
+          >
+            <ScrollArrow />
+          </div>
+        </div>
+
+        <div
+          aria-hidden="true"
+          className="hidden h-[266px] shrink-0 lg:block"
+        />
 
         {/* Two info blocks */}
         <div className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
@@ -254,7 +273,7 @@ export function Hero() {
         </div>
 
         {/* Decorative scroll arrow */}
-        <div className="mt-16 text-white/60" aria-hidden="true">
+        <div className="mt-16 text-white/60 lg:hidden" aria-hidden="true">
           <ScrollArrow />
         </div>
       </div>

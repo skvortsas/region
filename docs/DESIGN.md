@@ -161,6 +161,7 @@ Architecture note: `88:86` contains only the background rectangle (`24:396`, IMA
 
 - Headline 1: `id=27:109` — **"Новый сервер"** — white `#ffffff`, 100px/800 (ExtraBold), `textAlignHorizontal: LEFT`, `lineHeightPx: 80` (0.8× — tight). Bbox: 595×150px.
 - Headline 2: `id=27:110` — **"GTA 5 RP"** — `gradient-brand` fill (#ff2830→#ff686e, top-to-bottom), 100px/800 (ExtraBold), `textAlignHorizontal: LEFT`, `lineHeightPx: 102` (1.02×). Bbox: 595×70px.
+- Headline backdrop: `id=27:157` — clipped rounded background behind the title/subtitle, bbox **724.5×319px** at desktop `x=150`, `y=162`. Shape has 32px outer corner geometry plus a stepped bottom-right cutout. Fill: `linear-gradient(180deg, #0e0e0f → #111117)` at 50% opacity with `backdrop-filter: blur(25px)`.
 - Subtitle: `id=27:111` — **"успей раскрутиться раньше всех"** — white `#ffffff`, 28px/700 (Bold), `textAlignHorizontal: LEFT`, `lineHeightPx: 33.6` (1.2×). Bbox: 212×88px.
 
   > All three text nodes are **left-aligned in Figma**, not centered. The current Hero.tsx uses `text-center` — this is a discrepancy.
