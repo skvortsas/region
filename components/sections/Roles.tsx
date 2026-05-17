@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-type RoleId = "medic" | "military" | "police" | "bandit" | "businessman";
+type RoleId = "businessman" | "police" | "military" | "bandit" | "medic";
 
 interface Role {
   id: RoleId;
@@ -11,40 +11,29 @@ interface Role {
   description: string;
   popupBody: string;
   illustration: string;
+  /** Hover-state artwork (desktop only) — description text is baked in */
+  hoverImage: string;
   icon: string;
   /** Figma node id — for reference only, see docs/DESIGN.md §2.4 */
   figmaNodeId: string;
 }
 
 /* ------------------------------------------------------------------ */
-/*  Role data — copy verbatim from Figma                               */
-/*  Popup body text: nodes 154:243, 154:271, 154:288, 154:307, 153:665 */
-/*  Icons: raster images exported from Figma icon SLOT nodes           */
-/*  Illustrations: exported from Figma Иллюстрация SLOT nodes          */
+/*  Role data — order matches Figma 112:557 (left → right on desktop)  */
 /* ------------------------------------------------------------------ */
 
 const ROLES: Role[] = [
   {
-    id: "medic",
-    figmaNodeId: "112:292",
-    name: "Медик",
+    id: "businessman",
+    figmaNodeId: "112:546",
+    name: "Бизнесмен",
     description:
-      "Спасай жизни граждан: выезжай на вызовы и работай в связке с полицией и пожарными",
+      "Открывай бизнес и управляй своей командой профессионалов, создавая свою империю",
     popupBody:
-      "Спасай жизни граждан: выезжай на вызовы и работай в связке  с полицией и пожарными",
-    illustration: "/images/roles/medic.webp",
-    icon: "/images/roles/medic-icon.png",
-  },
-  {
-    id: "military",
-    figmaNodeId: "112:411",
-    name: "Военный",
-    description:
-      "Участвуй в боевых учениях, охраняй стратегические объекты и продвигайся по званиям",
-    popupBody:
-      "Участвуй в боевых учениях, охраняй стратегические объекты и продвигайся по званиям",
-    illustration: "/images/roles/military.webp",
-    icon: "/images/roles/military-icon.png",
+      "Открывай бизнес и управляй своей командой профессионалов, создавая свою империю",
+    illustration: "/images/roles/businessman.webp",
+    hoverImage: "/images/roles/businessman-hover.png",
+    icon: "/images/roles/businessman-icon.png",
   },
   {
     id: "police",
@@ -55,7 +44,20 @@ const ROLES: Role[] = [
     popupBody:
       "Патрулируй районы, раскрывай преступления и поддерживай порядок на дорогах и улицах",
     illustration: "/images/roles/police.webp",
+    hoverImage: "/images/roles/police-hover.png",
     icon: "/images/roles/police-icon.png",
+  },
+  {
+    id: "military",
+    figmaNodeId: "112:411",
+    name: "Военный",
+    description:
+      "Участвуй в боевых учениях, охраняй стратегические объекты и продвигайся по званиям",
+    popupBody:
+      "Участвуй в боевых учениях, охраняй стратегические объекты и продвигайся по званиям",
+    illustration: "/images/roles/military.webp",
+    hoverImage: "/images/roles/military-hover.png",
+    icon: "/images/roles/military-icon.png",
   },
   {
     id: "bandit",
@@ -66,24 +68,25 @@ const ROLES: Role[] = [
     popupBody:
       "Собери команду, веди тёмные сделки и уходи от полиции — стань легендой своего района",
     illustration: "/images/roles/bandit.webp",
+    hoverImage: "/images/roles/bandit-hover.png",
     icon: "/images/roles/bandit-icon.png",
   },
   {
-    id: "businessman",
-    figmaNodeId: "112:546",
-    name: "Бизнесмен",
+    id: "medic",
+    figmaNodeId: "112:292",
+    name: "Медик",
     description:
-      "Открывай бизнес и управляй своей командой профессионалов, создавая свою империю",
+      "Спасай жизни граждан: выезжай на вызовы и работай в связке с полицией и пожарными",
     popupBody:
-      "Открывай бизнес и управляй своей командой профессионалов, создавая свою империю",
-    illustration: "/images/roles/businessman.webp",
-    icon: "/images/roles/businessman-icon.png",
+      "Спасай жизни граждан: выезжай на вызовы и работай в связке  с полицией и пожарными",
+    illustration: "/images/roles/medic.webp",
+    hoverImage: "/images/roles/medic-hover.png",
+    icon: "/images/roles/medic-icon.png",
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/*  RolePopup — modal detail per role                                  */
-/*  Figma frames: `Попап с ролью_*` / `Попап_*` (DESIGN.md §2.4)       */
+/*  RolePopup — modal detail per role (used on tap, mobile + desktop)  */
 /* ------------------------------------------------------------------ */
 
 interface RolePopupProps {
@@ -181,6 +184,9 @@ function RolePopup({ role, onClose }: RolePopupProps) {
 
 /* ------------------------------------------------------------------ */
 /*  RoleCard                                                           */
+/*  Desktop (lg+): description hidden, revealed on hover with red      */
+/*  overlay + diamond pattern (Figma hover state node 112:284).        */
+/*  Mobile / tablet: description shown beneath title, tap opens popup. */
 /* ------------------------------------------------------------------ */
 
 interface RoleCardProps {
@@ -194,48 +200,66 @@ function RoleCard({ role, onOpen }: RoleCardProps) {
       type="button"
       onClick={() => onOpen(role.id)}
       aria-label={`Подробнее о роли — ${role.name}`}
-      className="group relative flex flex-col overflow-hidden rounded-[20px] bg-gradient-surface text-left transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+      className="group relative flex flex-col rounded-[20px] bg-gradient-surface text-left transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
                  w-[clamp(150px,44vw,195px)] aspect-195/498
                  lg:w-[311px] lg:h-[798px] lg:aspect-auto"
     >
-      {/* Illustration area — 511 × 658 source per DESIGN.md §2.4 */}
-      <div className="relative flex-1 overflow-hidden">
+      {/* Illustration area */}
+      <div className="relative flex-1">
         <Image
           src={role.illustration}
           alt={`Иллюстрация роли — ${role.name}`}
           fill
           sizes="(max-width: 1024px) 195px, 311px"
-          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+          className="object-cover object-top transition-transform duration-300"
           loading="lazy"
         />
 
-        {/* Bottom fade so text remains readable */}
+        {/* Bottom dark fade — mobile/tablet only (keeps text readable) */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none bg-linear-to-t from-[rgba(14,14,15,0.95)] from-10% to-transparent"
+          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none bg-linear-to-t from-[rgba(14,14,15,0.95)] from-10% to-transparent lg:hidden"
         />
 
         {/* Role icon overlay — top left, Figma: 98×98, cornerRadius 20 */}
-        <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
+        <div className="group-hover:hidden absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           <Image
             src={role.icon}
             alt=""
             width={64}
             height={64}
-            className="rounded-[14px] lg:w-[78px] lg:h-[78px]"
+            className="rounded-[14px] lg:w-[98px] lg:h-[98px] lg:rounded-[20px]"
             loading="lazy"
             aria-hidden="true"
           />
         </div>
+
+        {/* Desktop hover artwork — fills illustration area. Image has the   */}
+        {/* description text baked in; red gradient + diamond pattern show   */}
+        {/* through any transparent regions of the PNG.                      */}
+        <div className="hidden lg:block absolute inset-0 overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 bg-[#131628] bg-[radial-gradient(ellipse_at_bottom,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[url('/images/diamond-pattern.svg')] bg-repeat opacity-40 mix-blend-overlay pointer-events-none"
+          />
+          <Image
+            src={role.hoverImage}
+            alt=""
+            fill
+            sizes="311px"
+            className="relative z-10 object-cover object-top"
+            loading="lazy"
+            aria-hidden="true"
+          />
+        </div>
+        {/* Screen-reader description (visual text is baked into hoverImage) */}
+        <span className="sr-only">{role.description}</span>
       </div>
 
-      {/* Text block */}
-      <div className="relative z-10 flex flex-col gap-2 p-4 lg:p-6">
-        <span className="text-[18px] lg:text-[28px] font-bold leading-none text-white">
+      {/* Title block — turns red on desktop hover */}
+      <div className="relative z-10 flex flex-col gap-2 p-4 lg:p-0 lg:h-[88px] lg:items-center lg:justify-center lg:gap-0 lg:transition-colors lg:duration-300 lg:group-hover:bg-[linear-gradient(180deg,#ff7c81_0%,#ff2830_100%)] rounded-b-[20px]">
+        <span className="text-[18px] lg:text-[32px] font-bold leading-none text-white">
           {role.name}
-        </span>
-        <span className="text-[13px] lg:text-[16px] font-medium leading-[1.4] text-text-muted line-clamp-3 lg:line-clamp-4">
-          {role.description}
         </span>
       </div>
     </button>
@@ -257,27 +281,46 @@ export function Roles() {
       className="relative w-full bg-bg py-16 md:py-24 lg:py-[120px]"
     >
       <div className="mx-auto w-full max-w-[1620px] px-4 md:px-12">
-        <header className="mb-10 md:mb-14 lg:mb-[60px] flex flex-col gap-3 md:gap-4">
+        <header className="mb-10 md:mb-14 lg:mb-[60px] flex flex-col gap-3 md:gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
           <h2
             id="roles-heading"
-            className="text-[32px] lg:text-[54px] font-extrabold leading-[1.05] text-white max-w-[920px]"
+            className="text-[32px] lg:text-[72px] xl:text-[100px] font-extrabold leading-[1.05] lg:leading-none text-white lg:max-w-[1237px]"
           >
-            Выбери свою роль и погрузись в мир RP
+            Выбери <span className="text-accent">свою роль</span>
+            {"  "}и погрузись в мир RP
           </h2>
-          <p className="text-[16px] lg:text-[20px] font-medium leading-[1.4] text-text-muted">
+
+          {/* Mobile / tablet subtitle */}
+          <p className="text-[16px] font-medium leading-[1.4] text-text-muted lg:hidden">
             Будь тем, кем ты хочешь быть
           </p>
+
+          {/* Desktop "Инфо" box — red gradient + diamond pattern */}
+          <div className="relative hidden lg:flex shrink-0 w-[383px] h-[166px] items-center px-8 overflow-hidden rounded-[20px] bg-[radial-gradient(ellipse_at_bottom,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[url('/images/diamond-pattern.svg')] bg-repeat opacity-60 mix-blend-overlay pointer-events-none"
+            />
+            <p className="relative z-10 text-[20px] font-medium leading-[1.4] text-white">
+              Будь тем, кем ты хочешь быть
+            </p>
+          </div>
         </header>
 
-        {/* Card row — 5 across desktop, 2-col grid mobile (195px cards) */}
+        {/* Card row — 5 across desktop, 2-col grid mobile (195px cards)    */}
+        {/* Desktop: even cards (Полицейский, Бандит) sit 49px higher per   */}
+        {/* Figma 112:557 — staggered Y rhythm.                              */}
         <ul
           role="list"
           className="grid grid-cols-2 gap-3
                      min-[440px]:gap-4
-                     lg:grid-cols-5 lg:gap-6 lg:justify-items-center"
+                     lg:grid-cols-5 lg:gap-8 lg:justify-items-center lg:items-start lg:pt-[49px]"
         >
           {ROLES.map((role) => (
-            <li key={role.id} className="flex justify-center">
+            <li
+              key={role.id}
+              className="flex justify-center lg:[&:nth-child(even)]:-translate-y-[49px]"
+            >
               <RoleCard role={role} onOpen={setOpenId} />
             </li>
           ))}
