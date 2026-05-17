@@ -192,7 +192,11 @@ Architecture note: `88:86` contains only the background rectangle (`24:396`, IMA
     </svg>
     ```
 
-- Promo code area (`id=34:183`): `cornerRadius=20`, 583×267px, bg `gradient-surface` (0.5 opacity). Contains code display, timer, label texts.
+- Promo code area (`id=34:183`): FRAME, desktop local position **x=150/y=526**, size **583×267px**, `cornerRadius=20`, bg `linear-gradient(180deg, #0e0e0f → #111117)` at 50% opacity. Contains:
+  - Text `27:126` — **"Лимитированный промокод для первых игроков"** — 18px/500, `lineHeightPx: 21.6`, white, bbox ~280×35 at local x=30/y=29.8.
+  - Text `27:128` — **"Активируй и получи преимущество на старте"** — 18px/500, `lineHeightPx: 21.6`, white, bbox 280×35 at local x=30/y=85.
+  - Timer instance `99:631`: local x=327/y=20, **236×114px**, `cornerRadius=20`, radial bg `#23213199 → #23213100`, red LINEAR_DODGE stroke. Label **"До конца действия промокода"**: 12px/500, red `#ff434a`, centered. Timer values: 46px/500 white, labels **"час"**, **"мин"**, **"сек"**: 18px/500 white 60%.
+  - Code instance `88:76`: local x=0/y=153, **583×114px**, `cornerRadius=20`, radial bg `#ff7c81 → #ff2830`, red LINEAR_DODGE stroke. Icon `I88:76;88:65`: 46×46 at local x=104/y=34. Code text **"YAPROMO"**: 57px/700 white at local x=166/y=37.
 - CTA button (`id=38:207`): "Начать играть" — 583×88px, `cornerRadius=20`.
 - Dark overlay: Figma has `88:87` — `linear-gradient(to top, #020309 at pos=0 → transparent at pos=1)` only at the very bottom 146px of the 1080px frame. There is **no full-frame overlay** in Figma — the background image itself has contrast (+0.06) and saturation (+0.13) filters applied.
 

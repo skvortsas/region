@@ -87,8 +87,8 @@ function CarCard({ car }: { car: Car }) {
             key={`${car.name}-${stat.label}`}
             className={
               stat.kind === "name"
-                ? "rounded-card bg-[radial-gradient(circle_at_50%_100%,rgba(255,40,48,0.6),transparent_70%),linear-gradient(to_bottom,#0e0e0f,#111117)] lg:rounded-t-none lg:rounded-bl-card lg:rounded-br-none"
-                : "rounded-card bg-[radial-gradient(circle_at_50%_100%,rgba(80,76,108,0.6),transparent_70%),linear-gradient(to_bottom,#0e0e0f,#111117)] lg:rounded-none last:lg:rounded-br-card"
+                ? "relative overflow-hidden rounded-card border border-[rgba(255,40,48,0.3)] bg-[radial-gradient(ellipse_110%_147%_at_50%_100%,rgba(255,40,48,0.6),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,#0e0e0f,#111117)] before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/diamond-pattern.svg')] before:bg-[length:16px_16px] before:bg-repeat before:opacity-60 before:mix-blend-overlay lg:rounded-t-none lg:rounded-bl-card lg:rounded-br-none"
+                : "rounded-card border border-[rgba(80,76,108,0.3)] bg-[radial-gradient(ellipse_109%_147%_at_50%_100%,rgba(80,76,108,0.6),rgba(80,76,108,0)_100%),linear-gradient(to_bottom,#0e0e0f,#111117)] lg:rounded-none last:lg:rounded-br-card"
             }
           >
             <StatBadge kind={stat.kind} label={stat.label} value={stat.value} />
@@ -111,9 +111,9 @@ export function Cars() {
             id="cars-heading"
             className="max-w-[907px] text-[3.375rem] font-extrabold leading-none text-white lg:text-display"
           >
-            Собери свой автопарк мечты
+            Собери свой <span className="text-[#FF5157]">автопарк</span> мечты
           </h2>
-          <div className="rounded-card bg-[radial-gradient(circle_at_0%_100%,rgba(255,40,48,0.42),transparent_62%),linear-gradient(to_bottom,#0e0e0f,#111117)] p-6 md:p-8 lg:min-h-[166px] lg:max-w-[679px] lg:p-[34px]">
+          <div className="relative overflow-hidden rounded-card border border-[rgba(255,40,48,0.3)] bg-[radial-gradient(ellipse_68%_137%_at_50%_100%,rgba(255,40,48,0.6),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,#0e0e0f,#111117)] p-6 before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/diamond-pattern.svg')] before:bg-[length:16px_16px] before:bg-repeat before:opacity-60 before:mix-blend-overlay md:p-8 lg:min-h-[166px] lg:max-w-[679px] lg:p-[34px]">
             <p className="max-w-[451px] text-body font-medium leading-[1.4] text-white">
               Больше 200 реальных авто – собери автопарк, который отражает тебя
               и твой стиль игры. Широкий выбор деталей для кастомизации и
