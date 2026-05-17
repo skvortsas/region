@@ -261,7 +261,7 @@ export function Hero() {
         </div>
 
         {/* Promo code + countdown */}
-        <div className="mt-14">
+        <div className="mt-14 w-full max-w-[583px]">
           <PromoCode code="YAPROMO" targetDate={launchDate} />
         </div>
 
