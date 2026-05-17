@@ -13,20 +13,20 @@ interface Countdown {
   seconds: string;
 }
 
-function getCountdown(targetDate: string): Countdown {
-  const zero: Countdown = {
-    hours: "00",
-    minutes: "00",
-    seconds: "00",
-  };
+const ZERO_COUNTDOWN: Countdown = {
+  hours: "00",
+  minutes: "00",
+  seconds: "00",
+};
 
-  if (!targetDate) return zero;
+function getCountdown(targetDate: string): Countdown {
+  if (!targetDate) return ZERO_COUNTDOWN;
 
   const target = new Date(targetDate).getTime();
   const now = Date.now();
   const diff = target - now;
 
-  if (diff <= 0) return zero;
+  if (diff <= 0) return ZERO_COUNTDOWN;
 
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -40,9 +40,7 @@ function getCountdown(targetDate: string): Countdown {
 }
 
 export function PromoCode({ code, targetDate }: PromoCodeProps) {
-  const [countdown, setCountdown] = useState<Countdown>(() =>
-    getCountdown(targetDate),
-  );
+  const [countdown, setCountdown] = useState<Countdown>(ZERO_COUNTDOWN);
 
   useEffect(() => {
     const tick = () => setCountdown(getCountdown(targetDate));
