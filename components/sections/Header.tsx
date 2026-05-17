@@ -77,11 +77,19 @@ function PersonIcon() {
   );
 }
 
-function LoginButton({ className = "" }: { className?: string }) {
+function LoginButton({
+  className = "",
+  size = "lg",
+}: {
+  className?: string;
+  size?: "sm" | "lg";
+}) {
+  const dims =
+    size === "lg" ? "h-[60px] w-[180px]" : "h-[50px] w-[136px]";
   return (
     <a
       href="#"
-      className={`inline-flex h-[60px] w-[180px] items-center justify-center gap-2 rounded-[20px] text-[18px] font-semibold uppercase leading-[1.22] tracking-wider text-white/80 transition-colors hover:text-white ${className}`}
+      className={`inline-flex ${dims} items-center justify-center gap-2 rounded-[20px] text-[18px] font-semibold uppercase leading-[1.22] tracking-wider text-white/80 transition-colors hover:text-white ${className}`}
       style={{
         border: "1px solid rgba(255, 40, 48, 0.6)",
         background:
@@ -91,6 +99,22 @@ function LoginButton({ className = "" }: { className?: string }) {
       <PersonIcon />
       ВОЙТИ
     </a>
+  );
+}
+
+function HamburgerIcon() {
+  return (
+    <svg
+      width="29"
+      height="23"
+      viewBox="0 0 29 23"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect width="29" height="5" rx="2.5" fill="currentColor" />
+      <rect y="9" width="29" height="5" rx="2.5" fill="currentColor" />
+      <rect y="18" width="29" height="5" rx="2.5" fill="currentColor" />
+    </svg>
   );
 }
 
@@ -131,19 +155,28 @@ export function Header() {
             "linear-gradient(to bottom, rgba(14,14,15,0.5), rgba(17,17,23,0.5))",
         }}
       >
-        <div className="relative flex items-center h-[60px] px-4 md:px-12 max-w-[1920px] mx-auto">
-          {/* Logo */}
+        <div className="relative flex items-center h-[50px] pl-5 pr-0 min-[440px]:h-[60px] min-[440px]:px-4 md:px-12 max-w-[1920px] mx-auto">
+          {/* Logo — small mark on mobile, full wordmark on desktop */}
           <a
             href="#hero"
             aria-label="Region RP — на главную"
             className="shrink-0"
           >
             <Image
+              src="/images/logo-mark.svg"
+              alt="Region RP"
+              width={22}
+              height={20}
+              priority
+              className="min-[440px]:hidden"
+            />
+            <Image
               src="/images/logo.svg"
               alt="Region RP"
               width={109}
               height={22}
               priority
+              className="hidden min-[440px]:block"
             />
           </a>
 
@@ -156,6 +189,11 @@ export function Header() {
             >
               <OnlineCounter count={onlineCount} />
             </Suspense>
+          </div>
+
+          {/* Counter — mobile, compact variant next to logo */}
+          <div className="flex min-[440px]:hidden ml-5">
+            <OnlineCounter count={onlineCount} compact />
           </div>
 
           {/* Nav — desktop, centered in header */}
@@ -201,30 +239,18 @@ export function Header() {
             <LoginButton />
           </div>
 
-          {/* Mobile right cluster: counter → hamburger → button */}
-          <div className="flex min-[440px]:hidden items-center gap-3 ml-auto">
-            <OnlineCounter count={onlineCount} />
-
+          {/* Mobile right cluster: hamburger → login button (flush right) */}
+          <div className="flex min-[440px]:hidden items-center gap-5 ml-auto">
             <button
-              className="p-2 text-white"
+              className="flex h-[42px] w-[42px] items-center justify-center text-[#D9D9D9]"
               aria-label="Открыть меню"
               aria-expanded={drawerOpen}
               onClick={() => setDrawerOpen(true)}
             >
-              <svg
-                width="22"
-                height="14"
-                viewBox="0 0 22 14"
-                fill="none"
-                aria-hidden="true"
-              >
-                <rect y="0" width="22" height="2" rx="1" fill="currentColor" />
-                <rect y="6" width="22" height="2" rx="1" fill="currentColor" />
-                <rect y="12" width="22" height="2" rx="1" fill="currentColor" />
-              </svg>
+              <HamburgerIcon />
             </button>
 
-            <LoginButton />
+            <LoginButton size="sm" />
           </div>
         </div>
       </header>
