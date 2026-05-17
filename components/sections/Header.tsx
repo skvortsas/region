@@ -18,6 +18,36 @@ const NAV_ITEMS = [
 const SECTION_IDS = ["hero", "map", "about", "info"];
 const SOCIALS = ["discord", "vk", "telegram", "youtube"] as const;
 
+function HouseIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="22 21 18 18"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient
+          id="nav-house-grad"
+          x1="32"
+          y1="22.5"
+          x2="32"
+          y2="37.5"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FF2830" />
+          <stop offset="1" stopColor="#FF686E" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M38.6225 27.0075L33.71 23.0775C32.75 22.3125 31.25 22.305 30.2975 23.07L25.385 27.0075C24.68 27.57 24.2525 28.695 24.4025 29.58L25.3475 35.235C25.565 36.5025 26.7425 37.5 28.025 37.5H35.975C37.2425 37.5 38.4425 36.48 38.66 35.2275L39.605 29.5725C39.74 28.695 39.3125 27.57 38.6225 27.0075ZM32.5625 34.5C32.5625 34.8075 32.3075 35.0625 32 35.0625C31.6925 35.0625 31.4375 34.8075 31.4375 34.5V32.25C31.4375 31.9425 31.6925 31.6875 32 31.6875C32.3075 31.6875 32.5625 31.9425 32.5625 32.25V34.5Z"
+        fill="url(#nav-house-grad)"
+      />
+    </svg>
+  );
+}
+
 function PersonIcon() {
   return (
     <svg
@@ -63,8 +93,14 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-surface-elevated backdrop-blur-sm">
-        <div className="flex items-center h-[60px] px-4 md:px-12 gap-3 md:gap-8 max-w-[1920px] mx-auto">
+      <header
+        className="sticky top-0 z-50 backdrop-blur-sm"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(14,14,15,0.5), rgba(17,17,23,0.5))",
+        }}
+      >
+        <div className="relative flex items-center h-[60px] px-4 md:px-12 max-w-[1920px] mx-auto">
           {/* Logo */}
           <a
             href="#hero"
@@ -80,28 +116,8 @@ export function Header() {
             />
           </a>
 
-          {/* Nav links — desktop only */}
-          <nav
-            className="hidden min-[440px]:flex items-center gap-6 ml-6"
-            aria-label="Основная навигация"
-          >
-            {NAV_ITEMS.map(({ label, href, id }) => (
-              <a
-                key={id}
-                href={href}
-                className={`text-nav font-semibold transition-colors duration-150 ${
-                  activeId === id
-                    ? "text-white"
-                    : "text-text-muted hover:text-white"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop right cluster: counter → button → socials */}
-          <div className="hidden min-[440px]:flex items-center gap-5 ml-auto">
+          {/* Counter — desktop, next to logo */}
+          <div className="hidden min-[440px]:flex ml-5">
             <Suspense
               fallback={
                 <span className="w-32 h-4 rounded bg-white/10 animate-pulse" />
@@ -109,16 +125,51 @@ export function Header() {
             >
               <OnlineCounter count={onlineCount} />
             </Suspense>
+          </div>
 
-            <Button variant="primary" size="sm" href="#" icon={<PersonIcon />}>
-              ВОЙТИ
-            </Button>
+          {/* Nav — desktop, centered in header */}
+          <nav
+            className="hidden min-[440px]:flex absolute left-1/2 -translate-x-1/2 items-center"
+            aria-label="Основная навигация"
+          >
+            {NAV_ITEMS.map(({ label, href, id }) => {
+              const isActive = activeId === id;
+              return (
+                <a
+                  key={id}
+                  href={href}
+                  className={`flex h-[60px] w-[170px] items-center justify-center gap-2 rounded-[20px] text-nav font-semibold transition-colors duration-150 ${
+                    isActive
+                      ? "text-white border border-accent/40"
+                      : "text-text-muted hover:text-white"
+                  }`}
+                  style={
+                    isActive
+                      ? {
+                          background:
+                            "radial-gradient(ellipse at 50% 100%, rgba(255,40,48,0.6) 0%, transparent 60%)",
+                        }
+                      : undefined
+                  }
+                >
+                  {isActive && <HouseIcon />}
+                  {label}
+                </a>
+              );
+            })}
+          </nav>
 
-            <div className="flex items-center gap-2">
+          {/* Desktop right cluster: socials → login */}
+          <div className="hidden min-[440px]:flex items-center gap-[46px] ml-auto">
+            <div className="flex items-center gap-[10px]">
               {SOCIALS.map((p) => (
                 <SocialIcon key={p} platform={p} />
               ))}
             </div>
+
+            <Button variant="primary" size="sm" href="#" icon={<PersonIcon />}>
+              ВОЙТИ
+            </Button>
           </div>
 
           {/* Mobile right cluster: counter → hamburger → button */}
