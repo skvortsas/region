@@ -201,37 +201,31 @@ function RoleCard({ role, onOpen }: RoleCardProps) {
       onClick={() => onOpen(role.id)}
       aria-label={`Подробнее о роли — ${role.name}`}
       className="group relative flex flex-col rounded-[20px] bg-gradient-surface text-left transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
-                 w-[clamp(150px,44vw,195px)] aspect-195/498
+                 w-[clamp(150px,44vw,195px)] aspect-195/488
                  lg:w-[311px] lg:h-[798px] lg:aspect-auto"
     >
       {/* Illustration area */}
-      <div className="relative flex-1">
+      <div className="relative flex-1 overflow-hidden rounded-t-[20px]">
         <Image
           src={role.illustration}
           alt={`Иллюстрация роли — ${role.name}`}
           fill
           sizes="(max-width: 1024px) 195px, 311px"
-          className="object-cover object-top transition-transform duration-300"
+          className="object-cover object-top transition-transform duration-300 lg:group-hover:scale-[1.03]"
           loading="lazy"
         />
 
-        {/* Bottom dark fade — mobile/tablet only (keeps text readable) */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none bg-linear-to-t from-[rgba(14,14,15,0.95)] from-10% to-transparent lg:hidden"
-        />
-
-        {/* Role icon overlay — top left, Figma: 98×98, cornerRadius 20 */}
-        <div className="group-hover:hidden absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-          <Image
-            src={role.icon}
-            alt=""
-            width={64}
-            height={64}
-            className="rounded-[14px] lg:w-[98px] lg:h-[98px] lg:rounded-[20px]"
-            loading="lazy"
+        {/* Mobile description — always visible (no hover on mobile).       */}
+        {/* Figma: "Описание" frame 271:2323, 195×97, red gradient +        */}
+        {/* diamond pattern.                                                 */}
+        <div className="lg:hidden absolute inset-x-0 bottom-0 h-[97px] flex items-center justify-center px-2 overflow-hidden z-10 bg-[#131628] bg-[radial-gradient(ellipse_at_bottom,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)]">
+          <div
             aria-hidden="true"
+            className="absolute inset-0 bg-[url('/images/diamond-pattern.svg')] bg-repeat opacity-40 mix-blend-overlay pointer-events-none"
           />
+          <p className="relative z-10 text-[11px] font-medium leading-[1.4] text-white text-center">
+            {role.description}
+          </p>
         </div>
 
         {/* Desktop hover artwork — fills illustration area. Image has the   */}
@@ -252,16 +246,37 @@ function RoleCard({ role, onOpen }: RoleCardProps) {
             aria-hidden="true"
           />
         </div>
-        {/* Screen-reader description (visual text is baked into hoverImage) */}
-        <span className="sr-only">{role.description}</span>
       </div>
 
-      {/* Title block — turns red on desktop hover */}
-      <div className="relative z-10 flex flex-col gap-2 p-4 lg:p-0 lg:h-[88px] lg:items-center lg:justify-center lg:gap-0 lg:transition-colors lg:duration-300 lg:group-hover:bg-[linear-gradient(180deg,#ff7c81_0%,#ff2830_100%)] rounded-b-[20px]">
-        <span className="text-[18px] lg:text-[32px] font-bold leading-none text-white">
+      {/* Role icon overlay — sibling of illustration so it can overhang    */}
+      {/* the rounded top corner. Hover-hide is desktop-only.               */}
+      {/* Figma mobile: 62×62; desktop: 98×98, cornerRadius 20.             */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 lg:group-hover:hidden">
+        <Image
+          src={role.icon}
+          alt=""
+          width={64}
+          height={64}
+          className="rounded-[14px] lg:w-[98px] lg:h-[98px] lg:rounded-[20px]"
+          loading="lazy"
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* Title block — mobile: 56px purple radial gradient (Figma 271:2327).*/}
+      {/* Desktop: 88px, turns red on hover.                                 */}
+      <div className="relative z-10 flex items-center justify-center h-[56px] rounded-b-[20px] overflow-hidden
+                      bg-[radial-gradient(ellipse_at_bottom,rgba(80,76,108,0.6)_0%,rgba(80,76,108,0)_100%)]
+                      lg:h-[88px] lg:bg-none lg:transition-colors lg:duration-300
+                      lg:group-hover:bg-[linear-gradient(180deg,#ff7c81_0%,#ff2830_100%)]">
+        <span className="text-[20px] lg:text-[32px] font-bold leading-none text-white">
           {role.name}
         </span>
       </div>
+
+      {/* Screen-reader description — visual text on desktop is baked into  */}
+      {/* hoverImage; mobile shows it too but keep for parity.               */}
+      <span className="sr-only">{role.description}</span>
     </button>
   );
 }
@@ -319,7 +334,7 @@ export function Roles() {
           {ROLES.map((role) => (
             <li
               key={role.id}
-              className="flex justify-center lg:[&:nth-child(even)]:-translate-y-[49px]"
+              className="flex justify-center lg:even:translate-y-[-49px]"
             >
               <RoleCard role={role} onOpen={setOpenId} />
             </li>
