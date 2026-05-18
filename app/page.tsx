@@ -10,7 +10,7 @@ import { Tagline } from "@/components/sections/Tagline";
 import { HowToPlay } from "@/components/sections/HowToPlay";
 import { Footer } from "@/components/sections/Footer";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://region.game";
 
 const organizationSchema = {
   "@context": "https://schema.org",

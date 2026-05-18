@@ -47,7 +47,7 @@ description: 'Region RP — это GTA 5 RP проект с детализиро
 
 ```ts
 metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
-// NEXT_PUBLIC_SITE_URL = TBD: production domain (e.g. https://regionrp.ru)
+// NEXT_PUBLIC_SITE_URL = https://region.game
 
 alternates: {
   canonical: '/',
@@ -78,11 +78,11 @@ Place all schemas as `<script type="application/ld+json">` in `/app/page.tsx`.
   "@type": "Organization",
   "name": "Region RP",
   "legalName": "ООО «1 Геймс»",
-  "url": "TBD: production domain",
+  "url": "https://region.game",
   "email": "hello@1games.ru",
   "logo": {
     "@type": "ImageObject",
-    "url": "TBD: https://<domain>/logo.png — export from Figma 'Лого' frame, min 512×512",
+    "url": "https://region.game/logo.png — export from Figma 'Лого' frame, min 512×512",
     "width": 512,
     "height": 512
   },
@@ -102,7 +102,7 @@ Place all schemas as `<script type="application/ld+json">` in `/app/page.tsx`.
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Region RP",
-  "url": "TBD: production domain",
+  "url": "https://region.game",
   "inLanguage": "ru-RU"
 }
 ```
@@ -121,7 +121,7 @@ Place all schemas as `<script type="application/ld+json">` in `/app/page.tsx`.
   "gamePlatform": "RAGE:MP",
   "operatingSystem": "Windows",
   "applicationCategory": "Game",
-  "url": "TBD: production domain",
+  "url": "https://region.game",
   "publisher": {
     "@type": "Organization",
     "name": "ООО «1 Геймс»"
@@ -298,7 +298,7 @@ export default function robots(): MetadataRoute.Robots {
 
 ```env
 # .env.local — never commit; mirror all in Vercel dashboard → Settings → Environment Variables
-NEXT_PUBLIC_SITE_URL=TBD: https://regionrp.ru
+NEXT_PUBLIC_SITE_URL=https://region.game
 NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX       # TBD: GA4 Measurement ID
 NEXT_PUBLIC_YM_ID=XXXXXXXX            # TBD: Yandex.Metrica counter ID
 ```

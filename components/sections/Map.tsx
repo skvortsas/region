@@ -290,7 +290,7 @@ function RegionTabs({
       className={[
         "grid overflow-visible",
         isMobile
-          ? "h-[34px] grid-cols-[154px_154px_92px]"
+          ? "h-[34px] grid-cols-3"
           : isTablet
             ? "h-[56px] grid-cols-3"
             : "h-[clamp(56px,5.7vw,92px)] grid-cols-3",
@@ -367,7 +367,9 @@ function CityButton({
       )}
       <span
         className={
-          isHorizontal ? "relative z-10 whitespace-nowrap" : "relative z-10 min-w-0"
+          isHorizontal
+            ? "relative z-10 whitespace-nowrap"
+            : "relative z-10 min-w-0"
         }
       >
         {city.name}

@@ -17,8 +17,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'www.yourdomain.com' }],
-        destination: 'https://yourdomain.com/:path*',
+        has: [{ type: 'host', value: 'www.region.game' }],
+        destination: 'https://region.game/:path*',
         permanent: true,
       },
     ]

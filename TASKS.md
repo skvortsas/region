@@ -73,7 +73,7 @@
   - Load Montserrat via `next/font/google`: subsets `['latin', 'cyrillic']`, `display: 'swap'`, `variable: '--font-montserrat'`, weights 400/500/600/700/800.
   - Set `<html lang="ru">`.
   - Export `metadata` using the title template and description from `docs/SEO.md §1` (title template `'%s | Region RP'`, default `'Region RP — Новый сервер GTA 5 RP'`).
-  - Set `metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000')`.
+  - Set `metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://region.game')`.
   - Set `openGraph: { locale: 'ru_RU' }`.
   - Remove Geist font imports.
   - Keep `<body>` minimal — sections will be composed in `page.tsx`.
@@ -81,19 +81,19 @@
 - [x] **1.4 — Create `.env.example` and `.env.local`**
   - `.env.example` (commit this):
     ```env
-    NEXT_PUBLIC_SITE_URL=http://localhost:3000
+    NEXT_PUBLIC_SITE_URL=https://region.game
     NEXT_PUBLIC_LAUNCH_DATE=          # ISO 8601, e.g. 2026-06-01T18:00:00+03:00
     NEXT_PUBLIC_SERVER_IP=            # RAGE:MP server IP:port, e.g. 0.0.0.0:22005
     NEXT_PUBLIC_RAGEMP_URL=           # Base URL for server status API, e.g. http://0.0.0.0:22005
     NEXT_PUBLIC_GA_ID=                # GA4 measurement ID, e.g. G-XXXXXXXXXX
     NEXT_PUBLIC_YM_ID=                # Yandex.Metrica counter ID
     ```
-  - `.env.local` (do not commit — already in `.gitignore`): same keys, fill `NEXT_PUBLIC_SITE_URL=http://localhost:3000`, leave rest empty.
+  - `.env.local` (do not commit — already in `.gitignore`): same keys, fill `NEXT_PUBLIC_SITE_URL=https://region.game`, leave rest empty.
 
 - [x] **1.5 — Update `next.config.ts`**
   - Enable `cacheComponents: true`.
   - Add placeholder `images.remotePatterns: []` with commented stubs for Discord CDN and CFX (see `docs/DEPLOYMENT.md §4`).
-  - Add `www → apex` redirect (use `yourdomain.com` placeholder; swap when domain is decided).
+  - Add `www.region.game → region.game` redirect.
 
 - [x] **1.6 — Create `app/sitemap.ts`**
   - Use the ready-made code from `docs/SEO.md §5`.

@@ -54,7 +54,7 @@ only affects server-rendered routes and route handler latency.
 
 ### DNS records
 
-Add these at your DNS registrar (replace `yourdomain.com` with the real domain):
+Add these at your DNS registrar for `region.game`:
 
 | Type | Name | Value | TTL |
 |---|---|---|---|
@@ -76,8 +76,8 @@ async redirects() {
   return [
     {
       source: '/:path*',
-      has: [{ type: 'host', value: 'www.yourdomain.com' }],
-      destination: 'https://yourdomain.com/:path*',
+      has: [{ type: 'host', value: 'www.region.game' }],
+      destination: 'https://region.game/:path*',
       permanent: true,
     },
   ]
@@ -86,7 +86,7 @@ async redirects() {
 
 ### Production domain
 
-`TBD: <register and add the domain here — e.g. region-rp.ru or regionrp.ru>`
+`https://region.game`
 
 ---
 
@@ -99,9 +99,9 @@ appropriate environment scope (Production / Preview / Development) per row below
 
 | Variable | Scope | Example value | Secret? | Notes |
 |---|---|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Prod | `https://yourdomain.com` | No | Used by `generateMetadata`, sitemap, canonical URLs, OG tags |
+| `NEXT_PUBLIC_SITE_URL` | Prod | `https://region.game` | No | Used by `generateMetadata`, sitemap, canonical URLs, OG tags |
 | `NEXT_PUBLIC_SITE_URL` | Preview | `https://region-preview.vercel.app` | No | Set per-branch or use Vercel's auto `VERCEL_URL` |
-| `NEXT_PUBLIC_SITE_URL` | Dev | `http://localhost:3000` | No | Set in `.env.local` |
+| `NEXT_PUBLIC_SITE_URL` | Dev | `https://region.game` | No | Set in `.env.local` for production-canonical SEO output during local QA |
 
 ### Analytics
 
@@ -143,7 +143,7 @@ Enable analytics in Preview too so QA reviews produce real event data.
 Create `.env.local` in repo root (already gitignored by Next.js):
 
 ```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=https://region.game
 NEXT_PUBLIC_GA_ID=
 NEXT_PUBLIC_YM_ID=
 FIVEM_SERVER_URL=TBD
@@ -223,7 +223,7 @@ jobs:
       - run: npm run lint
       - run: npm run build
         env:
-          NEXT_PUBLIC_SITE_URL: https://example.com
+          NEXT_PUBLIC_SITE_URL: https://region.game
           NEXT_PUBLIC_GA_ID: ""
           NEXT_PUBLIC_YM_ID: ""
 ```
@@ -353,10 +353,10 @@ artifacts indefinitely.
 
 Run after every production deploy before closing the deploy ticket:
 
-- [ ] `https://yourdomain.com` loads over HTTPS; no mixed-content warnings in DevTools
-- [ ] `https://www.yourdomain.com` redirects (301) to apex
-- [ ] `https://yourdomain.com/sitemap.xml` returns valid XML with correct domain
-- [ ] `https://yourdomain.com/robots.txt` is present and not blocking crawlers
+- [ ] `https://region.game` loads over HTTPS; no mixed-content warnings in DevTools
+- [ ] `https://www.region.game` redirects (301) to apex
+- [ ] `https://region.game/sitemap.xml` returns valid XML with correct domain
+- [ ] `https://region.game/robots.txt` is present and not blocking crawlers
 - [ ] OG preview: paste URL into https://www.opengraph.xyz — verify image, title, description
 - [ ] [PageSpeed Insights](https://pagespeed.web.dev/) on mobile: LCP < 2.5 s, CLS < 0.1, INP < 200 ms
 - [ ] [Google Rich Results Test](https://search.google.com/test/rich-results) on home page — Organization + WebSite schema passes

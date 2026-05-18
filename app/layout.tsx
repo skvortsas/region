@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: 'Region RP — Новый сервер GTA 5 RP',
   },
   description: 'Region RP — это GTA 5 RP проект с детализированными картами Санкт-Петербурга и Тольятти, где ты строишь свою историю с нуля',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://region.game'),
   openGraph: {
     locale: 'ru_RU',
   },

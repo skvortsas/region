@@ -180,7 +180,7 @@ Verified by `id` attribute and `aria-label` presence in HTML:
 3. **14 map screenshots** — require Figma export; `screenshots/` directory does not exist.
 4. **Hero background** — requires Figma export from node `24:396`.
 5. **Map image** — requires Figma export from node `262:688`.
-6. **Production domain** in `NEXT_PUBLIC_SITE_URL` — currently `http://localhost:3000`.
+6. **Production domain** in `NEXT_PUBLIC_SITE_URL` — set to `https://region.game`.
 7. **GA4 / Yandex.Metrica IDs** — analytics not wired yet.
 8. **Legal copy review** by Russian-licensed attorney — all 5 legal pages marked "Черновик".
 9. **`/public/logo.png` (512×512)** — referenced in Organization JSON-LD schema but missing from `/public/`.
