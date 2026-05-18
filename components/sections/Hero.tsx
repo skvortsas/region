@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { PromoCode } from "@/components/ui/PromoCode";
 
@@ -264,15 +263,16 @@ export function Hero() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-bg lg:min-h-[1080px]">
       <div aria-hidden="true" className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-bg.webp"
-          alt=""
-          width={1920}
-          height={1080}
-          priority
-          sizes="100vw"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
           className="h-full w-full object-cover object-center"
-        />
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Bottom shadow/fade — Figma node 88:87: 146px bottom-to-top gradient only. */}
