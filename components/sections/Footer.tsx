@@ -1,14 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const NAV_LINKS = [
-  { label: "Пользовательское соглашение", href: "/terms" },
-  { label: "Политика конфиденциальности", href: "/privacy" },
-  { label: "Дисклеймер", href: "/disclaimer" },
-  { label: "Политика обработки файлов cookie", href: "/cookies" },
+  { label: "Пользовательское соглашение", href: "/consent.pdf" },
+  { label: "Политика конфиденциальности", href: "/privacy_and_policy.pdf" },
+  { label: "Дисклеймер", href: "/disclaim.pdf" },
+  { label: "Политика обработки файлов cookie", href: "/cookie.pdf" },
   {
     label: "Согласие на обработку персональных данных",
-    href: "/personal-data",
+    href: "/processing_of_personal_data.pdf",
   },
 ] as const;
 
@@ -71,16 +70,18 @@ function FooterNav({ variant }: { variant: LayoutVariant }) {
         ].join(" ")}
       >
         {NAV_LINKS.map(({ label, href }) => (
-          <Link
+          <a
             key={href}
             href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             className={[
               "text-body font-medium leading-[1.4] text-white transition-colors hover:text-text-muted",
               variant === "desktop" ? "max-w-[391px]" : "max-w-[420px]",
             ].join(" ")}
           >
             {label}
-          </Link>
+          </a>
         ))}
       </nav>
     </div>
