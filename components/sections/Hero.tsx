@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/Button";
 import { PromoCode } from "@/components/ui/PromoCode";
 
 const INFO_BLOCK_1 =
@@ -99,6 +98,51 @@ function InfoBlock({ children, compact = false, text }: InfoBlockProps) {
         {text}
       </p>
     </div>
+  );
+}
+
+function HeroStarIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.9004 2.5886L15.8362 6.49216C16.1002 7.03556 16.8041 7.55677 17.398 7.65658L20.9066 8.24433C23.1504 8.62138 23.6783 10.2627 22.0615 11.8817L19.3338 14.632C18.8718 15.0978 18.6189 15.996 18.7619 16.6392L19.5428 20.0437C20.1587 22.7385 18.7399 23.781 16.3751 22.3726L13.0865 20.4097C12.4926 20.0548 11.5137 20.0548 10.9087 20.4097L7.62009 22.3726C5.26635 23.781 3.83651 22.7274 4.45244 20.0437L5.23336 16.6392C5.37634 15.996 5.12337 15.0978 4.66142 14.632L1.93372 11.8817C0.3279 10.2627 0.844843 8.62138 3.0886 8.24433L6.59721 7.65658C7.18014 7.55677 7.88406 7.03556 8.14804 6.49216L10.0838 2.5886C11.1397 0.470468 12.8555 0.470468 13.9004 2.5886Z"
+        fill="url(#hero-star-gradient)"
+      />
+      <defs>
+        <linearGradient
+          id="hero-star-gradient"
+          x1="12"
+          y1="1"
+          x2="12"
+          y2="23"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FF2830" />
+          <stop offset="1" stopColor="#FF686E" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+function HeroCtaButton() {
+  return (
+    <a
+      href="#"
+      className="hero-cta-button relative inline-flex h-[72px] w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent text-[20px] font-bold leading-[102%] text-white/80 transition-[filter] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:h-[88px] md:text-[28px]"
+    >
+      <span className="relative z-10 shrink-0">
+        <HeroStarIcon />
+      </span>
+      <span className="relative z-10">Начать играть</span>
+    </a>
   );
 }
 
@@ -295,9 +339,7 @@ export function Hero() {
 
         {/* CTA */}
         <div className="mt-12 w-full max-w-[583px]">
-          <Button variant="primary" href="#" className="w-full md:h-[88px]">
-            Начать играть
-          </Button>
+          <HeroCtaButton />
         </div>
 
         {/* Decorative scroll arrow */}
