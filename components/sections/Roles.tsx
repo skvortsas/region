@@ -42,7 +42,7 @@ const ROLES: Role[] = [
     icon: "/images/roles/businessman-icon.png",
     modalArt: "/images/roles/businessman.webp",
     modalArtMobile: "/images/roles/businessman.webp",
-    modalVideo: "",
+    modalVideo: "/videos/businessman.mp4",
   },
   {
     id: "police",
@@ -57,7 +57,7 @@ const ROLES: Role[] = [
     icon: "/images/roles/police-icon.png",
     modalArt: "/images/roles/police.webp",
     modalArtMobile: "/images/roles/police.webp",
-    modalVideo: "",
+    modalVideo: "/videos/police.mp4",
   },
   {
     id: "military",
@@ -72,7 +72,7 @@ const ROLES: Role[] = [
     icon: "/images/roles/military-icon.png",
     modalArt: "/images/roles/military.webp",
     modalArtMobile: "/images/roles/military.webp",
-    modalVideo: "",
+    modalVideo: "/videos/military.mp4",
   },
   {
     id: "bandit",
@@ -87,7 +87,7 @@ const ROLES: Role[] = [
     icon: "/images/roles/bandit-icon.png",
     modalArt: "/images/roles/bandit.webp",
     modalArtMobile: "/images/roles/bandit.webp",
-    modalVideo: "",
+    modalVideo: "/videos/bandit.mp4",
   },
   {
     id: "medic",
@@ -102,7 +102,7 @@ const ROLES: Role[] = [
     icon: "/images/roles/medic-icon.png",
     modalArt: "/images/roles/medic.webp",
     modalArtMobile: "/images/roles/medic.webp",
-    modalVideo: "",
+    modalVideo: "/videos/medic.mp4",
   },
 ];
 
@@ -224,9 +224,11 @@ function RolePopup({ role, onClose }: RolePopupProps) {
               <video
                 src={role.modalVideo}
                 className="w-full h-full object-cover"
-                controls
+                autoPlay
+                muted
+                loop
                 playsInline
-                preload="metadata"
+                preload="auto"
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center text-black/40 text-[12px] font-medium tracking-wider uppercase">
@@ -301,9 +303,11 @@ function RolePopup({ role, onClose }: RolePopupProps) {
                 <video
                   src={role.modalVideo}
                   className="w-full h-full object-cover"
-                  controls
+                  autoPlay
+                  muted
+                  loop
                   playsInline
-                  preload="metadata"
+                  preload="auto"
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-black/40 text-[14px] font-medium tracking-wider uppercase">
