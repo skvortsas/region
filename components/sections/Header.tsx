@@ -15,7 +15,12 @@ const NAV_ITEMS = [
 ] as const;
 
 const SECTION_IDS = ["hero", "map", "about", "info"];
-const SOCIALS = ["discord", "vk", "telegram", "youtube"] as const;
+const SOCIALS = [
+  { platform: "discord", href: "https://discord.gg/regiononline" },
+  { platform: "vk", href: "https://vk.com/regiononline" },
+  { platform: "telegram", href: "https://t.me/region" },
+  { platform: "youtube", href: "https://youtube.com/@region_online" },
+] as const;
 type NavItemId = (typeof NAV_ITEMS)[number]["id"];
 
 function HouseIcon() {
@@ -334,8 +339,8 @@ export function Header() {
           {/* Desktop right cluster: socials → login */}
           <div className="hidden min-[1560px]:flex items-center gap-[46px] ml-auto">
             <div className="flex items-center gap-[10px]">
-              {SOCIALS.map((p) => (
-                <SocialIcon key={p} platform={p} />
+              {SOCIALS.map(({ platform, href }) => (
+                <SocialIcon key={platform} platform={platform} href={href} />
               ))}
             </div>
 
@@ -425,8 +430,8 @@ export function Header() {
 
         {/* Social icons — bottom */}
         <div className="flex items-center justify-center gap-4 mt-auto pb-14">
-          {SOCIALS.map((p) => (
-            <SocialIcon key={p} platform={p} />
+          {SOCIALS.map(({ platform, href }) => (
+            <SocialIcon key={platform} platform={platform} href={href} />
           ))}
         </div>
       </div>
