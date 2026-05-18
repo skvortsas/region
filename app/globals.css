@@ -84,6 +84,22 @@
     #ff2830 100%
   );
   box-shadow: inset 0 0 0 1px rgba(255, 40, 48, 0.9);
+  cursor: pointer;
+  transition:
+    box-shadow 180ms ease,
+    color 180ms ease,
+    filter 180ms ease;
+}
+
+.promo-code-panel:hover {
+  color: #ffb5b8;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 40, 48, 0.9),
+    0 0 30px rgba(255, 40, 48, 1),
+    inset 0 0 30px rgba(255, 40, 48, 1),
+    inset 0 0 20px rgba(255, 40, 48, 1),
+    inset 0 0 10px rgba(255, 213, 215, 1);
+  filter: brightness(1.02);
 }
 
 .promo-timer-panel {

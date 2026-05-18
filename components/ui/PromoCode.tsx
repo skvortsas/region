@@ -92,7 +92,7 @@ export function PromoCode({ code, targetDate }: PromoCodeProps) {
       </div>
 
       <div
-        className="promo-code-panel absolute inset-x-0 bottom-0 h-[78.22px] rounded-[20px] lg:h-[114px]"
+        className="promo-code-panel absolute inset-x-0 bottom-0 h-[78.22px] rounded-[20px] text-white lg:h-[114px]"
         aria-label={`Промокод ${code}`}
       >
         <svg
@@ -106,15 +106,15 @@ export function PromoCode({ code, targetDate }: PromoCodeProps) {
         >
           <path
             d="M40.5 7.39444C40.5 4.41517 38.0259 2 34.974 2H20.8261C17.7741 2 15.3 4.41517 15.3 7.39444V29.4054C15.3 32.3847 17.7741 34.7998 20.8261 34.7998H34.974C38.0259 34.7998 40.5 32.3847 40.5 29.4054V7.39444Z"
-            fill="white"
+            fill="currentColor"
           />
           <path
             d="M11.0259 10.1997C7.97405 10.1997 5.50014 12.6148 5.5 15.594V37.6057C5.5003 40.5847 7.97414 43 11.0259 43H25.1733C28.225 43 30.6988 40.5847 30.6991 37.6057V37.5335H18.0256C14.974 37.5334 12.5 35.1182 12.4998 32.1393V10.1997H11.0259Z"
-            fill="white"
+            fill="currentColor"
           />
         </svg>
 
-        <p className="absolute left-[111.27px] top-[25.11px] text-[40px] font-bold leading-[28px] text-white lg:left-[166px] lg:top-[37px] lg:text-[57px] lg:leading-[40px]">
+        <p className="absolute left-[111.27px] top-[25.11px] text-[40px] font-bold leading-[28px] text-current lg:left-[166px] lg:top-[37px] lg:text-[57px] lg:leading-[40px]">
           {code}
         </p>
       </div>
