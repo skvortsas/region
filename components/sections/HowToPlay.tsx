@@ -16,6 +16,7 @@ function DownloadIcon() {
         </linearGradient>
       </defs>
       <path
+        className="transition-[fill] duration-150 group-hover:fill-white group-focus-visible:fill-white"
         fillRule="evenodd"
         clipRule="evenodd"
         fill="url(#dlGrad)"
@@ -116,34 +117,21 @@ function CardButton({
   href?: string;
   onClick?: () => void;
 }) {
-  const outerClass =
-    "mt-auto block w-full rounded-[20px] p-px lg:w-[466px]";
-  const outerStyle = {
-    background:
-      "linear-gradient(to right, rgba(255,40,48,0.2), rgba(255,40,48,1) 50%, rgba(255,40,48,0.2))",
-  };
-  const innerClass =
-    "flex w-full items-center justify-center gap-4 rounded-[19px] py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 lg:py-[30px] lg:text-[28px]";
-  const innerStyle = {
-    background:
-      "radial-gradient(ellipse at bottom, rgba(255,40,48,0.6) 0%, transparent 68%), #111117",
-  };
+  const classes =
+    "card-action-button group relative mt-auto flex w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none lg:w-[466px] lg:py-[30px] lg:text-[28px]";
+  const content = <span className="relative z-10 flex items-center gap-4">{children}</span>;
 
   if (href) {
     return (
-      <div className={outerClass} style={outerStyle}>
-        <a href={href} className={innerClass} style={innerStyle}>
-          {children}
-        </a>
-      </div>
+      <a href={href} className={classes}>
+        {content}
+      </a>
     );
   }
   return (
-    <div className={outerClass} style={outerStyle}>
-      <button type="button" onClick={onClick} className={innerClass} style={innerStyle}>
-        {children}
-      </button>
-    </div>
+    <button type="button" onClick={onClick} className={classes}>
+      {content}
+    </button>
   );
 }
 

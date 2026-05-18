@@ -15,11 +15,13 @@ function CopyIcon() {
       </defs>
       {/* Top-right rectangle */}
       <path
+        className="transition-[fill] duration-150 group-hover:fill-white group-focus-visible:fill-white"
         fill="url(#copyGrad)"
         d="M21 3.158C21 1.414 19.586 0 17.842 0H9.758C8.014 0 6.6 1.414 6.6 3.158V16.042C6.6 17.786 8.014 19.2 9.758 19.2H17.842C19.586 19.2 21 17.786 21 16.042V3.158Z"
       />
       {/* Bottom-left rectangle */}
       <path
+        className="transition-[fill] duration-150 group-hover:fill-white group-focus-visible:fill-white"
         fill="url(#copyGrad)"
         d="M4.158 4.8C2.414 4.8 1 6.214 1 7.957V20.842C1 22.586 2.414 24 4.158 24H12.242C13.986 24 15.4 22.586 15.4 20.842V20.8H8.158C6.414 20.8 5 19.386 5 17.643V4.8H4.158Z"
       />
@@ -56,25 +58,15 @@ export function CopyIPButton() {
   }
 
   return (
-    <div
-      className="mt-auto w-full rounded-[20px] p-px lg:w-[466px]"
-      style={{
-        background:
-          'linear-gradient(to right, rgba(255,40,48,0.2), rgba(255,40,48,1) 50%, rgba(255,40,48,0.2))',
-      }}
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="card-action-button group relative mt-auto flex w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none lg:w-[466px] lg:py-[30px] lg:text-[28px]"
     >
-      <button
-        type="button"
-        onClick={handleCopy}
-        className="flex w-full items-center justify-center gap-4 rounded-[19px] py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 lg:py-[30px] lg:text-[28px]"
-        style={{
-          background:
-            'radial-gradient(ellipse at bottom, rgba(255,40,48,0.6) 0%, transparent 68%), #111117',
-        }}
-      >
+      <span className="relative z-10 flex items-center gap-4">
         <CopyIcon />
         {copied ? 'СКОПИРОВАНО ✓' : 'СКОПИРОВАТЬ'}
-      </button>
-    </div>
+      </span>
+    </button>
   )
 }
