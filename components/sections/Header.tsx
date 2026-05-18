@@ -227,7 +227,7 @@ function HamburgerIcon() {
 }
 
 export function Header() {
-  const [onlineCount, setOnlineCount] = useState(142);
+  const [onlineCount, setOnlineCount] = useState(742);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const activeId = useScrollSpy(SECTION_IDS);
 
