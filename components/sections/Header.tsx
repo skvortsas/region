@@ -153,31 +153,36 @@ function ActiveNavIcon({ id }: { id: NavItemId }) {
 
 function PersonIcon() {
   return (
-    <svg
-      width="12"
-      height="16"
-      viewBox="44 22 12 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient
-          id="login-person-grad"
-          x1="49.6318"
-          y1="22"
-          x2="49.6318"
-          y2="38"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#FF2830" />
-          <stop offset="1" stopColor="#FF686E" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M45.5762 31.7275C47.8242 30.2398 51.4644 30.2396 53.6963 31.7275C54.7043 32.3915 55.2557 33.3121 55.2637 34.2881C55.2636 35.28 54.7042 36.1921 53.6963 36.8721C52.5763 37.6241 51.1038 38 49.6318 38C48.16 38 46.6883 37.6239 45.5684 36.8721C44.5604 36.2001 44 35.2877 44 34.3037C44.0001 33.3198 44.5603 32.3995 45.5762 31.7275ZM51.4961 32.9443C51.3041 32.7523 50.984 32.7523 50.792 32.9443L49.1279 34.6084L48.4717 33.9521C48.2797 33.7602 47.9596 33.7602 47.7676 33.9521C47.5759 34.1442 47.5758 34.4643 47.7676 34.6562L48.7764 35.6641C48.8723 35.7519 49.0001 35.8076 49.1279 35.8076C49.2559 35.8076 49.3845 35.7601 49.4805 35.6641L51.4961 33.6484C51.696 33.4565 51.6959 33.1364 51.4961 32.9443ZM49.6318 22C51.7278 22 53.4315 23.7039 53.4316 25.7998C53.4236 27.8558 51.8156 29.5198 49.7676 29.5918H49.7119C49.664 29.5838 49.6 29.5838 49.5361 29.5918C47.4401 29.5198 45.832 27.8558 45.832 25.7998C45.8321 23.704 47.536 22.0001 49.6318 22Z"
-        fill="url(#login-person-grad)"
-      />
-    </svg>
+    <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
+      <svg
+        width="12"
+        height="16"
+        viewBox="0 0 12 16"
+        fill="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient
+            id="login-person-grad"
+            x1="5.63184"
+            y1="0"
+            x2="5.63184"
+            y2="16"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#FF2830" />
+            <stop offset="1" stopColor="#FF686E" />
+          </linearGradient>
+        </defs>
+        <path
+          className="transition-[fill] duration-150 group-hover:fill-white group-focus-visible:fill-white"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M1.57617 9.72754C3.8242 8.23975 7.4644 8.23961 9.69629 9.72754C10.7043 10.3915 11.2557 11.3121 11.2637 12.2881C11.2636 13.28 10.7042 14.1921 9.69629 14.8721C8.57629 15.6241 7.10384 16 5.63184 16C4.16002 16 2.68828 15.6239 1.56836 14.8721C0.560359 14.2001 0 13.2877 0 12.3037C0.000101686 11.3198 0.560264 10.3995 1.57617 9.72754ZM7.49609 10.9443C7.30409 10.7523 6.98399 10.7523 6.79199 10.9443L5.12793 12.6084L4.47168 11.9521C4.27967 11.7602 3.95955 11.7602 3.76758 11.9521C3.5759 12.1442 3.57575 12.4643 3.76758 12.6562L4.77637 13.6641C4.87232 13.7519 5.00006 13.8076 5.12793 13.8076C5.25593 13.8076 5.38447 13.7601 5.48047 13.6641L7.49609 11.6484C7.69602 11.4565 7.69587 11.1364 7.49609 10.9443ZM5.63184 0C7.72777 0 9.43153 1.70389 9.43164 3.7998C9.42364 5.8558 7.81558 7.5198 5.76758 7.5918H5.71191C5.66396 7.58383 5.60003 7.58382 5.53613 7.5918C3.44013 7.5198 1.83203 5.8558 1.83203 3.7998C1.83214 1.70396 3.53599 0.00010588 5.63184 0Z"
+          fill="url(#login-person-grad)"
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -188,17 +193,11 @@ function LoginButton({
   className?: string;
   size?: "sm" | "lg";
 }) {
-  const dims =
-    size === "lg" ? "h-[60px] w-[180px]" : "h-[50px] w-[136px]";
+  const dims = size === "lg" ? "h-[60px] w-[180px]" : "h-[50px] w-[136px]";
   return (
     <a
       href="#"
-      className={`inline-flex ${dims} items-center justify-center gap-2 rounded-[20px] text-[18px] font-semibold uppercase leading-[1.22] tracking-wider text-white/80 transition-colors hover:text-white ${className}`}
-      style={{
-        border: "1px solid rgba(255, 40, 48, 0.6)",
-        background:
-          "radial-gradient(68.07% 147.75% at 50% 100%, rgba(255, 40, 48, 0.6) 0%, rgba(255, 40, 48, 0) 100%)",
-      }}
+      className={`login-button group inline-flex ${dims} items-center justify-center gap-2 rounded-[20px] border border-transparent text-[18px] font-semibold uppercase leading-[21.942px] tracking-[0.9px] text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none ${className}`}
     >
       <PersonIcon />
       ВОЙТИ

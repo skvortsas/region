@@ -126,6 +126,36 @@
   fill: url("#social-gradient-youtube");
 }
 
+.login-button {
+  background:
+    radial-gradient(
+        68.1% 147.75% at 50% 100%,
+        rgba(255, 40, 48, 0.6) 0%,
+        rgba(255, 40, 48, 0) 100%
+      )
+      padding-box,
+    linear-gradient(
+        90deg,
+        rgba(255, 40, 48, 0.2) 0%,
+        #ff2830 49.519%,
+        rgba(255, 40, 48, 0.2) 100%
+      )
+      border-box;
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  transition:
+    box-shadow 150ms ease,
+    color 150ms ease;
+}
+
+.login-button:hover,
+.login-button:focus-visible {
+  box-shadow:
+    0 0 30px #ff2830,
+    inset 0 0 20px #ff2830,
+    inset 0 0 10px #ff2830;
+}
+
 .promo-timer-panel {
   background: radial-gradient(
     85.47% 266.67% at 50% 100%,
