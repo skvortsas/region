@@ -1,15 +1,16 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { PromoCode } from "@/components/ui/PromoCode";
 
 const INFO_BLOCK_1 =
-  "Region RP — это GTA 5 RP проект с детализированными картами Санкт-Петербурга и Тольятти, где ты строишь свою историю с нуля";
+  "Region RP — это GTA 5 RP проект с детализированными картами Санкт-Петербурга и Тольятти, где ты строишь свою историю с нуля";
 const INFO_BLOCK_2 =
-  "Выбирай роль и займи место в мире, где всё зависит от твоих решений и скорости развития";
+  "Выбирай роль и займи место в мире, где всё зависит от твоих решений и скорости развития";
 
 function InfoIconShield() {
   return (
-    <span className="shrink-0 inline-flex items-center justify-center w-[58px] h-[58px] rounded-[20px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,40,48,0.35)_0%,transparent_70%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.3)]">
+    <span className="inline-flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-[20px] bg-[radial-gradient(85.47%_115.52%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.55)] backdrop-blur-[25px]">
       <svg
         width="36"
         height="36"
@@ -42,7 +43,7 @@ function InfoIconShield() {
 
 function InfoIconUsers() {
   return (
-    <span className="shrink-0 inline-flex items-center justify-center w-[58px] h-[58px] rounded-[20px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,40,48,0.35)_0%,transparent_70%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.3)]">
+    <span className="inline-flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-[20px] bg-[radial-gradient(85.47%_115.52%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.55)] backdrop-blur-[25px]">
       <svg
         width="35"
         height="34"
@@ -72,6 +73,32 @@ function InfoIconUsers() {
         </defs>
       </svg>
     </span>
+  );
+}
+
+interface InfoBlockProps {
+  children: ReactNode;
+  compact?: boolean;
+  text: string;
+}
+
+function InfoBlock({ children, compact = false, text }: InfoBlockProps) {
+  return (
+    <div
+      className={`relative min-h-[186px] w-full max-w-[427px] shrink-0 lg:absolute lg:left-[1193px] lg:w-[427px] ${
+        compact ? "lg:top-[759px] lg:h-[157px]" : "lg:top-[162px] lg:h-[186px]"
+      }`}
+    >
+      <div className="hero-info-card absolute inset-y-0 left-[30px] right-0 rounded-[20px]" />
+
+      <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2">
+        {children}
+      </div>
+
+      <p className="absolute left-[77px] top-[30px] z-10 w-[calc(100%-107px)] max-w-[320px] text-[20px] font-medium leading-[28px] text-white">
+        {text}
+      </p>
+    </div>
   );
 }
 
@@ -244,30 +271,21 @@ export function Hero() {
           </div>
         </div>
 
-        <div
-          aria-hidden="true"
-          className="h-[216px] shrink-0 lg:hidden"
-        />
+        <div aria-hidden="true" className="h-[216px] shrink-0 lg:hidden" />
 
         <div
           aria-hidden="true"
           className="hidden h-[266px] shrink-0 lg:block"
         />
 
-        {/* Two info blocks */}
-        <div className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
-          <div className="flex items-start gap-4">
+        {/* Two info blocks — Figma nodes 38:240 and 38:239. */}
+        <div className="mt-12 flex w-full flex-col gap-6 lg:mt-0 lg:contents">
+          <InfoBlock text={INFO_BLOCK_1}>
             <InfoIconShield />
-            <p className="text-body font-medium text-text-secondary">
-              {INFO_BLOCK_1}
-            </p>
-          </div>
-          <div className="flex items-start gap-4">
+          </InfoBlock>
+          <InfoBlock compact text={INFO_BLOCK_2}>
             <InfoIconUsers />
-            <p className="text-body font-medium text-text-secondary">
-              {INFO_BLOCK_2}
-            </p>
-          </div>
+          </InfoBlock>
         </div>
 
         {/* Promo code + countdown */}
