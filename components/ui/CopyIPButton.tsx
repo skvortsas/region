@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const SERVER_IP = process.env.NEXT_PUBLIC_SERVER_IP ?? "0.0.0.0:22005";
+const SERVER_IP = "s1.region.game";
 
 function CopyIcon() {
   return (
