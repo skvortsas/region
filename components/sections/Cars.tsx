@@ -52,7 +52,7 @@ const CARS: Car[] = [
 
 function StatBadge({ label, value }: CarStat) {
   return (
-    <div className="rounded-card px-3 py-4 md:px-5 lg:flex lg:h-[105px] lg:flex-col lg:justify-center">
+    <div className="rounded-card px-3 py-4 md:px-5 lg:flex lg:flex-col lg:justify-center">
       <span className="block text-[12px] font-bold leading-[1.2] text-white md:text-[24px]">
         {value}
       </span>
@@ -67,7 +67,7 @@ function CarCard({ car }: { car: Car }) {
   return (
     <article
       aria-label={car.name}
-      className="relative flex w-full max-w-[800px] flex-col overflow-hidden rounded-card bg-gradient-surface shadow-[0_30px_80px_rgba(0,0,0,0.35)] lg:h-[552px]"
+      className="relative flex w-full max-w-[800px] flex-col overflow-hidden rounded-card bg-gradient-surface shadow-[0_30px_80px_rgba(0,0,0,0.35)]"
     >
       <div className="relative h-auto aspect-[800/448] w-full lg:h-[448px] lg:aspect-auto">
         <Image
@@ -105,8 +105,8 @@ export function Cars() {
       aria-labelledby="cars-heading"
       className="relative w-full bg-bg px-4 py-16 md:px-12 md:py-24 lg:py-0"
     >
-      <div className="mx-auto flex w-full max-w-[1620px] flex-col lg:h-[822px]">
-        <header className="grid gap-6 lg:h-[170px] lg:grid-cols-[1fr_679px] lg:items-start">
+      <div className="mx-auto flex w-full max-w-[1620px] flex-col">
+        <header className="flex flex-col gap-6 justify-between lg:flex-row lg:items-start">
           <h2
             id="cars-heading"
             className="mx-auto max-w-[907px] text-center text-[3.375rem] font-extrabold leading-none text-white lg:mx-0 lg:text-left lg:text-display"
@@ -122,7 +122,7 @@ export function Cars() {
           </div>
         </header>
 
-        <div className="mt-10 grid w-full grid-cols-1 justify-items-center gap-5 md:mt-14 lg:mt-[100px] lg:grid-cols-[800px_800px] lg:gap-5">
+        <div className="mt-10 flex flex-wrap w-full justify-center gap-5 md:mt-14 xl:mt-[100px]">
           {CARS.map((car) => (
             <CarCard key={car.name} car={car} />
           ))}

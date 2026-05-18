@@ -68,7 +68,7 @@ function FeatureItem({
         />
       </div>
 
-      <div className="relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_35%_75%_at_-3%_50%,rgba(255,40,48,0.36),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,rgba(14,14,15,0.5),rgba(17,17,23,0.5))] p-[30px] ml-[30px] lg:h-[186px] lg:w-[409px] px-[35px] py-[34px] pl-[35px]">
+      <div className="relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_35%_75%_at_-3%_50%,rgba(255,40,48,0.36),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,rgba(14,14,15,0.5),rgba(17,17,23,0.5))] p-[30px] ml-[30px] lg:w-[409px] px-[35px] py-[34px] pl-[35px]">
         <p className="text-body font-medium leading-[1.4] text-white">{text}</p>
       </div>
     </article>
@@ -85,7 +85,7 @@ function EconomyPhoto({
 }: EconomyPhoto) {
   return (
     <div
-      className={`overflow-hidden rounded-card bg-surface ring-1 ring-purple/70 ${className ?? ""}`}
+      className={`rounded-card bg-surface ring-1 ring-purple/70 ${className ?? ""}`}
     >
       <Image
         src={src}
@@ -94,7 +94,7 @@ function EconomyPhoto({
         height={height}
         sizes={sizes}
         loading="lazy"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover rounded-card"
       />
     </div>
   );
@@ -107,8 +107,8 @@ export function RPEconomy() {
       aria-labelledby="rp-economy-heading"
       className="relative w-full bg-bg px-4 py-16 md:px-12 md:py-24 lg:py-0"
     >
-      <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 lg:h-[895px] lg:gap-[100px]">
-        <header className="contents lg:grid lg:h-[170px] lg:grid-cols-[1fr_348px] lg:items-start lg:gap-6">
+      <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 lg:gap-[100px]">
+        <header className="flex flex-col gap-6 items-center xl:justify-between xl:flex-row xl:items-start">
           <h2
             id="rp-economy-heading"
             className="order-1 max-w-[1252px] text-display-mobile font-extrabold leading-none text-white lg:order-0 lg:text-display"
@@ -116,14 +116,14 @@ export function RPEconomy() {
             Продуманная система RP и экономика
           </h2>
 
-          <div className="order-2 relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_68%_137%_at_50%_100%,rgba(255,40,48,0.6),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,#0e0e0f,#111117)] p-[30px] before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/diamond-pattern.svg')] before:bg-size-[16px_16px] before:bg-repeat before:opacity-60 before:mix-blend-overlay lg:order-0 lg:min-h-[166px]">
+          <div className="xl:max-w-[348px] order-2 relative rounded-card bg-[radial-gradient(ellipse_68%_137%_at_50%_100%,rgba(255,40,48,0.6),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,#0e0e0f,#111117)] p-[30px] before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/diamond-pattern.svg')] before:bg-size-[16px_16px] before:bg-repeat before:opacity-60 before:mix-blend-overlay lg:order-0 l§g:min-h-[166px]">
             <p className="relative text-body font-medium leading-[1.4] text-white">
               {ACCENT_COPY}
             </p>
           </div>
         </header>
 
-        <div className="contents lg:grid lg:grid-cols-[898px_682px] lg:gap-10">
+        <div className="contents lg:grid lg:grid-cols-[1fr_1fr] lg:gap-10">
           <div className="contents lg:flex lg:flex-col lg:gap-10">
             <div className="contents lg:grid lg:grid-cols-[439px_439px] lg:gap-5">
               <FeatureItem {...FEATURES[0]} className="order-4 lg:order-0" />

@@ -252,13 +252,13 @@ export function Header() {
   return (
     <>
       <header
-        className="sticky top-0 z-50 backdrop-blur-sm"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
         style={{
           background:
             "linear-gradient(to bottom, rgba(14,14,15,0.5), rgba(17,17,23,0.5))",
         }}
       >
-        <div className="relative flex items-center h-[50px] pl-5 pr-0 min-[440px]:h-[60px] min-[440px]:px-4 md:px-12 max-w-[1920px] mx-auto">
+        <div className="relative flex items-center h-[50px] pl-5 pr-0 min-[1560px]:h-[60px] min-[1560px]:px-4 md:px-12 max-w-[1920px] mx-auto">
           {/* Logo — small mark on mobile, full wordmark on desktop */}
           <a
             href="#hero"
@@ -271,7 +271,7 @@ export function Header() {
               width={22}
               height={20}
               priority
-              className="min-[440px]:hidden"
+              className="min-[1560px]:hidden"
             />
             <Image
               src="/images/logo.svg"
@@ -279,12 +279,12 @@ export function Header() {
               width={109}
               height={22}
               priority
-              className="hidden min-[440px]:block"
+              className="hidden min-[1560px]:block"
             />
           </a>
 
           {/* Counter — desktop, next to logo */}
-          <div className="hidden min-[440px]:flex ml-5">
+          <div className="hidden min-[1560px]:flex ml-5">
             <Suspense
               fallback={
                 <span className="w-32 h-4 rounded bg-white/10 animate-pulse" />
@@ -295,13 +295,13 @@ export function Header() {
           </div>
 
           {/* Counter — mobile, compact variant next to logo */}
-          <div className="flex min-[440px]:hidden ml-5">
+          <div className="flex min-[1560px]:hidden ml-5">
             <OnlineCounter count={onlineCount} compact />
           </div>
 
           {/* Nav — desktop, centered in header */}
           <nav
-            className="hidden min-[440px]:flex absolute left-1/2 -translate-x-1/2 items-center"
+            className="hidden min-[1560px]:flex absolute left-1/2 -translate-x-1/2 items-center"
             aria-label="Основная навигация"
           >
             {NAV_ITEMS.map(({ label, href, id }) => {
@@ -332,7 +332,7 @@ export function Header() {
           </nav>
 
           {/* Desktop right cluster: socials → login */}
-          <div className="hidden min-[440px]:flex items-center gap-[46px] ml-auto">
+          <div className="hidden min-[1560px]:flex items-center gap-[46px] ml-auto">
             <div className="flex items-center gap-[10px]">
               {SOCIALS.map((p) => (
                 <SocialIcon key={p} platform={p} />
@@ -343,7 +343,7 @@ export function Header() {
           </div>
 
           {/* Mobile right cluster: hamburger → login button (flush right) */}
-          <div className="flex min-[440px]:hidden items-center gap-5 ml-auto">
+          <div className="flex min-[1560px]:hidden items-center gap-5 ml-auto">
             <button
               className="flex h-[42px] w-[42px] items-center justify-center text-[#D9D9D9]"
               aria-label="Открыть меню"
@@ -360,7 +360,7 @@ export function Header() {
 
       {/* Mobile slide-in drawer */}
       <div
-        className={`min-[440px]:hidden fixed inset-0 z-50 flex flex-col transition-transform duration-300 ${
+        className={`min-[1560px]:hidden fixed inset-0 z-50 flex flex-col transition-transform duration-300 ${
           drawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{

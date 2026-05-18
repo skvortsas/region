@@ -5,54 +5,42 @@ const COPY =
 
 interface Prop {
   src: string;
-  /** 1× logical dimensions — desktop (1920px layout) */
-  desktopW: number;
-  desktopH: number;
-  /** Tailwind classes for the wrapper — shown only at min-[1920px] */
-  desktopWrapper: string;
-  /** 1× logical dimensions — mobile/tablet (<1920px) */
-  mobileW: number;
-  mobileH: number;
-  /** Tailwind classes for the wrapper — shown below 1920px */
-  mobileWrapper: string;
+  /** 1× export dimensions (aspect ratio + next/image intrinsic size) */
+  w: number;
+  h: number;
+  /** Absolute wrapper: % of section box so props scale with container */
+  wrapper: string;
+  sizes: string;
 }
 
 const PROPS: Prop[] = [
   {
     src: "/images/props/prop-star.png",
-    desktopW: 240,
-    desktopH: 240,
-    desktopWrapper: "max-[1919px]:hidden absolute left-[91px] top-0",
-    mobileW: 94,
-    mobileH: 94,
-    mobileWrapper: "min-[1920px]:hidden absolute left-[6px] top-0",
+    w: 240,
+    h: 240,
+    wrapper: "absolute left-[90px] top-0 w-[12.5%]",
+    sizes: "(max-width: 1920px) 12.5vw, 240px",
   },
   {
     src: "/images/props/prop-money.png",
-    desktopW: 577,
-    desktopH: 577,
-    desktopWrapper: "max-[1919px]:hidden absolute left-[11px] top-[116px]",
-    mobileW: 179,
-    mobileH: 179,
-    mobileWrapper: "min-[1920px]:hidden absolute left-[-14px] top-[146px]",
+    w: 577,
+    h: 577,
+    wrapper: "absolute left-0 top-40 w-[30.0521%]",
+    sizes: "(max-width: 1920px) 30.05vw, 577px",
   },
   {
     src: "/images/props/prop-grenade.png",
-    desktopW: 270,
-    desktopH: 245,
-    desktopWrapper: "max-[1919px]:hidden absolute left-[1585px] top-[48px]",
-    mobileW: 75,
-    mobileH: 68,
-    mobileWrapper: "min-[1920px]:hidden absolute left-[345px] top-[14px]",
+    w: 270,
+    h: 245,
+    wrapper: "absolute left-[82.5521%] top-[8.4211%] w-[14.0625%]",
+    sizes: "(max-width: 1920px) 14.06vw, 270px",
   },
   {
     src: "/images/props/prop-balaclava.png",
-    desktopW: 553,
-    desktopH: 553,
-    desktopWrapper: "max-[1919px]:hidden absolute left-[1268px] top-[170px]",
-    mobileW: 159,
-    mobileH: 159,
-    mobileWrapper: "min-[1920px]:hidden absolute left-[302px] top-[157px]",
+    w: 553,
+    h: 553,
+    wrapper: "absolute left-[66.0417%] top-40 w-[28.8021%]",
+    sizes: "(max-width: 1920px) 28.8vw, 553px",
   },
 ];
 
@@ -65,42 +53,22 @@ export function Tagline() {
     >
       {/* 1920-wide inner container keeps absolute props anchored to Figma coords */}
       <div className="relative mx-auto w-full max-w-[1920px] min-h-[360px] overflow-visible lg:min-h-[570px]">
-        {PROPS.map(
-          ({
-            src,
-            desktopW,
-            desktopH,
-            desktopWrapper,
-            mobileW,
-            mobileH,
-            mobileWrapper,
-          }) => (
-            <div className="relative z-1" key={src}>
-              <div className={desktopWrapper}>
-                <Image
-                  src={src}
-                  alt=""
-                  width={desktopW}
-                  height={desktopH}
-                  loading="lazy"
-                  aria-hidden="true"
-                  className="pointer-events-none select-none"
-                />
-              </div>
-              <div className={mobileWrapper}>
-                <Image
-                  src={src}
-                  alt=""
-                  width={mobileW}
-                  height={mobileH}
-                  loading="lazy"
-                  aria-hidden="true"
-                  className="pointer-events-none select-none"
-                />
-              </div>
+        {PROPS.map(({ src, w, h, wrapper, sizes }) => (
+          <div className="relative z-1" key={src}>
+            <div className={wrapper}>
+              <Image
+                src={src}
+                alt=""
+                width={w}
+                height={h}
+                loading="lazy"
+                aria-hidden="true"
+                sizes={sizes}
+                className="pointer-events-none h-auto w-full select-none"
+              />
             </div>
-          ),
-        )}
+          </div>
+        ))}
 
         {/* Centred tagline text */}
         <div className="relative flex min-h-[360px] items-start justify-center px-5 pt-[60px] lg:min-h-[570px] lg:px-[150px] lg:pt-[100px]">

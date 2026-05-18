@@ -14,9 +14,22 @@ const PLATFORM_LINKS = {
 // ---------------------------------------------------------------------------
 function DownloadIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <defs>
-        <linearGradient id="dlGrad" x1="12" y1="2" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="dlGrad"
+          x1="12"
+          y1="2"
+          x2="12"
+          y2="23"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF686E" />
         </linearGradient>
@@ -60,9 +73,22 @@ function PlatformIcon({
 // Rockstar logo — Figma node 175:325
 function RockstarLogo() {
   return (
-    <svg width="46" height="44" viewBox="0 0 46 44" fill="none" aria-hidden="true">
+    <svg
+      width="46"
+      height="44"
+      viewBox="0 0 46 44"
+      fill="none"
+      aria-hidden="true"
+    >
       <defs>
-        <linearGradient id="regionGrad" x1="23" y1="0" x2="23" y2="44" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="regionGrad"
+          x1="23"
+          y1="0"
+          x2="23"
+          y2="44"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF686E" />
         </linearGradient>
@@ -78,9 +104,22 @@ function RockstarLogo() {
 // Steam logo — Figma node 175:326 (icon path only)
 function SteamLogo() {
   return (
-    <svg width="50" height="50" viewBox="11 11 50 50" fill="none" aria-label="Steam">
+    <svg
+      width="50"
+      height="50"
+      viewBox="11 11 50 50"
+      fill="none"
+      aria-label="Steam"
+    >
       <defs>
-        <linearGradient id="steamGrad" x1="36" y1="11" x2="36" y2="61" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="steamGrad"
+          x1="36"
+          y1="11"
+          x2="36"
+          y2="61"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF686E" />
         </linearGradient>
@@ -96,9 +135,22 @@ function SteamLogo() {
 // Epic Games logo — Figma node 175:332 (icon path only, simplified)
 function EpicGamesLogo() {
   return (
-    <svg width="50" height="52" viewBox="14 10 45 52" fill="none" aria-label="Epic Games">
+    <svg
+      width="50"
+      height="52"
+      viewBox="14 10 45 52"
+      fill="none"
+      aria-label="Epic Games"
+    >
       <defs>
-        <linearGradient id="epicGrad" x1="36.5" y1="10" x2="36.5" y2="62" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="epicGrad"
+          x1="36.5"
+          y1="10"
+          x2="36.5"
+          y2="62"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF686E" />
         </linearGradient>
@@ -124,8 +176,10 @@ function CardButton({
   onClick?: () => void;
 }) {
   const classes =
-    "card-action-button group relative mt-auto flex w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none lg:w-[466px] lg:py-[30px] lg:text-[28px]";
-  const content = <span className="relative z-10 flex items-center gap-4">{children}</span>;
+    "card-action-button group relative mt-auto flex w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none 2xl:w-[466px] 2xl:py-[30px] 2xl:text-[28px]";
+  const content = (
+    <span className="relative z-10 flex items-center gap-4">{children}</span>
+  );
 
   if (href) {
     return (
@@ -189,9 +243,9 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
       aria-label={`Шаг ${step.number}: ${step.title}`}
       className={[
         "relative flex w-full flex-col overflow-hidden rounded-[20px]",
-        "lg:w-[526px] lg:h-[643px]",
-        "ring-1 ring-[#504c6c]/60",
-        offset ? "lg:mt-[112px]" : "",
+        "2xl:w-[526px] 2xl:h-[643px]",
+        "ring-1 ring-purple/60",
+        offset ? "2xl:mt-[112px]" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -201,7 +255,7 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
       }}
     >
       {/* Illustration */}
-      <div className="relative h-[198px] w-full shrink-0 overflow-hidden lg:h-[261px] lg:w-[526px]">
+      <div className="relative h-[198px] w-full shrink-0 overflow-hidden 2xl:h-[261px] 2xl:w-[526px]">
         <Image
           src={step.illustrationSrc}
           alt={step.illustrationAlt}
@@ -214,13 +268,13 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
       </div>
 
       {/* Card body */}
-      <div className="flex flex-1 flex-col gap-3 p-5 lg:gap-4 lg:px-[30px] lg:py-[30px]">
+      <div className="flex flex-1 flex-col gap-3 p-5 2xl:gap-4 2xl:px-[30px] 2xl:py-[30px]">
         {/* Badge + title on same line */}
         <div className="flex items-start gap-3">
           {/* Step badge */}
           <div
             aria-hidden="true"
-            className="flex shrink-0 items-center justify-center rounded-[15px] h-[52px] w-[69px] lg:rounded-[20px] lg:h-[69px] lg:w-[91px]"
+            className="flex shrink-0 items-center justify-center rounded-[15px] h-[52px] w-[69px] 2xl:rounded-[20px] 2xl:h-[69px] 2xl:w-[91px]"
             style={{
               background:
                 "radial-gradient(ellipse at bottom, rgba(255,40,48,0.6) 0%, transparent 85%)",
@@ -228,19 +282,19 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
               boxShadow: "inset 0 0 0 1px rgba(255,40,48,0.4)",
             }}
           >
-            <span className="text-[32px] font-bold leading-none text-white lg:text-[47px]">
+            <span className="text-[32px] font-bold leading-none text-white 2xl:text-[47px]">
               {step.number}
             </span>
           </div>
 
           {/* Step title */}
-          <h3 className="pt-1 text-[20px] font-bold leading-[1.2] text-white lg:text-[28px]">
+          <h3 className="pt-1 text-[20px] font-bold leading-[1.2] text-white 2xl:text-[28px]">
             {step.title}
           </h3>
         </div>
 
         {/* Step body */}
-        <p className="text-[16px] font-medium leading-[1.4] text-white lg:text-[20px]">
+        <p className="text-[16px] font-medium leading-[1.4] text-white 2xl:text-[20px]">
           {step.body}
         </p>
 
@@ -290,23 +344,22 @@ export function HowToPlay() {
     <section
       id="howtoplay"
       aria-labelledby="howtoplay-heading"
-      className="relative w-full overflow-hidden bg-bg px-4 py-16 md:px-12 md:py-24 lg:py-0"
+      className="relative w-full overflow-hidden bg-bg px-4 py-16 md:px-12 md:py-24"
     >
-      <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 lg:h-[1141px] lg:gap-0 lg:pt-[100px]">
+      <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 2xl:gap-0 2xl:pt-[100px]">
         {/* Heading row */}
-        <header className="grid gap-6 lg:grid-cols-[1fr_538px] lg:items-start">
+        <header className="grid gap-6 2xl:grid-cols-[1fr_538px] 2xl:items-start">
           {/* H2 with "играть" in red */}
           <h2
             id="howtoplay-heading"
-            className="text-center text-[48px] font-extrabold leading-none text-white lg:text-left lg:text-[100px]"
+            className="text-center text-[48px] font-extrabold leading-none text-white 2xl:text-left 2xl:text-[100px]"
           >
-            Как начать{" "}
-            <span className="text-accent">играть</span>?
+            Как начать <span className="text-accent">играть</span>?
           </h2>
 
           {/* Sub-copy card with diamond pattern overlay */}
           <div
-            className="relative overflow-hidden rounded-[20px] p-[30px] lg:min-h-[142px] lg:max-w-[538px]"
+            className="relative overflow-hidden rounded-[20px] p-[30px] 2xl:min-h-[142px] 2xl:max-w-[538px]"
             style={{
               background:
                 "radial-gradient(ellipse at bottom, rgba(255,40,48,0.6) 0%, transparent 70%), #111117",
@@ -323,7 +376,7 @@ export function HowToPlay() {
                 mixBlendMode: "overlay",
               }}
             />
-            <p className="relative text-[16px] font-medium leading-[1.4] text-white lg:text-[20px]">
+            <p className="relative text-[16px] font-medium leading-[1.4] text-white 2xl:text-[20px]">
               Выполните три простых шага&#160; и наслаждайтесь игрой на сервере
               Region в мире GTA 5 RP
             </p>
@@ -331,7 +384,7 @@ export function HowToPlay() {
         </header>
 
         {/* Step cards */}
-        <div className="grid grid-cols-1 gap-6 lg:mt-[86px] lg:grid-cols-3 lg:items-start lg:gap-5">
+        <div className="grid grid-cols-1 gap-6 2xl:mt-[86px] 2xl:grid-cols-3 2xl:items-start 2xl:gap-5">
           <StepCardItem step={STEPS[0]} />
           <StepCardItem step={STEPS[1]} offset />
           <StepCardItem step={STEPS[2]} />

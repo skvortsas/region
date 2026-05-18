@@ -342,7 +342,7 @@ function RoleCard({ role, onOpen }: RoleCardProps) {
       aria-label={`Подробнее о роли — ${role.name}`}
       className="group relative flex flex-col rounded-[20px] bg-gradient-surface text-left transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
                  w-[clamp(150px,44vw,195px)] aspect-195/488
-                 lg:w-[311px] lg:h-[798px] lg:aspect-auto"
+                 lg:w-[280px] xl:w-[311px] lg:h-[798px] lg:aspect-auto"
     >
       {/* Illustration area */}
       <div className="relative flex-1 overflow-hidden rounded-t-[20px]">
@@ -471,7 +471,7 @@ export function Roles() {
           role="list"
           className="grid grid-cols-2 gap-3
                      min-[440px]:gap-4
-                     lg:grid-cols-5 lg:gap-8 lg:justify-items-center lg:items-start lg:pt-[49px]"
+                     xl:grid-cols-5 lg:gap-8 lg:justify-items-center lg:items-start lg:pt-[49px]"
         >
           {ROLES.map((role) => (
             <li

@@ -1,14 +1,27 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
-const SERVER_IP = process.env.NEXT_PUBLIC_SERVER_IP ?? '0.0.0.0:22005'
+const SERVER_IP = process.env.NEXT_PUBLIC_SERVER_IP ?? "0.0.0.0:22005";
 
 function CopyIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <defs>
-        <linearGradient id="copyGrad" x1="12" y1="0" x2="12" y2="24" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="copyGrad"
+          x1="12"
+          y1="0"
+          x2="12"
+          y2="24"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#FF2830" />
           <stop offset="1" stopColor="#FF686E" />
         </linearGradient>
@@ -26,34 +39,34 @@ function CopyIcon() {
         d="M4.158 4.8C2.414 4.8 1 6.214 1 7.957V20.842C1 22.586 2.414 24 4.158 24H12.242C13.986 24 15.4 22.586 15.4 20.842V20.8H8.158C6.414 20.8 5 19.386 5 17.643V4.8H4.158Z"
       />
     </svg>
-  )
+  );
 }
 
 export function CopyIPButton() {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(SERVER_IP)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(SERVER_IP);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
       // Fallback for browsers without clipboard API support
       try {
-        const textarea = document.createElement('textarea')
-        textarea.value = SERVER_IP
-        textarea.style.position = 'fixed'
-        textarea.style.opacity = '0'
-        document.body.appendChild(textarea)
-        textarea.focus()
-        textarea.select()
-        document.execCommand('copy')
-        document.body.removeChild(textarea)
+        const textarea = document.createElement("textarea");
+        textarea.value = SERVER_IP;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
       } catch {
         // Silent fail — clipboard unavailable
       }
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     }
   }
 
@@ -61,12 +74,12 @@ export function CopyIPButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="card-action-button group relative mt-auto flex w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none lg:w-[466px] lg:py-[30px] lg:text-[28px]"
+      className="card-action-button group relative mt-auto flex w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent py-[22px] text-[18px] font-bold uppercase leading-none text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none 2xl:w-[466px] 2xl:py-[30px] 2xl:text-[28px]"
     >
       <span className="relative z-10 flex items-center gap-4">
         <CopyIcon />
-        {copied ? 'СКОПИРОВАНО ✓' : 'СКОПИРОВАТЬ'}
+        {copied ? "СКОПИРОВАНО ✓" : "СКОПИРОВАТЬ"}
       </span>
     </button>
-  )
+  );
 }
