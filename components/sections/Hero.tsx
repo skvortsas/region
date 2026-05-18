@@ -135,7 +135,7 @@ function HeroStarIcon() {
 function HeroCtaButton() {
   return (
     <a
-      href="#"
+      href="#howtoplay"
       className="hero-cta-button group relative inline-flex h-[72px] w-full items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-transparent text-[20px] font-bold leading-[102%] text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none md:h-[88px] md:text-[28px]"
     >
       <span className="relative z-10 shrink-0">

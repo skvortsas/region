@@ -1,23 +1,31 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { SocialIcon } from '@/components/ui/SocialIcon'
+import Image from "next/image";
+import Link from "next/link";
+import { SocialIcon } from "@/components/ui/SocialIcon";
 
-const SOCIALS = ['discord', 'vk', 'telegram', 'youtube'] as const
+const SOCIALS = ["discord", "vk", "telegram", "youtube"] as const;
 
 const NAV_LINKS = [
-  { label: 'Пользовательское соглашение', href: '/terms' },
-  { label: 'Политика конфиденциальности', href: '/privacy' },
-  { label: 'Дисклеймер', href: '/disclaimer' },
-  { label: 'Политика обработки файлов cookie', href: '/cookies' },
-  { label: 'Согласие на обработку персональных данных', href: '/personal-data' },
-] as const
+  { label: "Пользовательское соглашение", href: "/terms" },
+  { label: "Политика конфиденциальности", href: "/privacy" },
+  { label: "Дисклеймер", href: "/disclaimer" },
+  { label: "Политика обработки файлов cookie", href: "/cookies" },
+  {
+    label: "Согласие на обработку персональных данных",
+    href: "/personal-data",
+  },
+] as const;
 
 const PAYMENT_LOGOS = [
-  { src: '/images/payment/visa.svg', alt: 'Visa', width: 68, height: 22 },
-  { src: '/images/payment/mastercard.svg', alt: 'Mastercard', width: 40, height: 24 },
-  { src: '/images/payment/sbp.svg', alt: 'СБП', width: 57, height: 28 },
-  { src: '/images/payment/mir.svg', alt: 'Мир', width: 81, height: 24 },
-] as const
+  { src: "/images/payment/visa.svg", alt: "Visa", width: 68, height: 22 },
+  {
+    src: "/images/payment/mastercard.svg",
+    alt: "Mastercard",
+    width: 40,
+    height: 24,
+  },
+  { src: "/images/payment/sbp.svg", alt: "СБП", width: 57, height: 28 },
+  { src: "/images/payment/mir.svg", alt: "Мир", width: 81, height: 24 },
+] as const;
 
 export function Footer() {
   return (
@@ -36,9 +44,8 @@ export function Footer() {
       <div className="mx-auto w-full max-w-[1920px] px-5 py-[60px] lg:px-[150px] lg:pt-[100px] lg:pb-[72px]">
         {/* 4-column grid on desktop, stacked on mobile */}
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[auto_auto_auto_auto] lg:items-start lg:gap-[60px]">
-
           {/* Col 1: Logo + Legal entity + Socials */}
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-0 h-full">
             {/* Logo: 175:448, 205×43 */}
             <Image
               src="/images/logo-footer.svg"
@@ -50,16 +57,9 @@ export function Footer() {
             />
 
             {/* Legal entity line — 46px below logo */}
-            <p className="mt-[46px] text-body font-medium leading-[1.4] text-white max-w-[365px]">
-              ООО «1 Геймс» ИНН 5260480189 ОГРН 1215200037535
+            <p className="mt-auto text-body font-medium leading-[1.4] text-white/80 max-w-[365px]">
+              ООО «1 Геймс» <br /> ИНН 5260480189 <br /> ОГРН 1215200037535
             </p>
-
-            {/* Task 3.I spec — not in Figma 175:438 */}
-            <div className="mt-6 flex items-center gap-2">
-              {SOCIALS.map((p) => (
-                <SocialIcon key={p} platform={p} />
-              ))}
-            </div>
           </div>
 
           {/* Col 2: Информация (175:511) — nav links */}
@@ -123,12 +123,12 @@ export function Footer() {
 
             {/* Task 3.I spec — not in Figma 175:438 */}
             <small className="mt-6 text-caption text-text-muted max-w-[365px]">
-              Region RP — независимый fan-проект. Не аффилирован с Rockstar Games и Take-Two Interactive.
+              Region RP — независимый fan-проект. Не аффилирован с Rockstar
+              Games и Take-Two Interactive.
             </small>
           </div>
-
         </div>
       </div>
     </footer>
-  )
+  );
 }

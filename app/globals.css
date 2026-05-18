@@ -274,6 +274,36 @@
   pointer-events: none;
 }
 
+.platform-icon-button {
+  background:
+    linear-gradient(rgba(17, 17, 23, 0.5), rgba(17, 17, 23, 0.5))
+      padding-box,
+    radial-gradient(
+        115.52% 113.33% at 50% 100%,
+        rgba(255, 40, 48, 0.6) 0%,
+        rgba(255, 40, 48, 0) 100%
+      )
+      padding-box,
+    linear-gradient(
+        90deg,
+        rgba(255, 40, 48, 0.2) 0%,
+        #ff6f74 49.519%,
+        rgba(255, 40, 48, 0.2) 100%
+      )
+      border-box;
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  transition: box-shadow 150ms ease;
+}
+
+.platform-icon-button:hover,
+.platform-icon-button:focus-visible {
+  box-shadow:
+    0 0 30px #ff2830,
+    inset 0 0 20px #ff2830,
+    inset 0 0 10px #ff2830;
+}
+
 .hero-headline-backdrop-mobile {
   background: linear-gradient(
     180deg,

@@ -196,7 +196,7 @@ function LoginButton({
   const dims = size === "lg" ? "h-[60px] w-[180px]" : "h-[50px] w-[136px]";
   return (
     <a
-      href="#"
+      href="#howtoplay"
       className={`login-button group inline-flex ${dims} items-center justify-center gap-2 rounded-[20px] border border-transparent text-[18px] font-semibold uppercase leading-[21.942px] tracking-[0.9px] text-white/80 transition-colors duration-150 hover:text-white focus-visible:text-white focus-visible:outline-none ${className}`}
     >
       <PersonIcon />
