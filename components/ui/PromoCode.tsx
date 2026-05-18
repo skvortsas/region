@@ -50,53 +50,53 @@ export function PromoCode({ code, targetDate }: PromoCodeProps) {
   }, [targetDate]);
 
   return (
-    <div className="promo-card relative h-[267px] w-full max-w-[583px] overflow-hidden rounded-[20px]">
-      <p className="absolute left-[30px] top-[26px] w-[280px] text-[18px] font-medium leading-[21.6px] text-white">
+    <div className="promo-card relative h-[183px] w-full max-w-[400px] overflow-hidden rounded-[20px] lg:h-[267px] lg:max-w-[583px]">
+      <p className="absolute left-[20.57px] top-[20.46px] w-[192.14px] text-[12px] font-medium leading-[14.4px] text-white lg:left-[30px] lg:top-[26px] lg:w-[280px] lg:text-[18px] lg:leading-[21.6px]">
         Лимитированный промокод для первых игроков
       </p>
 
-      <p className="absolute left-[30px] top-[85px] w-[280px] text-[18px] font-medium leading-[21.6px] text-white">
+      <p className="absolute left-[20.58px] top-[58.32px] w-[192.11px] text-[12px] font-medium leading-[14.4px] text-white lg:left-[30px] lg:top-[85px] lg:w-[280px] lg:text-[18px] lg:leading-[21.6px]">
         Активируй и получи преимущество на старте
       </p>
 
-      <div className="promo-timer-panel absolute right-[20px] top-[20px] h-[114px] w-[236px] rounded-[20px]">
-        <p className="absolute left-[20px] top-[17px] w-[196px] text-center text-[12px] font-medium leading-[16.8px] text-[#ff434a]">
+      <div className="promo-timer-panel absolute right-[15.17px] top-[13.72px] h-[74.76px] w-[160.48px] rounded-[20px] lg:right-[20px] lg:top-[20px] lg:h-[114px] lg:w-[236px]">
+        <p className="absolute left-[13px] top-[13px] w-[134.48px] text-center text-[8px] font-medium leading-[11.2px] text-[#ff434a] lg:left-[20px] lg:top-[17px] lg:w-[196px] lg:text-[12px] lg:leading-[16.8px]">
           До конца действия промокода
         </p>
 
-        <div className="absolute left-[17.5px] top-[42px] h-[32px] w-[201px]">
-          <span className="absolute left-0 top-0 w-[57px] text-center text-[46px] font-medium leading-[32px] text-white">
+        <div className="absolute left-[11.28px] top-[27px] h-[21.96px] w-[137px] lg:left-[17.5px] lg:top-[42px] lg:h-[32px] lg:w-[201px]">
+          <span className="absolute left-0 top-0 w-[39.11px] text-center text-[30px] font-medium leading-[22px] text-white lg:w-[57px] lg:text-[46px] lg:leading-[32px]">
             {countdown.hours}
           </span>
-          <span className="absolute left-[65px] top-[9.5px] h-[13px] w-px bg-white" />
-          <span className="absolute left-[73px] top-0 w-[55px] text-center text-[46px] font-medium leading-[32px] text-white">
+          <span className="absolute left-[44.6px] top-[6.52px] h-[8.92px] w-px bg-white lg:left-[65px] lg:top-[9.5px] lg:h-[13px]" />
+          <span className="absolute left-[50.09px] top-0 w-[37.74px] text-center text-[30px] font-medium leading-[22px] text-white lg:left-[73px] lg:w-[55px] lg:text-[46px] lg:leading-[32px]">
             {countdown.minutes}
           </span>
-          <span className="absolute left-[136px] top-[9.5px] h-[13px] w-px bg-white" />
-          <span className="absolute left-[144px] top-0 w-[57px] text-center text-[46px] font-medium leading-[32px] text-white">
+          <span className="absolute left-[93.31px] top-[6.52px] h-[8.92px] w-px bg-white lg:left-[136px] lg:top-[9.5px] lg:h-[13px]" />
+          <span className="absolute left-[98.8px] top-0 w-[39.11px] text-center text-[30px] font-medium leading-[22px] text-white lg:left-[144px] lg:w-[57px] lg:text-[46px] lg:leading-[32px]">
             {countdown.seconds}
           </span>
         </div>
 
-        <div className="absolute left-[31.5px] top-[81px] h-[13px] w-[161px]">
-          <span className="absolute left-0 top-0 w-[32px] text-center text-[18px] font-medium leading-[13px] text-white/60">
+        <div className="absolute left-[21.41px] top-[53.76px] h-[8px] w-[118px] lg:left-[31.5px] lg:top-[81px] lg:h-[13px] lg:w-[161px]">
+          <span className="absolute left-0 top-0 w-[22px] text-center text-[12px] font-medium leading-[8px] text-white/60 lg:w-[32px] lg:text-[18px] lg:leading-[13px]">
             час
           </span>
-          <span className="absolute left-[66px] top-0 w-[40px] text-center text-[18px] font-medium leading-[13px] text-white/60">
+          <span className="absolute left-[45.33px] top-0 w-[27px] text-center text-[12px] font-medium leading-[8px] text-white/60 lg:left-[66px] lg:w-[40px] lg:text-[18px] lg:leading-[13px]">
             мин
           </span>
-          <span className="absolute left-[140px] top-0 w-[33px] text-center text-[18px] font-medium leading-[13px] text-white/60">
+          <span className="absolute left-[95.66px] top-0 w-[22px] text-center text-[12px] font-medium leading-[8px] text-white/60 lg:left-[140px] lg:w-[33px] lg:text-[18px] lg:leading-[13px]">
             сек
           </span>
         </div>
       </div>
 
       <div
-        className="promo-code-panel absolute inset-x-0 bottom-0 h-[114px] rounded-[20px]"
+        className="promo-code-panel absolute inset-x-0 bottom-0 h-[78.22px] rounded-[20px] lg:h-[114px]"
         aria-label={`Промокод ${code}`}
       >
         <svg
-          className="absolute left-[104px] top-[34px] h-[46px] w-[46px]"
+          className="absolute left-[68.73px] top-[23.33px] h-[31.56px] w-[31.56px] lg:left-[104px] lg:top-[34px] lg:h-[46px] lg:w-[46px]"
           width="46"
           height="46"
           viewBox="0 0 46 46"
@@ -114,7 +114,7 @@ export function PromoCode({ code, targetDate }: PromoCodeProps) {
           />
         </svg>
 
-        <p className="absolute left-[166px] top-[37px] text-[57px] font-bold leading-[40px] text-white">
+        <p className="absolute left-[111.27px] top-[25.11px] text-[40px] font-bold leading-[28px] text-white lg:left-[166px] lg:top-[37px] lg:text-[57px] lg:leading-[40px]">
           {code}
         </p>
       </div>
