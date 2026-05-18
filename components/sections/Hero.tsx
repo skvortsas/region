@@ -292,6 +292,55 @@ export function Hero() {
             className="hero-headline-backdrop pointer-events-none hidden lg:absolute lg:-top-[30px] lg:left-0 lg:block lg:h-[319px] lg:w-[724.5px]"
           />
 
+          <div
+            aria-hidden="true"
+            className="hero-subtitle-backdrop pointer-events-none hidden lg:absolute lg:left-[449px] lg:top-[11px] lg:block lg:h-[131px] lg:w-[245px]"
+          >
+            <svg
+              className="absolute inset-0 h-full w-full"
+              width="245"
+              height="131"
+              viewBox="0 0 245 131"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M32 0.5H113.5C122.337 0.5 129.5 7.66344 129.5 16.5C129.5 25.8888 137.111 33.5 146.5 33.5H212.5C218.109 33.5 222.286 33.5001 225.596 33.7705C228.899 34.0405 231.296 34.5771 233.353 35.625C237.022 37.4945 240.005 40.4783 241.875 44.1475C242.923 46.2042 243.46 48.6006 243.729 51.9043C244 55.2143 244 59.3912 244 65V99C244 104.609 244 108.786 243.729 112.096C243.46 115.399 242.923 117.796 241.875 119.853C240.005 123.522 237.022 126.505 233.353 128.375C231.296 129.423 228.899 129.96 225.596 130.229C222.286 130.5 218.109 130.5 212.5 130.5H32C26.3912 130.5 22.2143 130.5 18.9043 130.229C15.6006 129.96 13.2042 129.423 11.1475 128.375C7.4783 126.505 4.49453 123.522 2.625 119.853C1.57714 117.796 1.04046 115.399 0.770508 112.096C0.500074 108.786 0.5 104.609 0.5 99V32C0.5 26.3912 0.500074 22.2143 0.770508 18.9043C1.04046 15.6006 1.57714 13.2042 2.625 11.1475C4.49453 7.4783 7.4783 4.49453 11.1475 2.625C13.2042 1.57713 15.6006 1.04046 18.9043 0.770508C22.2143 0.500074 26.3912 0.5 32 0.5Z"
+                fill="url(#hero-subtitle-fill)"
+              />
+              <path
+                d="M32 0.5H113.5C122.337 0.5 129.5 7.66344 129.5 16.5C129.5 25.8888 137.111 33.5 146.5 33.5H212.5C218.109 33.5 222.286 33.5001 225.596 33.7705C228.899 34.0405 231.296 34.5771 233.353 35.625C237.022 37.4945 240.005 40.4783 241.875 44.1475C242.923 46.2042 243.46 48.6006 243.729 51.9043C244 55.2143 244 59.3912 244 65V99C244 104.609 244 108.786 243.729 112.096C243.46 115.399 242.923 117.796 241.875 119.853C240.005 123.522 237.022 126.505 233.353 128.375C231.296 129.423 228.899 129.96 225.596 130.229C222.286 130.5 218.109 130.5 212.5 130.5H32C26.3912 130.5 22.2143 130.5 18.9043 130.229C15.6006 129.96 13.2042 129.423 11.1475 128.375C7.4783 126.505 4.49453 123.522 2.625 119.853C1.57714 117.796 1.04046 115.399 0.770508 112.096C0.500074 108.786 0.5 104.609 0.5 99V32C0.5 26.3912 0.500074 22.2143 0.770508 18.9043C1.04046 15.6006 1.57714 13.2042 2.625 11.1475C4.49453 7.4783 7.4783 4.49453 11.1475 2.625C13.2042 1.57713 15.6006 1.04046 18.9043 0.770508C22.2143 0.500074 26.3912 0.5 32 0.5Z"
+                stroke="url(#hero-subtitle-stroke)"
+                className="mix-blend-plus-lighter"
+              />
+              <defs>
+                <radialGradient
+                  id="hero-subtitle-fill"
+                  cx="0"
+                  cy="0"
+                  r="1"
+                  gradientUnits="userSpaceOnUse"
+                  gradientTransform="translate(122.25 117) rotate(-90) scale(186.168 166.44)"
+                >
+                  <stop stopColor="#FF2830" stopOpacity="0.6" />
+                  <stop offset="1" stopColor="#FF2830" stopOpacity="0" />
+                </radialGradient>
+                <linearGradient
+                  id="hero-subtitle-stroke"
+                  x1="244.5"
+                  y1="117"
+                  x2="0"
+                  y2="117"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#FF2830" stopOpacity="0.2" />
+                  <stop offset="0.495192" stopColor="#FF2830" />
+                  <stop offset="1" stopColor="#FF2830" stopOpacity="0.2" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
           {/* Headline — Figma node 27:158. */}
           <h1 className="absolute left-[16.56px] top-[16.56px] h-[139.6px] w-[328.5px] text-left font-extrabold tracking-normal lg:left-[30px] lg:top-0 lg:h-[254px] lg:w-[595px]">
             <span className="absolute left-0 top-0 block w-[328.5px] text-[54px] leading-[43.2px] text-white lg:w-[595px] lg:text-[100px] lg:leading-[80px]">
