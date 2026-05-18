@@ -211,6 +211,7 @@ Architecture note: `88:86` contains only the background rectangle (`24:396`, IMA
 
 - Heading: "Карта Ленинградской области и регионов" — `id=91:89`
 - Sub-copy: "Десятки самых знаковых мест..." — `id=91:92`
+- Intro info card: desktop `id=91:91` — 361 × 166, `cornerRadius=20`, red radial fill `#ff283099 → #ff283000` with overlay pattern `sourceNodeId=146:540` represented by `/images/diamond-pattern.svg` at 60% opacity. Text `id=91:92`: Montserrat Medium 20px, white, 28px line-height, left aligned, 30px horizontal inset. Mobile `id=259:437`: 400 × 95 with the same red radial + pattern treatment, text 16px centered.
 - Component: `id=99:434` — 1620 × 784
   - Screenshot carousel (14 sets): `Скриншоты_1…_14`
   - City location info pane: address + embedded map image
@@ -234,6 +235,26 @@ The "Карта" COMPONENT_SET has 8 city variants (`Property 1=Default` through
 | 8   | Новая Голландия               | `наб. Адмиралтейского канала, 2`                      | `Остров в Адмиралтейском районе Санкт-Петербурга, ограниченный рекой Мойкой, Крюковым и Адмиралтейским каналами. Кроме того, Новая Голландия — один из старейших утилитарных ансамблей города`                                     | `93:648` (variant `93:643`)                             |
 
 > Note: Cities 2 and 3 use a descriptive area phrase as the address line (no "ул." / "наб." prefix). Cities 5 and 6 use abbreviated "пл." forms with no street number. City 7 uses the square name as the address line rather than the monument name. Reproduce all of these verbatim.
+
+**Info pane mini-map per city** — each city variant uses its own `Карта` frame, exported as WebP at 413 × 224.
+
+| City                            | Figma map frame | Asset path                                                              |
+| ------------------------------- | --------------- | ----------------------------------------------------------------------- |
+| Лахта центр                     | `93:169`        | `/images/map/saint-petersburg-lakhta-center-map.webp`                  |
+| Спальный район В.О.             | `93:266`        | `/images/map/saint-petersburg-vasileostrovsky-district-map.webp`       |
+| Стрелка Васильевского острова   | `93:368`        | `/images/map/saint-petersburg-strelka-vo-map.webp`                     |
+| Мраморный дворец МВД            | `93:417`        | `/images/map/saint-petersburg-marble-palace-mvd-map.webp`              |
+| Дворцовая площадь               | `93:466`        | `/images/map/saint-petersburg-palace-square-map.webp`                  |
+| Исаакиевская площадь            | `93:515`        | `/images/map/saint-petersburg-isaak-square-map.webp`                   |
+| Медный всадник                  | `93:600`        | `/images/map/saint-petersburg-bronze-horseman-map.webp`                |
+| Новая Голландия                 | `93:649`        | `/images/map/saint-petersburg-new-holland-map.webp`                    |
+| Рынок Пирамида                  | `143:246`       | `/images/map/tolyatti-pyramid-market-map.webp`                         |
+| ЖК Фрунзе                       | `143:366`       | `/images/map/tolyatti-frunze-residential-map.webp`                     |
+| Автозавод Ладья                 | `143:475`       | `/images/map/tolyatti-ladya-autoplant-map.webp`                        |
+| Кинотеатр Сатурн                | `143:571`       | `/images/map/tolyatti-saturn-cinema-map.webp`                          |
+| Подземный город                 | `144:262`       | `/images/map/tolyatti-underground-city-map.webp`                       |
+| Стройка                         | `144:371`       | `/images/map/tolyatti-construction-site-map.webp`                      |
+| Торговые центры                 | `144:480`       | `/images/map/tolyatti-shopping-centers-map.webp`                       |
 
 **Mobile Map section (`288:663`, 400 × 702):**
 No sidebar. A single full-width `Карта` instance (`265:1347`, 400 × 493) sits inside a 420 × 510 wrapper frame, with the city list rendered inside the instance below the screenshot rather than in a side column. Prev/next arrow buttons (`Стрелка Л` `315:404` and `Стрелка П` `315:407`, both 36 × 36 circle frames with red gradient fill) are positioned at the left and right edges of the screenshot area. Section heading and sub-copy frame sit above the carousel wrapper and are not part of the instance.

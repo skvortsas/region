@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { UIEvent } from "react";
 import { useState } from "react";
 
 type CityKey =
@@ -28,20 +29,19 @@ interface City {
   address: string;
   description: string;
   screenshot: string;
+  miniMap: string;
 }
 
 interface Region {
   id: RegionKey;
   name: string;
   locations: City[];
-  miniMap: string;
 }
 
 const REGIONS: Region[] = [
   {
     id: "spb",
     name: "Санкт-Петербург",
-    miniMap: "/images/map/saint-petersburg-region-map.webp",
     locations: [
       {
         id: "lakhta",
@@ -50,6 +50,7 @@ const REGIONS: Region[] = [
         description:
           "Многофункциональный комплекс, расположенный на берегу Финского залива в Приморском районе Санкт-Петербурга. Является центральным офисом компании Газпром",
         screenshot: "/images/map/saint-petersburg-lakhta-center.webp",
+        miniMap: "/images/map/saint-petersburg-lakhta-center-map.webp",
       },
       {
         id: "spalny",
@@ -59,6 +60,8 @@ const REGIONS: Region[] = [
           "Наша задача сделать город — разносторонним, именно поэтому мы добавляем сюда различные по наполнению и атмосфере локации, при этом что не противоречит главному городу прототипу",
         screenshot:
           "/images/map/saint-petersburg-vasileostrovsky-district.webp",
+        miniMap:
+          "/images/map/saint-petersburg-vasileostrovsky-district-map.webp",
       },
       {
         id: "strelka",
@@ -67,6 +70,7 @@ const REGIONS: Region[] = [
         description:
           "Мыс на восточной оконечности Васильевского острова в Санкт-Петербурге, омываемый Большой Невой и Малой Невой; один из самых известных архитектурных ансамблей города; пример гармонии архитектуры города с пейзажем берегов Невы",
         screenshot: "/images/map/saint-petersburg-strelka-vo.webp",
+        miniMap: "/images/map/saint-petersburg-strelka-vo-map.webp",
       },
       {
         id: "marble",
@@ -75,6 +79,7 @@ const REGIONS: Region[] = [
         description:
           "Мы не просто перенесли дворец, а ещё и напитали место мистикой, пасхалки и интереснейшим фкнционалом, с отсылкой на реальную экранизацию, что позволит с интересом открывать нашу карту с новых ракурсов",
         screenshot: "/images/map/saint-petersburg-marble-palace-mvd.webp",
+        miniMap: "/images/map/saint-petersburg-marble-palace-mvd-map.webp",
       },
       {
         id: "palace",
@@ -83,6 +88,7 @@ const REGIONS: Region[] = [
         description:
           "Главная площадь Санкт-Петербурга, архитектурный ансамбль, возникший во второй половине XVIII — первой половине XIX века",
         screenshot: "/images/map/saint-petersburg-palace-square.webp",
+        miniMap: "/images/map/saint-petersburg-palace-square-map.webp",
       },
       {
         id: "isaak",
@@ -91,6 +97,7 @@ const REGIONS: Region[] = [
         description:
           "Площадь в Адмиралтейском муниципальном округе Адмиралтейского района Санкт-Петербурга. С севера ограничена Адмиралтейским проспектом, с юга — Мариинским дворцом",
         screenshot: "/images/map/saint-petersburg-isaak-square.webp",
+        miniMap: "/images/map/saint-petersburg-isaak-square-map.webp",
       },
       {
         id: "medny",
@@ -99,6 +106,7 @@ const REGIONS: Region[] = [
         description:
           "Монументальный конный памятник первому российскому императору Петру Великому, созданный в 1768–1778 годах под руководством французского скульптора Этьена Мориса Фальконе",
         screenshot: "/images/map/saint-petersburg-bronze-horseman.webp",
+        miniMap: "/images/map/saint-petersburg-bronze-horseman-map.webp",
       },
       {
         id: "gollandia",
@@ -107,13 +115,13 @@ const REGIONS: Region[] = [
         description:
           "Остров в Адмиралтейском районе Санкт-Петербурга, ограниченный рекой Мойкой, Крюковым и Адмиралтейским каналами. Кроме того, Новая Голландия — один из старейших утилитарных ансамблей города",
         screenshot: "/images/map/saint-petersburg-new-holland.webp",
+        miniMap: "/images/map/saint-petersburg-new-holland-map.webp",
       },
     ],
   },
   {
     id: "tolyatti",
     name: "Тольятти",
-    miniMap: "/images/map/tolyatti-region-map.webp",
     locations: [
       {
         id: "pyramid",
@@ -122,6 +130,7 @@ const REGIONS: Region[] = [
         description:
           "Большой бу-рынок «Пирамида» в Автозаводском районе Тольятти известен хаотичной атмосферой торга, где можно найти подделки брендовой одежды и обуви по бросовым ценам, а также свежие продукты от местных фермеров",
         screenshot: "/images/map/tolyatti-pyramid-market.webp",
+        miniMap: "/images/map/tolyatti-pyramid-market-map.webp",
       },
       {
         id: "frunze",
@@ -130,6 +139,7 @@ const REGIONS: Region[] = [
         description:
           "ЖК на улице Фрунзе выделяются близостью к деловому центру «Плаза» и университету с бассейном, что делает их удобными для семей с детьми и студентов; дома строятся современные, но район шумный из-за трассы и недалеко от Волги",
         screenshot: "/images/map/tolyatti-frunze-residential.webp",
+        miniMap: "/images/map/tolyatti-frunze-residential-map.webp",
       },
       {
         id: "ladya",
@@ -138,6 +148,7 @@ const REGIONS: Region[] = [
         description:
           "Автозавод «Ладья» в Тольятти — это крупнейший российский производитель легковых автомобилей. Основан в 1966 году по постановлению правительства СССР, с первой «копейкой» (ВАЗ-2101) в 1970-м; за историю выпущено свыше 30 млн машин",
         screenshot: "/images/map/tolyatti-ladya-autoplant.webp",
+        miniMap: "/images/map/tolyatti-ladya-autoplant-map.webp",
       },
       {
         id: "saturn",
@@ -146,6 +157,7 @@ const REGIONS: Region[] = [
         description:
           "«Сатурн» на Революционной был одним из старейших в городе с уютными залами и дешевыми билетами в 90-е–2000-е; сейчас заброшен, привлекает урбанистов и вандалов для фото, а внутри сохранились советские плакаты и обшарпанные кресла",
         screenshot: "/images/map/tolyatti-saturn-cinema.webp",
+        miniMap: "/images/map/tolyatti-saturn-cinema-map.webp",
       },
       {
         id: "underground",
@@ -154,6 +166,7 @@ const REGIONS: Region[] = [
         description:
           "Заброшенные подземные переходы Тольятти (особенно у «Пирамиды») — лабиринт из 1980-х с граффити, лужами и эхом шагов; они соединяли районы, но теперь опасны из-за крыс, обвалов, став местом для экстремальных прогулок",
         screenshot: "/images/map/tolyatti-underground-city.webp",
+        miniMap: "/images/map/tolyatti-underground-city-map.webp",
       },
       {
         id: "construction",
@@ -162,6 +175,7 @@ const REGIONS: Region[] = [
         description:
           "Стройплощадки Тольятти фокусируются на многоэтажках и дорогах (развязки до 2033 г.); особенности — сезонные простои зимой, пыль от газобетона и пробки вокруг, но новые ЖК обещают смарт-дом системы и зеленые зоны",
         screenshot: "/images/map/tolyatti-construction-site.webp",
+        miniMap: "/images/map/tolyatti-construction-site-map.webp",
       },
       {
         id: "shopping",
@@ -170,13 +184,13 @@ const REGIONS: Region[] = [
         description:
           "Торговые центры Тольятти варьируются от крупных торгово-развлекательных комплексов площадью до 80 тыс. кв. м с гипермаркетами и кинотеатрами до компактных районных объектов с бутиками и фудкортами",
         screenshot: "/images/map/tolyatti-shopping-centers.webp",
+        miniMap: "/images/map/tolyatti-shopping-centers-map.webp",
       },
     ],
   },
   {
     id: "soon",
     name: "Скоро",
-    miniMap: "/images/map/coming-soon-region-map.webp",
     locations: [],
   },
 ];
@@ -186,6 +200,8 @@ const INACTIVE_REGION_STYLE =
   "bg-[radial-gradient(ellipse_86%_148%_at_50%_100%,rgba(80,76,108,0.6)_0%,rgba(80,76,108,0)_100%)] [box-shadow:inset_0_0_0_1px_rgba(80,76,108,0.65)]";
 const ACTIVE_CITY_STYLE =
   "bg-[radial-gradient(ellipse_76.5%_197.65%_at_0%_50%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)]";
+const MAP_INTRO_CARD_STYLE =
+  "relative flex overflow-hidden rounded-[20px] bg-[radial-gradient(ellipse_68%_137%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/diamond-pattern.svg')] before:bg-[length:16px_16px] before:bg-repeat before:opacity-60 before:mix-blend-overlay";
 
 function PinIcon({ className = "" }: { className?: string }) {
   return (
@@ -223,6 +239,22 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
         strokeLinejoin="round"
       />
     </svg>
+  );
+}
+
+function MapIntroCard() {
+  return (
+    <div
+      className={[
+        MAP_INTRO_CARD_STYLE,
+        "h-[95px] w-full max-w-[400px] items-center justify-center px-5 min-[900px]:h-[166px] min-[900px]:w-[361px] min-[900px]:shrink-0 min-[900px]:justify-start min-[900px]:px-[30px]",
+      ].join(" ")}
+    >
+      <p className="relative z-10 max-w-[360px] text-center text-[16px] font-medium leading-[1.4] text-white min-[900px]:max-w-[301px] min-[900px]:text-left min-[900px]:text-body">
+        Десятки самых знаковых мест и сотни архитектурных объектов Питера и
+        области
+      </p>
+    </div>
   );
 }
 
@@ -338,13 +370,9 @@ function Screenshot({
 
 function InfoPanel({
   city,
-  miniMap,
-  regionName,
   mobile = false,
 }: {
   city: City;
-  miniMap: string;
-  regionName: string;
   mobile?: boolean;
 }) {
   return (
@@ -370,8 +398,8 @@ function InfoPanel({
 
       <div className="relative overflow-hidden [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.8)]">
         <Image
-          src={miniMap}
-          alt={`Карта региона ${regionName} с отмеченными локациями Region RP`}
+          src={city.miniMap}
+          alt={`Мини-карта локации: ${city.name}`}
           fill
           sizes={mobile ? "115px" : "413px"}
           className="object-cover"
@@ -385,6 +413,7 @@ function InfoPanel({
 export function Map() {
   const [activeRegionId, setActiveRegionId] = useState<RegionKey>("spb");
   const [activeCityIndex, setActiveCityIndex] = useState(0);
+  const [showMobileScrollHint, setShowMobileScrollHint] = useState(true);
   const activeRegion =
     REGIONS.find((region) => region.id === activeRegionId) ?? REGIONS[0];
   const activeCity =
@@ -405,16 +434,15 @@ export function Map() {
     setActiveCityIndex(0);
   };
 
-  const showPrevCity = () => {
-    setActiveCityIndex((index) =>
-      index === 0 ? activeRegion.locations.length - 1 : index - 1,
-    );
+  const handleCitySelect = (index: number) => {
+    setActiveCityIndex(index);
+    setShowMobileScrollHint(false);
   };
 
-  const showNextCity = () => {
-    setActiveCityIndex((index) =>
-      index === activeRegion.locations.length - 1 ? 0 : index + 1,
-    );
+  const handleMobileCityListScroll = (event: UIEvent<HTMLDivElement>) => {
+    if (event.currentTarget.scrollLeft > 8) {
+      setShowMobileScrollHint(false);
+    }
   };
 
   return (
@@ -424,19 +452,14 @@ export function Map() {
       className="relative w-full bg-bg px-5 py-16 md:px-12 md:py-24"
     >
       <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 min-[900px]:gap-14">
-        <header className="flex flex-col items-center gap-5 text-center min-[900px]:items-start min-[900px]:gap-6 min-[900px]:text-left">
+        <header className="flex flex-col items-center gap-5 text-center min-[900px]:flex-row min-[900px]:items-start min-[900px]:justify-between min-[900px]:gap-[22px] min-[900px]:text-left">
           <h2
             id="map-heading"
-            className="max-w-[920px] text-[32px] font-extrabold leading-none text-white min-[900px]:text-display"
+            className="max-w-[920px] text-[32px] font-extrabold leading-none text-white min-[900px]:max-w-[1237px] min-[900px]:text-display"
           >
             Карта Ленинградской области и регионов
           </h2>
-          <div className="rounded-[20px] bg-[radial-gradient(ellipse_85%_136%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] px-5 py-5 min-[900px]:rounded-none min-[900px]:bg-none min-[900px]:p-0">
-            <p className="max-w-[360px] text-center text-[16px] font-medium leading-[1.4] text-white min-[900px]:max-w-3xl min-[900px]:text-left min-[900px]:text-body min-[900px]:text-text-secondary">
-              Десятки самых знаковых мест и сотни архитектурных объектов Питера
-              и области
-            </p>
-          </div>
+          <MapIntroCard />
         </header>
 
         <div className="hidden grid-cols-[488px_1fr] gap-[50px] min-[900px]:grid">
@@ -447,7 +470,7 @@ export function Map() {
                   <CityButton
                     city={city}
                     isActive={index === activeCityIndex}
-                    onClick={() => setActiveCityIndex(index)}
+                    onClick={() => handleCitySelect(index)}
                   />
                 </li>
               ))}
@@ -460,11 +483,7 @@ export function Map() {
               onSelect={handleRegionSelect}
             />
             <Screenshot city={activeCity} />
-            <InfoPanel
-              city={activeCity}
-              miniMap={activeRegion.miniMap}
-              regionName={activeRegion.name}
-            />
+            <InfoPanel city={activeCity} />
           </div>
         </div>
 
@@ -475,17 +494,13 @@ export function Map() {
               onSelect={handleRegionSelect}
             />
             <Screenshot city={activeCity} mobile />
-            <InfoPanel
-              city={activeCity}
-              miniMap={activeRegion.miniMap}
-              regionName={activeRegion.name}
-              mobile
-            />
+            <InfoPanel city={activeCity} mobile />
           </div>
 
           <div
-            className="mt-2 w-full max-w-full overflow-x-auto overscroll-x-contain"
+            className="mt-2 w-full max-w-full touch-pan-x overflow-x-auto overscroll-x-contain scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             aria-label={`Локации региона ${activeRegion.name}`}
+            onScroll={handleMobileCityListScroll}
           >
             <div className="flex w-max min-w-full">
               {activeRegion.locations.map((city, index) => (
@@ -493,30 +508,21 @@ export function Map() {
                   key={city.id}
                   city={city}
                   isActive={index === activeCityIndex}
-                  onClick={() => setActiveCityIndex(index)}
+                  onClick={() => handleCitySelect(index)}
                   mobile
                 />
               ))}
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={showPrevCity}
-            aria-label="Предыдущая локация"
-            className="absolute left-[-15px] bottom-[-68px] flex h-9 w-9 items-center justify-center rounded-full bg-[radial-gradient(ellipse_113%_115%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] text-accent-light [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            <ArrowIcon direction="left" />
-          </button>
-
-          <button
-            type="button"
-            onClick={showNextCity}
-            aria-label="Следующая локация"
-            className="absolute right-[-10px] bottom-[15px] flex h-9 w-9 items-center justify-center rounded-full bg-[radial-gradient(ellipse_113%_115%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] text-accent-light [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            <ArrowIcon direction="right" />
-          </button>
+          {showMobileScrollHint && activeRegion.locations.length > 1 ? (
+            <div
+              className="pointer-events-none absolute right-2 bottom-[15px] z-20 flex h-9 w-9 items-center justify-center rounded-full bg-[radial-gradient(ellipse_113%_115%_at_50%_100%,rgba(255,40,48,0.6)_0%,rgba(255,40,48,0)_100%)] text-accent-light backdrop-blur-md [box-shadow:inset_0_0_0_1px_rgba(255,40,48,0.75)]"
+              aria-hidden="true"
+            >
+              <ArrowIcon direction="right" />
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
