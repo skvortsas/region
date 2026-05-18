@@ -102,6 +102,30 @@
   filter: brightness(1.02);
 }
 
+.social-icon-path {
+  transition: fill 150ms ease;
+}
+
+.social-icon-button[data-platform="discord"]:hover .social-icon-path,
+.social-icon-button[data-platform="discord"]:focus-visible .social-icon-path {
+  fill: url("#social-gradient-discord");
+}
+
+.social-icon-button[data-platform="vk"]:hover .social-icon-path,
+.social-icon-button[data-platform="vk"]:focus-visible .social-icon-path {
+  fill: url("#social-gradient-vk");
+}
+
+.social-icon-button[data-platform="telegram"]:hover .social-icon-path,
+.social-icon-button[data-platform="telegram"]:focus-visible .social-icon-path {
+  fill: url("#social-gradient-telegram");
+}
+
+.social-icon-button[data-platform="youtube"]:hover .social-icon-path,
+.social-icon-button[data-platform="youtube"]:focus-visible .social-icon-path {
+  fill: url("#social-gradient-youtube");
+}
+
 .promo-timer-panel {
   background: radial-gradient(
     85.47% 266.67% at 50% 100%,
