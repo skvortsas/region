@@ -56,7 +56,7 @@ function FeatureItem({
     >
       <div
         aria-hidden="true"
-        className="absolute left-0 top-16 z-10 h-[58px] w-[58px]"
+        className="absolute left-0 top-1/2 -translate-y-full lg:-translate-y-1/2 z-10 h-[58px] w-[58px]"
       >
         <span className="absolute inset-0 -z-10 rounded-card bg-accent/60 blur-2xl" />
         <Image
@@ -68,7 +68,7 @@ function FeatureItem({
         />
       </div>
 
-      <div className="relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_35%_75%_at_-3%_50%,rgba(255,40,48,0.36),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,rgba(14,14,15,0.5),rgba(17,17,23,0.5))] p-[30px] ml-[30px] lg:w-[409px] px-[35px] py-[34px] pl-[35px]">
+      <div className="relative overflow-hidden rounded-card bg-[radial-gradient(ellipse_35%_75%_at_-3%_50%,rgba(255,40,48,0.36),rgba(255,40,48,0)_100%),linear-gradient(to_bottom,rgba(14,14,15,0.5),rgba(17,17,23,0.5))] p-[30px] ml-[30px] lg:w-[409px] px-[35px] py-[20px] pl-[35px]">
         <p className="text-body font-medium leading-[1.4] text-white">{text}</p>
       </div>
     </article>
@@ -105,7 +105,7 @@ export function RPEconomy() {
     <section
       id="info"
       aria-labelledby="rp-economy-heading"
-      className="relative w-full bg-bg px-4 py-16 md:px-12 md:py-24 lg:py-0"
+      className="relative w-full bg-bg px-4 py-16 md:px-12 md:py-24"
     >
       <div className="mx-auto flex w-full max-w-[1620px] flex-col gap-10 md:gap-14 lg:gap-[100px]">
         <header className="flex flex-col gap-6 items-center xl:justify-between xl:flex-row xl:items-start">
