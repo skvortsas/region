@@ -324,7 +324,7 @@ function StepCardItem({ step, offset }: { step: StepCard; offset?: boolean }) {
 
         {/* CTA buttons */}
         {step.cta === "download" && (
-          <CardButton href="https://rage.mp">
+          <CardButton href="https://cdn.region.game/RAGEMultiplayer_Setup.exe">
             <DownloadIcon />
             СКАЧАТЬ
           </CardButton>
