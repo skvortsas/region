@@ -12,8 +12,7 @@
       "Read(//private/tmp/**)",
       "Bash(curl -s -o /tmp/qa_sitemap.xml -w \"%{http_code}\" http://localhost:3000/sitemap.xml)",
       "Read(//tmp/**)",
-      "Bash(curl -s -o /tmp/qa_robots.txt -w \"%{http_code}\" http://localhost:3000/robots.txt)",
-      "Bash(curl *)"
+      "Bash(curl -s -o /tmp/qa_robots.txt -w \"%{http_code}\" http://localhost:3000/robots.txt)"
     ]
   }
 }
