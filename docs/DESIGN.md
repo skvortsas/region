@@ -556,6 +556,21 @@ Mobile cards stacked vertically with no horizontal offset. Same gradient backgro
 
 Export from Figma at 2× PNG. All three illustrations are the same aspect ratio (526 × 261 → 2:1). The `/public/images/howtoplay/` directory has been created.
 
+##### Scroll-to-top button (`401:403` desktop, `401:408` mobile)
+
+Bottom-page "наверх" control, placed after the How to Play content and before the footer. Click behavior: smooth-scroll the page to top.
+
+| Property | Desktop `401:403` | Mobile `401:408` |
+| -------- | ----------------- | ---------------- |
+| Size | 126 × 126px | 82 × 82px |
+| Corner radius | 40px | 26.0317px |
+| Fill | `GRADIENT_RADIAL` from `#ff283099` at bottom-center to `#ff283000` | Same, scaled |
+| Stroke | `LINEAR_DODGE` horizontal gradient: `#ff2830` 20% → 100% at midpoint → 20% | Same, stroke width 0.6508px |
+| Backdrop blur | 50px | 32.5397px |
+| Icon | White upward rounded triangle, desktop bbox approx 44 × 39px at local x=41/y=32 | Same, scaled |
+| Label | `наверх`, Montserrat SemiBold 600, 20px, line-height 24.38px, letter-spacing 1px, white | `наверх`, Montserrat SemiBold 600, 13.0159px, line-height 15.8663px, letter-spacing 0.6508px, white |
+| Placement | Desktop frame local x=1644/y=7019 (right edge aligns to 150px page margin) | Mobile frame local x=179/y=8074 (centered in 440px frame) |
+
 #### 2.9 Footer (`175:438`)
 
 **Verified from Figma 2026-05-16.**
