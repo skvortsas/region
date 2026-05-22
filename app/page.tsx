@@ -93,11 +93,8 @@ export default async function Home() {
         <RPEconomy />
         <Tagline />
         <HowToPlay />
-        <div className="bg-bg px-5 pb-[38px] min-[900px]:px-12 min-[1340px]:px-[150px]">
-          <div className="mx-auto flex w-full max-w-[1620px] justify-center min-[1340px]:justify-end">
-            <ScrollToTopButton />
-          </div>
-        </div>
+
+        <ScrollToTopButton />
       </main>
       <Footer />
     </>

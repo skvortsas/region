@@ -1,11 +1,35 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export function ScrollToTopButton() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const updateVisibility = () => {
+      setIsVisible(window.scrollY > 0);
+    };
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+    };
+  }, []);
+
   return (
     <button
       type="button"
       aria-label="Прокрутить наверх"
-      className="scroll-to-top-button group relative flex shrink-0 cursor-pointer items-center justify-center overflow-hidden border border-transparent text-white transition-[box-shadow,filter] duration-150 hover:filter-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
+      className={[
+        "scroll-to-top-button group sticky bottom-[calc(20px+env(safe-area-inset-bottom))] z-40 mx-auto mb-[38px] flex shrink-0 cursor-pointer items-center justify-center overflow-hidden border border-transparent text-white transition-[box-shadow,filter,opacity,transform] duration-150 hover:filter-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg md:bottom-[calc(32px+env(safe-area-inset-bottom))] min-[1340px]:ml-auto min-[1340px]:mr-[150px]",
+        isVisible
+          ? "pointer-events-auto translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-3 opacity-0",
+      ].join(" ")}
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
